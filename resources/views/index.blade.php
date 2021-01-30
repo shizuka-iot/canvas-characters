@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="UTF-8">
-	<title>{{ config('const.SITE_TITLE') }}</title>
-	<link rel="stylesheet" href="{{ asset('css/all.css') }}">
-	<script src="{{ asset('js/app.js') }}"></script>
+	@component ('components.head')
+	@endcomponent
 </head>
+
 <body>
+	@component ('components.header')
+	@endcomponent
+
 	<main class="row">
 		<div class="row center canvas_wrapper">
 			<canvas id="can2" width="800" height="640">
@@ -588,6 +591,8 @@
 		</div>
 	</main>
 	
+	@component ('components.footer')
+	@endcomponent
 	<script src="{{ asset('js/functions.js') }}"></script>
 	<script src="{{ asset('js/coordinates.js') }}"></script>
 	<script src="{{ asset('js/DrawFace.js') }}"></script>
