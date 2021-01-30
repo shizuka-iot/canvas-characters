@@ -11,7 +11,7 @@
 	@endcomponent
 
 	<main class="row">
-		<div class="row center canvas_wrapper">
+		<div class="canvas_wrapper">
 			<canvas id="can2" width="800" height="640">
 		</div>
 

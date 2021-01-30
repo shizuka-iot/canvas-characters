@@ -10,13 +10,15 @@ body {
 	top: 0;
 }
 
-.canvas_wrapper {
-	margin: 1rem;
+h1 {
+	margin: 0;
+}
+p {
+	margin: 0;
 }
 
-.center {
+main {
 	justify-content: center;
-	align-items: start;
 }
 
 .row {
@@ -26,6 +28,19 @@ body {
 .column {
 	display: flex;
 	flex-direction: column;
+}
+.between {
+	align-items: space-between;
+	justify-content: space-between;
+}
+.center {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.canvas_wrapper {
+	margin: 1rem;
 }
 
 .params {
