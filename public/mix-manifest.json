@@ -4,5 +4,6 @@
     "/js/functions.js": "/js/functions.js",
     "/js/coordinates.js": "/js/coordinates.js",
     "/js/DrawFace.js": "/js/DrawFace.js",
-    "/js/main.js": "/js/main.js"
+    "/js/main.js": "/js/main.js",
+    "/css/all.css": "/css/all.css"
 }
