@@ -21,3 +21,7 @@ mix.js('resources/js/app.js', 'public/js')
 		.scripts('resources/js/assets/DrawFace.js', 'public/js/DrawFace.js')
 		.scripts('resources/js/assets/main.js', 'public/js/main.js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.styles([
+	'public/css/vender/styles.css',
+],'public/css/all.css');
