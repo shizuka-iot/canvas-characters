@@ -16,17 +16,25 @@
 				<canvas id="can" width="800" height="640">
 			</div>
 			<div class="question_wrapper center">
+
+				@if ( isset($message) )
+				<p>{{ $message}}</p>
+
+				@else
+
 				<form action="" method="post">
 					@csrf
 
 					@foreach ($questions as $question)
 					@if ($question->id === (int)$question_no)
 
+					<input type="hidden" name="question_no" value="{{$question->id}}">
+
 					<h3>{{ $question->id}} : {{ $question->question}}</h3>
 					<div class="answers_wrapper column">
 						@foreach ($answers as $answer)
 							@if ($question->id === $answer->question_id)
-							<button type="" name="question_no" value="{{ $question->id }}">
+							<button type="submit" name="answer_id" value="{{ $answer->id }}">
 								{{ $answer->answer}}
 							</button>
 							@endif
@@ -37,6 +45,7 @@
 					@endforeach
 
 				</form>
+				@endif
 			</div>
 		</div>
 
