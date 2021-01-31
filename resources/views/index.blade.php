@@ -11,26 +11,28 @@
 	@endcomponent
 
 	<main class="row">
-		<div class="main">
+		<div id="main">
 			<div class="canvas_wrapper">
-				<canvas id="can2" width="800" height="640">
+				<canvas id="can" width="800" height="640">
 			</div>
-			<div class="question">
+			<div class="question_wrapper center">
 				<form action="" method="post">
 					@csrf
 
 					@foreach ($questions as $question)
 					@if ($question->id === (int)$question_no)
-					<h3>{{ $question->question}}</h3>
-					<div class="select_answer column">
+
+					<h3>{{ $question->id}} : {{ $question->question}}</h3>
+					<div class="answers_wrapper column">
 						@foreach ($answers as $answer)
 							@if ($question->id === $answer->question_id)
-							<button type="" name="{{ $question->id }}" value="">
+							<button type="" name="question_no" value="{{ $question->id }}">
 								{{ $answer->answer}}
 							</button>
 							@endif
 						@endforeach
 					</div>
+
 					@endif
 					@endforeach
 

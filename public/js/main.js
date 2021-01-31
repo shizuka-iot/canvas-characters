@@ -80,7 +80,7 @@ for (let i=0; i<back_hair_types.length; i++)
 
 
 // クラスインスタンス作成
-let face = new DrawFace("can2", coordinates);
+let face = new DrawFace("can", coordinates);
 
 // スライダーのエレメントを全て取得
 let sliders = document.getElementsByClassName("slider");

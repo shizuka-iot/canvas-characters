@@ -10,16 +10,14 @@ class QandAPullController extends Controller
 {
 	public function pull(Request $request)
 	{
-		if ($request->question === '' || $request->question === NULL)
-		{
-			$request->question = 1;
-		}
+		$request->session()->put('question_no', 1);
+		$question_no = $request->session()->get('question_no');
 		$questions = Question::all();
 		$answers = Answer::all();
 		return view('index', [
 			'questions' => $questions,
 			'answers' => $answers,
-			'question_no' => $request->question,
+			'question_no' => $question_no,
 		]);
 	}
 }

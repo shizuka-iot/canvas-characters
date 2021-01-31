@@ -1,16 +1,18 @@
 body {
 	margin: 0;
 }
-#can {
-	border: 1px solid #000;
-}
-#can2 {
-	border: 1px solid #000;
+#main {
 	position: sticky;
 	top: 0;
 }
+#can {
+	border: 1px solid #a73;
+}
 
 h1 {
+	margin: 0;
+}
+h3 {
 	margin: 0;
 }
 p {
@@ -56,4 +58,17 @@ main {
 
 fieldset {
 	margin-bottom: 1rem;
+}
+
+.question_wrapper {
+	border: 1px solid orange;
+	margin: 1rem;
+}
+.answers_wrapper {
+	width: 20rem;
+	padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.answers_wrapper>button {
+	margin-bottom: 0.5rem;
 }
