@@ -20,3 +20,4 @@ Route::get('/', function () {
  */
 Route::get('/', 'QandAPullController@pull');
 Route::post('/', 'AnswerController@index');
+Route::post('/_ajax', 'UpdateQuestionController@post');

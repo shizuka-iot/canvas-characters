@@ -30,11 +30,13 @@
 
 					<input type="hidden" name="question_no" value="{{$question->id}}">
 
-					<h3>{{ $question->id}} : {{ $question->question}}</h3>
+					<h3 class="question_body">
+						{{ $question->id}} : {{ $question->question}}
+					</h3>
 					<div class="answers_wrapper column">
 						@foreach ($answers as $answer)
 							@if ($question->id === $answer->question_id)
-							<button type="button" name="answer_id" value="{{ $answer->id }}">
+							<button class="answer_btn" type="button" name="answer_id" value="{{ $answer->id }}" data-question_no="{{$question->id}}">
 								{{ $answer->answer}}
 							</button>
 							@endif
