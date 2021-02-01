@@ -22,7 +22,7 @@
 
 				@else
 
-				<form action="" method="">
+				<form class="question_form column center" action="" method="">
 					@csrf
 
 					@foreach ($questions as $question)
@@ -33,7 +33,7 @@
 					<h3 class="question_body">
 						{{ $question->id}} : {{ $question->question}}
 					</h3>
-					<div class="answers_wrapper column">
+					<div class="answers_wrapper column center">
 						@foreach ($answers as $answer)
 							@if ($question->id === $answer->question_id)
 							<button class="answer_btn" type="button" name="answer_id" value="{{ $answer->id }}" data-question_no="{{$question->id}}">

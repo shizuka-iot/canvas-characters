@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Question;
+use App\Answer;
 
 class UpdateQuestionController extends Controller
 {
@@ -15,15 +16,29 @@ class UpdateQuestionController extends Controller
 			throw new \Exception('mode not set');
 		}
 
-		return $this->_updateQuestion($request);
+		if ( $request->mode === 'question')
+		{
+			$this->_updateQuestion($request);
+		}
+		elseif ( $request->mode === 'answer')
+		{
+			$this->_updateAnswer($request);
+		}
 	}
 
 	private function _updateQuestion($request)
 	{
 		header("Content-Type: application/json; charset=UTF-8");
-		$question = Question::find($request->question_no);
+		$question = Question::find($request->question_no + 1);
 		echo json_encode($question);
 		exit;
-		//return $question;
+	}
+
+	private function _updateAnswer($request)
+	{
+		header("Content-Type: application/json; charset=UTF-8");
+		$answer = DB::table('answers')->where('question_id', $request->question_no + 1)->get();
+		echo json_encode($answer);
+		exit;
 	}
 }
