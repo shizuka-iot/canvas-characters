@@ -17,37 +17,21 @@
 			</div>
 			<div class="question_wrapper center">
 
-				@if ( isset($message) )
-				<p>{{ $message}}</p>
-
-				@else
-
 				<form class="question_form column center" action="" method="">
 					@csrf
-
-					@foreach ($questions as $question)
-					@if ($question->id === (int)$question_no)
-
-					<input type="hidden" name="question_no" value="{{$question->id}}">
 
 					<h3 class="question_body">
 						{{ $question->id}} : {{ $question->question}}
 					</h3>
 					<div class="answers_wrapper column center">
-						@foreach ($answers as $answer)
-							@if ($question->id === $answer->question_id)
+							@foreach ($answers as $answer)
 							<button class="answer_btn" type="button" name="answer_id" value="{{ $answer->id }}" data-question_no="{{$question->id}}">
 								{{ $answer->answer}}
 							</button>
-							@endif
-						@endforeach
+							@endforeach
 					</div>
 
-					@endif
-					@endforeach
-
 				</form>
-				@endif
 			</div>
 		</div>
 
