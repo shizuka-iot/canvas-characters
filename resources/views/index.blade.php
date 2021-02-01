@@ -22,7 +22,7 @@
 
 				@else
 
-				<form action="" method="post">
+				<form action="" method="">
 					@csrf
 
 					@foreach ($questions as $question)
@@ -34,7 +34,7 @@
 					<div class="answers_wrapper column">
 						@foreach ($answers as $answer)
 							@if ($question->id === $answer->question_id)
-							<button type="submit" name="answer_id" value="{{ $answer->id }}">
+							<button type="button" name="answer_id" value="{{ $answer->id }}">
 								{{ $answer->answer}}
 							</button>
 							@endif
@@ -632,5 +632,6 @@
 	<script src="{{ asset('js/coordinates.js') }}"></script>
 	<script src="{{ asset('js/DrawFace.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
+	<script src="{{ asset('js/updateQuestion.js') }}"></script>
 </body>
 </html>
