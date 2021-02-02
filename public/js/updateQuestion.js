@@ -15,9 +15,9 @@ $(function(){
 		// DrawFaceクラスのプロパティに代入
 
 		let keys = Object.keys(answers[question_no][answer_no]);
-		console.log(keys);
+		//console.log(keys);
 
-		getKeys(answers[question_no][answer_no], 'face');
+		getKeys(answers[question_no][answer_no], 'coordinates');
 
 
 		$(this).parent().children().remove();

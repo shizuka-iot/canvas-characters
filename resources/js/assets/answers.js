@@ -7,7 +7,6 @@ let answers = [
 		// 回答1
 		{
 			eye: { iris: { color: {	r: 200,	g: 200,	b: 200,	},},},
-			hair: { iris: { color: {	r: 0,	g: 0,	b: 20,	},},},
 		},
 		// 回答2
 		{

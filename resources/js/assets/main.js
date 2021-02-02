@@ -132,10 +132,42 @@ function getKeys(arr, parentObj = 'parent')
 		let c_obj = p_obj + '.' + key;
 		if (typeof(arr[key]) === "number")
 		{
-			console.log(c_obj + ': ' + arr[key]);
+			str_arr = c_obj.split('.');
+			_unionObj(face, str_arr, arr[key]);
 		}
 
 		// 再帰する
 		getKeys(arr[key], c_obj);
 	});
 }
+
+// 文字列化したオブジェクト名を分割して配列に。
+// 配列をなくなるまで繋げる
+function _unionObj(obj, str_arr, update_val)
+{
+		switch (str_arr.length)
+		{
+			case 1:
+				obj[str_arr[0]] = update_val;
+				break;
+			case 2:
+				obj[str_arr[0]][str_arr[1]] = update_val;
+				break;
+			case 3:
+				obj[str_arr[0]][str_arr[1]][str_arr[2]] = update_val;
+				break;
+			case 4:
+				obj[str_arr[0]][str_arr[1]][str_arr[2]][str_arr[3]] = update_val;
+				break;
+			case 5:
+				obj[str_arr[0]][str_arr[1]][str_arr[2]][str_arr[3]][str_arr[4]] = update_val;
+				break;
+			case 6:
+				obj[str_arr[0]][str_arr[1]][str_arr[2]][str_arr[3]][str_arr[4]][str_arr[5]] = update_val;
+				break;
+			default:
+				break;
+		}
+}
+
+
