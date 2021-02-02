@@ -24,8 +24,8 @@
 						{{ $question->id}} : {{ $question->question}}
 					</h3>
 					<div class="answers_wrapper column center">
-							@foreach ($answers as $answer)
-							<button class="answer_btn" type="button" name="answer_id" value="{{ $answer->id }}" data-question_no="{{$question->id}}">
+							@foreach ($answers as $index => $answer)
+							<button class="answer_btn" type="button" value="{{ $answer->id }}" data-question_no="{{$question->id}}" data-answer_no="{{ $index }}">
 								{{ $answer->answer}}
 							</button>
 							@endforeach
@@ -615,6 +615,7 @@
 	@component ('components.footer')
 	@endcomponent
 	<script src="{{ asset('js/functions.js') }}"></script>
+	<script src="{{ asset('js/answers.js') }}"></script>
 	<script src="{{ asset('js/coordinates.js') }}"></script>
 	<script src="{{ asset('js/DrawFace.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>

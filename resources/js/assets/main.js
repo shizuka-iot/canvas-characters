@@ -114,3 +114,28 @@ window.onload = ()=>{
 	//mainLoop(); 
 	setInterval(mainLoop, 1000/5);
 }
+
+
+// オブジェクトのキーをObject.keys()で調べる
+function getKeys(arr, parentObj = 'parent')
+{
+	let p_obj = parentObj;
+	let keys = Object.keys(arr);
+	if (keys.length === 0)
+	{
+		return 0;
+	}
+	// 配列で返ってきたキーたちを順番に取り出す
+	keys.forEach(function(key, index){
+
+		// 取り出したキーを親オブジェクトにつなげる
+		let c_obj = p_obj + '.' + key;
+		if (typeof(arr[key]) === "number")
+		{
+			console.log(c_obj + ': ' + arr[key]);
+		}
+
+		// 再帰する
+		getKeys(arr[key], c_obj);
+	});
+}

@@ -8,7 +8,17 @@ $(function(){
 		// 1. 質問No
 		// 2. 回答No
 		let question_no = $(this).data('question_no');
+		let answer_no = $(this).data('answer_no');
 		let answer_id = $(this).val();
+
+		// 問題NOと回答NOの一致するものを配列から取り出して
+		// DrawFaceクラスのプロパティに代入
+
+		let keys = Object.keys(answers[question_no][answer_no]);
+		console.log(keys);
+
+		getKeys(answers[question_no][answer_no], 'face');
+
 
 		$(this).parent().children().remove();
 
@@ -29,7 +39,6 @@ $(function(){
 				}
 			}
 		).done(function(data){
-			console.log("question" + data);
 			if (data !== null)
 			{
 				$('.question_body').text(data.id + ":" + data.question).hide().fadeIn();
@@ -60,22 +69,19 @@ $(function(){
 				}
 			}
 		).done(function(data){
-			console.log(data);
-			
 			if (data.length !== 0)
 			{
-				data.forEach(function( answer ){
+				data.forEach(function( answer, index ){
 					let html = 
 								'<button class="answer_btn" type="button" value="' + 
 						answer.id + '" data-question_no="'+ 
-						answer.question_id +'">' + 
+						answer.question_id +'" data-answer_no="' + index +'">' + 
 						answer.answer + '</button>';
 					$('.answers_wrapper').append(html).hide().fadeIn();
 				});
 			}
 			else
 			{
-				console.log("test");
 				$('.answers_wrapper').append('<p>全ての質問が終わりました</p>');
 			}
 			

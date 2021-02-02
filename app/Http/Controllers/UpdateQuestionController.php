@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Question;
 use App\Answer;
 
+// AjaxでDBから新しい質問を取り出してJSに返す。
 class UpdateQuestionController extends Controller
 {
 	public function post(Request $request)
@@ -37,7 +38,7 @@ class UpdateQuestionController extends Controller
 	private function _updateAnswer($request)
 	{
 		header("Content-Type: application/json; charset=UTF-8");
-		$answer = DB::table('answers')->where('question_id', $request->question_no + 1)->get();
+		$answer = DB::table('answers')->where('question_id', $request->question_no + 1)->orderBy('id', 'asc')->get();
 		echo json_encode($answer);
 		exit;
 	}
