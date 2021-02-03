@@ -11,27 +11,33 @@
 	@endcomponent
 
 	<main class="row">
-		<div id="main">
-			<div class="canvas_wrapper">
-				<canvas id="can" width="800" height="640">
-			</div>
-			<div class="question_wrapper center">
+		<div class="main">
 
-				<form class="question_form column center" action="" method="">
-					@csrf
+			<div class="sticky">
 
-					<h3 class="question_body">
-						{{ $question->id}} : {{ $question->question}}
-					</h3>
-					<div class="answers_wrapper column center">
-							@foreach ($answers as $index => $answer)
-							<button class="answer_btn" type="button" value="{{ $answer->id }}" data-question_no="{{$question->id}}" data-answer_no="{{ $index }}">
-								{{ $answer->answer}}
-							</button>
-							@endforeach
-					</div>
+				<div class="canvas_wrapper">
+					<canvas id="can" width="800" height="640">
+					<p>test</p>
+				</div>
 
-				</form>
+				<div class="question_wrapper center">
+
+					<form class="question_form column center" action="" method="">
+						@csrf
+
+						<h3 class="question_body">
+							{{ $question->id}} : {{ $question->question}}
+						</h3>
+						<div class="answers_wrapper column center">
+								@foreach ($answers as $index => $answer)
+								<button class="answer_btn" type="button" value="{{ $answer->id }}" data-question_no="{{$question->id}}" data-answer_no="{{ $index }}">
+									{{ $answer->answer}}
+								</button>
+								@endforeach
+						</div>
+
+					</form>
+				</div>
 			</div>
 		</div>
 

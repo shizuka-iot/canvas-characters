@@ -1,12 +1,15 @@
 body {
 	margin: 0;
 }
-#main {
-	position: sticky;
-	top: 0;
+.main {
 }
 #can {
 	border: 1px solid #a73;
+}
+
+.sticky {
+	position: sticky;
+	top: 0;
 }
 
 .question_form {
