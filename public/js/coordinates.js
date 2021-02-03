@@ -154,7 +154,7 @@ let coordinates = {
 				x: 50, y: 0,
 			},
 			cp2: {
-				x: 100, y: 50,
+				x: 100, y: 200,
 			},
 		},
 		side: {

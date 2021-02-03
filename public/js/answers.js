@@ -24,17 +24,44 @@ let answers = [
 
 
 
+	// 質問2
 	[
 		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
+			hair: { front: { flag: 1, type: 2},},
+		},
+		{
+			hair: { front: { flag: 1, type: 5},},
+		},
+	],
+
+
+	// 質問3
+	[
+		{
+			hair: { back: { flag: 1, type: 2},},
+		},
+		{
+			hair: { back: { flag: 1, type: 3},},
+		},
+		{
+			hair: { back: { flag: 1, type: 4},},
+		},
+		{
+			hair: { back: { flag: 1, type: 5},},
+		},
+	],
+
+
+	[
+		{
+			hair: { side: { flag: 1, type: 0},},
+		},
+		{
+			hair: { side: { flag: 1, type: 0},},
+		},
+	],
+	[
+		{
 		},
 		{},
 		{},
@@ -42,15 +69,6 @@ let answers = [
 	],
 	[
 		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
 		},
 		{},
 		{},
@@ -58,63 +76,6 @@ let answers = [
 	],
 	[
 		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
-		},
-		{},
-		{},
-		{},
-	],
-	[
-		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
-		},
-		{},
-		{},
-		{},
-	],
-	[
-		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
-		},
-		{},
-		{},
-		{},
-	],
-	[
-		{
-			eye: {
-				iris: {
-					color: {
-						r: 200,
-						g: 200,
-						b: 200,
-					},
-				},
-			},
 		},
 		{},
 		{},
