@@ -9,15 +9,19 @@ function onInput(element_id)
 		{
 			case 1:
 				face.coordinates[arr[0]] = Number(elem.value);
+				console.log(Number(elem.value));
 				break;
 			case 2:
 				face.coordinates[arr[0]][arr[1]] = Number(elem.value);
+				console.log(Number(elem.value));
 				break;
 			case 3:
 				face.coordinates[arr[0]][arr[1]][arr[2]] = Number(elem.value);
+				console.log(Number(elem.value));
 				break;
 			case 4:
 				face.coordinates[arr[0]][arr[1]][arr[2]][arr[3]] = Number(elem.value);
+				console.log(Number(elem.value));
 				break;
 			default:
 				break;

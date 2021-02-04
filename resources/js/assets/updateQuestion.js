@@ -41,7 +41,7 @@ $(function(){
 		).done(function(data){
 			if (data !== null)
 			{
-				$('.question_body').text(data.id + ":" + data.question).hide().fadeIn();
+				$('.question_body').text(data.question_id + ":" + data.question).hide().fadeIn();
 			}
 			else
 			{

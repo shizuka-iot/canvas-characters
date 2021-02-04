@@ -30,7 +30,7 @@ class UpdateQuestionController extends Controller
 	private function _updateQuestion($request)
 	{
 		header("Content-Type: application/json; charset=UTF-8");
-		$question = Question::find($request->question_no + 1);
+		$question = DB::table('count_answers_view')->where('question_id', $request->question_no + 1)->first();
 		echo json_encode($question);
 		exit;
 	}
