@@ -9,132 +9,61 @@ class QuestionsSeeder extends Seeder
      *
      * @return void
      */
+	private $questions_arr = [
+		'あなたの性別を教えてください',// 1
+		'あなたにとって人生とは退屈なものですか?',// 2
+		'あなたにとって親とはどういう存在ですか?',// 3
+		'普通よりは個性的なほうが良いと思いますか?',// 4
+		'かわいいよりはキレイな子が好きですか?',// 5
+		'未来のことよりも今、楽しいことが重要ですか?',// 6
+		'体を動かすことは好きですか?',// 7
+		'一番好きな食べ物を選んでください。',// 8
+		'あなたを生き物に例えるならばこの中でどれですか?',// 9
+		'',// 10
+		'',// 11
+		'',// 12
+		'',// 13
+		'',// 14
+		'',// 15
+		'',// 16
+		'',// 17
+		'',// 18
+		'',// 19
+		'',// 20
+		'',// 21
+		'',// 22
+		'',// 23
+		'',// 24
+		'',// 25
+		'',// 26
+		'',// 27
+		'',// 28
+		'',// 29
+		'',// 30
+		'',// 31
+		'',// 32
+		'',// 33
+		'',// 34
+		'',// 35
+		'',// 36
+		'',// 37
+		'',// 38
+		'',// 39
+		'',// 40
+	];
+		private function _insertQuestions(array $questions_arr)
+		{
+			foreach ($questions_arr as $question)
+			{
+				DB::table('questions')->insert([
+					'question' => $question,
+					'created_at' => date('Y-m-d H:i:s'),
+					'updated_at' => date('Y-m-d H:i:s'),
+				]);
+			}
+		}
     public function run()
     {
-			DB::table('questions')->insert([
-				'question' => 'あなたの性別を教えてください',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => 'あなたにとって人生とは退屈なものですか？',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => 'あなたにとって親とはどういう存在ですか',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '普通よりは個性的なほうが良いと思いますか',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => 'かわいいよりはキレイな子が好きですか',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '未来のことよりも今、楽しいことが重要ですか',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '体を動かすことは好きですか',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '好きな食べ物を選んでください。',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => 'あなたを生き物に例えるならばこの中でどれですか。',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('questions')->insert([
-				'question' => '',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
+			$this->_insertQuestions($this->questions_arr);
     }
 }
