@@ -9,73 +9,66 @@ class AnswerSeeder extends Seeder
      *
      * @return void
      */
+	private $answers_arr = [
+		['男', '女', 'オカマ', 'おなべ',], // 1
+		['', '', '', '',], // 2
+		['', '', '', '',], // 3
+		['', '', '', '',], // 4
+		['', '', '', '',], // 5
+		['', '', '', '',], // 6
+		['', '', '', '',], // 7
+		['', '', '', '',], // 8
+		['', '', '', '',], // 9
+		['', '', '', '',], // 10
+		['', '', '', '',], // 11
+		['', '', '', '',], // 12
+		['', '', '', '',], // 13
+		['', '', '', '',], // 14
+		['', '', '', '',], // 15
+		['', '', '', '',], // 16
+		['', '', '', '',], // 17
+		['', '', '', '',], // 18
+		['', '', '', '',], // 19
+		['', '', '', '',], // 20
+		['', '', '', '',], // 21
+		['', '', '', '',], // 22
+		['', '', '', '',], // 23
+		['', '', '', '',], // 24
+		['', '', '', '',], // 25
+		['', '', '', '',], // 26
+		['', '', '', '',], // 27
+		['', '', '', '',], // 28
+		['', '', '', '',], // 29
+		['', '', '', '',], // 30
+		['', '', '', '',], // 31
+		['', '', '', '',], // 32
+		['', '', '', '',], // 33
+		['', '', '', '',], // 34
+		['', '', '', '',], // 35
+		['', '', '', '',], // 36
+		['', '', '', '',], // 37
+		['', '', '', '',], // 38
+		['', '', '', '',], // 39
+		['', '', '', '',], // 40
+	];
+
+		private function _insertAnswersIntoEachQuestion($question_id, array $answers_arr)
+		{
+			foreach ($answers_arr as $answer)
+			{
+				DB::table('answers')->insert([
+					'question_id' => $question_id,
+					'answer' => $answer,
+					'created_at' => date('Y-m-d H:i:s'),
+					'updated_at' => date('Y-m-d H:i:s'),
+				]);
+			}
+		}
     public function run()
     {
-			DB::table('answers')->insert([
-				'question_id' => '1',
-				'answer' => '男',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '1',
-				'answer' => '女',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '1',
-				'answer' => 'その他',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '2',
-				'answer' => 'YES',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '2',
-				'answer' => 'NO',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '3',
-				'answer' => '陽気なキャラ',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '3',
-				'answer' => '陰気なキャラ',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '3',
-				'answer' => 'どちらかといえば陽気なキャラ',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '3',
-				'answer' => 'どちらかといえば陰気なキャラ',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '4',
-				'answer' => 'YES',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
-			DB::table('answers')->insert([
-				'question_id' => '4',
-				'answer' => 'NO',
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s'),
-			]);
+			foreach ($this->answers_arr as $index => $answers)
+			{
+				$this->_insertAnswersIntoEachQuestion($index + 1, $answers);
+			}
     }
 }
