@@ -30,6 +30,8 @@ class CreateCountAnswersView extends Migration
      */
     public function down()
     {
+			// ロールバックで何故か実行されず、already existsとなる。
+			// なのでMariaDBに入って直接消してる
 			DB::statement('drop view count_answers_view');
     }
 }
