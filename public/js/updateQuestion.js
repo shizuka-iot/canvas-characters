@@ -20,7 +20,8 @@ $(function(){
 		getKeys(answers[question_no][answer_no], 'coordinates');
 
 
-		$(this).parent().children().remove();
+		//$(this).parent().children().remove();
+		$(this).parent().parent().children().remove();
 
 		//$.ajax({}).done(function(){});
 		$.ajax
@@ -73,10 +74,11 @@ $(function(){
 			{
 				data.forEach(function( answer, index ){
 					let html = 
+								'<div class="answer_btn_wrapper">'+
 								'<button class="answer_btn" type="button" value="' + 
 						answer.id + '" data-question_no="'+ 
 						answer.question_id +'" data-answer_no="' + index +'">' + 
-						answer.answer + '</button>';
+						answer.answer + '</button></div>';
 					$('.answers_wrapper').append(html).hide().fadeIn();
 				});
 			}
