@@ -25,14 +25,18 @@
 					<form class="question_form column center" action="" method="">
 						@csrf
 
-						<h3 class="question_body">
-							{{ $question->id}} : {{ $question->question}}
-						</h3>
-						<div class="answers_wrapper column center">
+						<div class="question_title row center">
+							<h2 class="question_body">
+								{{ $question->id}} : {{ $question->question}}
+							</h2>
+						</div>
+						<div class="answers_wrapper row">
 								@foreach ($answers as $index => $answer)
-								<button class="answer_btn" type="button" value="{{ $answer->id }}" data-question_no="{{$question->id}}" data-answer_no="{{ $index }}">
-									{{ $answer->answer}}
-								</button>
+								<div class="answer_btn_wrapper">
+									<button class="answer_btn" type="button" value="{{ $answer->id }}" data-question_no="{{$question->id}}" data-answer_no="{{ $index }}">
+										{{ $answer->answer}}
+									</button>
+								</div>
 								@endforeach
 						</div>
 
