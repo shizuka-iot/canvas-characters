@@ -3,29 +3,6 @@
 // 顔の座標
 // クラスのコンストラクタに渡し、値を変更する
 let coordinates = {
-	renge : {
-		eye_head : {
-			x: 0,
-			y: 0,
-		},
-		eye_end : {
-			x: 0,
-			y: 0,
-		},
-
-		upper_eyelid : {
-			cp: {
-				x: 0,
-				y: 0,
-			},
-		},
-		lower_eyelid : {
-			cp: {
-				x: 0,
-				y: 0,
-			},
-		},
-	},
 	nose : {
 		position: {
 			x: 0,

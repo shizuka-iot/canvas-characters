@@ -106,131 +106,6 @@ class DrawFace
 			this.hair_stroke_color = "#000";
 		}
 
-		// れんげ　目頭
-		this.renge_eye_head = [
-			{
-				x: this.center.x + 35,
-				y: this.center.y,
-			},
-			{
-				x: this.center.x - 35,
-				y: this.center.y,
-			},
-		];
-		// れんげ　目尻
-		this.renge_eye_end = [
-			{
-				x: this.center.x + 135,
-				y: this.center.y,
-			},
-			{
-				x: this.center.x - 135,
-				y: this.center.y,
-			},
-		];
-		// れんげ　目頭側の眉毛
-		this.renge_upper_eyelash_start = [
-			{
-				x: this.renge_eye_head[0].x -10,
-				y: this.renge_eye_head[0].y -14,
-			},
-			{
-				x: this.renge_eye_head[1].x +10,
-				y: this.renge_eye_head[1].y -14,
-			},
-		];
-		// れんげ　目尻側の眉毛
-		this.renge_upper_eyelash_end = [
-			{
-				x: this.renge_eye_end[0].x +10,
-				y: this.renge_eye_end[0].y -14,
-			},
-			{
-				x: this.renge_eye_end[1].x -10,
-				y: this.renge_eye_end[1].y -14,
-			},
-		];
-		// れんげ　上瞼CP1
-		this.renge_upper_eyelid_cp1 = [
-			{
-				x: this.renge_eye_head[0].x 
-					+this.sp(this.renge_eye_head[0].x, 
-						this.renge_eye_end[0].x, 1/3), 
-				y: this.renge_eye_head[0].y -50 
-					+this.coordinates.renge.upper_eyelid.cp.y,
-			},
-			{
-				x: this.renge_eye_head[1].x 
-					-this.sp(this.renge_eye_head[1].x, this.renge_eye_end[1].x, 1/3), 
-				y: this.renge_eye_head[1].y - 50 
-					+this.coordinates.renge.upper_eyelid.cp.y,
-			},
-		];
-		// れんげ　上瞼CP2
-		this.renge_upper_eyelid_cp2 = [
-			{
-				x: this.renge_eye_head[0].x 
-					+this.sp(this.renge_eye_head[0].x, this.renge_eye_end[0].x, 2/3), 
-				y: this.renge_eye_head[0].y - 50 
-					+this.coordinates.renge.upper_eyelid.cp.y,
-			},
-			{
-				x: this.renge_eye_head[1].x 
-					-this.sp(this.renge_eye_head[1].x, this.renge_eye_end[1].x, 2/3), 
-				y: this.renge_eye_head[1].y - 50 
-					+this.coordinates.renge.upper_eyelid.cp.y,
-			},
-		];
-		// れんげ　上まつ毛CP1
-		this.renge_upper_eyelash_cp1 = [
-			{
-				x: this.renge_upper_eyelash_start[0].x 
-					+this.sp(this.renge_upper_eyelash_start[0].x, this.renge_upper_eyelash_end[0].x, 1/3), 
-				y: this.renge_upper_eyelid_cp1[0].y -14 ,
-			},
-			{
-				x: this.renge_upper_eyelash_start[1].x 
-					-this.sp(this.renge_upper_eyelash_start[1].x, this.renge_upper_eyelash_end[1].x, 1/3), 
-				y: this.renge_upper_eyelid_cp1[1].y -14 ,
-			},
-		];
-		// れんげ　上まつ毛CP2
-		this.renge_upper_eyelash_cp2 = [
-			{
-				x: this.renge_upper_eyelash_start[0].x 
-					+this.sp(this.renge_upper_eyelash_start[0].x, this.renge_upper_eyelash_end[0].x, 2/3), 
-				y: this.renge_upper_eyelid_cp2[0].y -14 ,
-			},
-			{
-				x: this.renge_upper_eyelash_start[1].x 
-					-this.sp(this.renge_upper_eyelash_start[1].x, this.renge_upper_eyelash_end[1].x, 2/3), 
-				y: this.renge_upper_eyelid_cp2[1].y -14 ,
-			},
-		];
-		this.renge_lower_eyelid_cp1 = [
-			{
-				x: this.renge_eye_head[0].x,
-				y: this.renge_eye_head[0].y + 80 
-					+this.coordinates.renge.lower_eyelid.cp.y,
-			},
-			{
-				x: this.renge_eye_head[1].x,
-				y: this.renge_eye_head[1].y + 80 
-					+this.coordinates.renge.lower_eyelid.cp.y,
-			},
-		];
-		this.renge_lower_eyelid_cp2 = [
-			{
-				x: this.renge_eye_end[0].x,
-				y: this.renge_eye_end[0].y + 80 
-					+this.coordinates.renge.lower_eyelid.cp.y,
-			},
-			{
-				x: this.renge_eye_end[1].x,
-				y: this.renge_eye_end[1].y + 80 
-					+this.coordinates.renge.lower_eyelid.cp.y,
-			},
-		];
 		
 
 		this.eye_head = [ // 目頭
@@ -2499,43 +2374,6 @@ class DrawFace
 	}
 
 
-	drawRengeLowerEyelid()
-	{
-		this._config("#fee", "#f00");
-		this.con.beginPath();
-		this.drawCurve2(
-			this.renge_eye_end[1], 
-			this.renge_eye_head[1], 
-			this.renge_lower_eyelid_cp2[1], 
-			this.renge_lower_eyelid_cp1[1], true);
-		this.lineTo(this.renge_eye_head[0]);
-		this.drawCurve2(
-			this.renge_eye_head[0], 
-			this.renge_eye_end[0], 
-			this.renge_lower_eyelid_cp1[0], 
-			this.renge_lower_eyelid_cp2[0]);
-		this.lineTo(this.cheek_end[0]);
-		this.drawCurve2(
-			this.temple_right, 
-			this.chin_end, 
-			this.cheek_cp2[0], 
-			this.cheek_cp1[0] 
-		);
-		this.drawCurve2(
-			this.chin_end, 
-			this.chin_start, 
-			this.chin_cp2, 
-			this.chin_cp1 
-		);
-		this.drawCurve2(
-			this.chin_start, 
-			this.temple_left, 
-			this.cheek_cp1[1], 
-			this.cheek_cp2[1] 
-		);
-		this.lineTo(this.renge_eye_end[1]);
-		this.con.fill();
-	}
 
 
 	drawWhiteEyes()
@@ -2692,31 +2530,6 @@ class DrawFace
 		}
 	}
 
-	drawRengeEyelid()
-	{
-		this._config("#fee", "#f00");
-		this.con.beginPath();
-		this.drawCurve2(
-			this.renge_upper_eyelash_end[1], 
-			this.renge_upper_eyelash_start[1], 
-			this.renge_upper_eyelash_cp2[1], 
-			this.renge_upper_eyelash_cp1[1], true);
-		this.lineTo(this.renge_upper_eyelash_start[0]);
-		this.drawCurve2(
-			this.renge_upper_eyelash_start[0], 
-			this.renge_upper_eyelash_end[0], 
-			this.renge_upper_eyelash_cp1[0], 
-			this.renge_upper_eyelash_cp2[0]);
-		this.lineTo(this.cheek_end[0]);
-		this.drawCurve2(
-			this.cheek_end[0], 
-			this.cheek_end[1], 
-			this.head_cp1, 
-			this.head_cp2 
-		);
-		this.lineTo(this.renge_upper_eyelash_end[1]);
-		this.con.fill();
-	}
 	drawEyelid()
 	{
 		this._config("#fee", "#000");
@@ -2746,49 +2559,6 @@ class DrawFace
 	}
 
 
-	drawRengeWhiteEyes()
-	{
-		for (let i=0; i<2; i++)
-		{
-			this._config("#fff", "#000");
-			this.con.beginPath();
-			this.drawCurve2(
-				this.renge_eye_head[i], 
-				this.renge_eye_end[i], 
-				this.renge_upper_eyelid_cp1[i], 
-				this.renge_upper_eyelid_cp2[i], true
-			);
-			this.drawCurve2(
-				this.renge_eye_end[i], 
-				this.renge_eye_head[i], 
-				this.renge_lower_eyelid_cp2[i], 
-				this.renge_lower_eyelid_cp1[i], true
-			);
-			this.con.fill();
-		}
-	}
-	drawRengeEyes()
-	{
-		for (let i=0; i<2; i++)
-		{
-			this._config("#000", "#000");
-			this.con.beginPath();
-			this.drawCurve2(
-				this.renge_eye_head[i], 
-				this.renge_eye_end[i], 
-				this.renge_upper_eyelid_cp1[i], 
-				this.renge_upper_eyelid_cp2[i], true
-			);
-			this.lineTo(this.renge_upper_eyelash_end[i]);
-			this.drawCurve2(
-				this.renge_upper_eyelash_end[i], 
-				this.renge_upper_eyelash_start[i], 
-				this.renge_upper_eyelash_cp2[i], 
-				this.renge_upper_eyelash_cp1[i]
-			);
-			this.con.fill();
-		}
-	}
 
 
 
