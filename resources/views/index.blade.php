@@ -146,6 +146,53 @@
 							<input class="slider" id="eye.position.x" type="range" value="1" min="1" max="100" step="1">
 						</div>
 					</div>
+
+					<!-- 新しい目 -->
+					<div class="parts">
+						<div class="n_eye_end">
+							<label for="eye.n_eye_end.x">目尻横</label>
+								<input type="range" class="slider" id="eye.n_eye_end.x" value="0" min="-255" max="255">
+						</div>
+						<div class="n_eye_end">
+							<label for="eye.n_eye_end.y">目尻縦</label>
+								<input type="range" class="slider" id="eye.n_eye_end.y" value="0" min="-255" max="255">
+						</div>
+
+						<div class="upper_eyelid1">
+							<label for="eye.upper_eyelid1.x">上まぶた1横</label>
+								<input type="range" class="slider" id="eye.upper_eyelid1.x" value="0" min="-255" max="255">
+						</div>
+						<div class="upper_eyelid1">
+							<label for="eye.upper_eyelid1.y">上まぶた1縦</label>
+								<input type="range" class="slider" id="eye.upper_eyelid1.y" value="0" min="-255" max="255">
+						</div>
+						<div class="upper_eyelid2">
+							<label for="eye.upper_eyelid2.x">上まぶた2横</label>
+								<input type="range" class="slider" id="eye.upper_eyelid2.x" value="0" min="-255" max="255">
+						</div>
+						<div class="upper_eyelid2">
+							<label for="eye.upper_eyelid2.y">上まぶた2縦</label>
+								<input type="range" class="slider" id="eye.upper_eyelid2.y" value="0" min="-255" max="255">
+						</div>
+
+						<div class="lower_eyelid1">
+							<label for="eye.lower_eyelid1.x">下まぶた1横</label>
+								<input type="range" class="slider" id="eye.lower_eyelid1.x" value="0" min="-255" max="255">
+						</div>
+						<div class="lower_eyelid1">
+							<label for="eye.lower_eyelid1.y">下まぶた1縦</label>
+								<input type="range" class="slider" id="eye.lower_eyelid1.y" value="0" min="-255" max="255">
+						</div>
+						<div class="lower_eyelid2">
+							<label for="eye.lower_eyelid2.x">下まぶた2横</label>
+								<input type="range" class="slider" id="eye.lower_eyelid2.x" value="0" min="-255" max="255">
+						</div>
+						<div class="lower_eyelid2">
+							<label for="eye.lower_eyelid2.y">下まぶた2縦</label>
+								<input type="range" class="slider" id="eye.lower_eyelid2.y" value="0" min="-255" max="255">
+						</div>
+					</div>
+
 					<div class="parts">
 						<div class="eye_head">
 							<label for="eye.eye_head.width">目頭の水平</label>

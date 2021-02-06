@@ -21,6 +21,17 @@ let coordinates = {
 			y: 0,
 		},
 	},
+	// まつげ
+	eyelash: {
+		inner: {
+			x: 0,
+			y: 0,
+		},
+		outer: {
+			x: 0,
+			y: 0,
+		},
+	},
 	// 目
 	eye: {
 		size: 28,
@@ -34,6 +45,26 @@ let coordinates = {
 			height: 0,
 		},
 		eye_end: {
+			x: 0,
+			y: 0,
+		},
+		n_eye_end: {
+			x: 0,
+			y: 0,
+		},
+		upper_eyelid1: {
+			x: 0,
+			y: 0,
+		},
+		upper_eyelid2: {
+			x: 0,
+			y: 0,
+		},
+		lower_eyelid1: {
+			x: 0,
+			y: 0,
+		},
+		lower_eyelid2: {
 			x: 0,
 			y: 0,
 		},
