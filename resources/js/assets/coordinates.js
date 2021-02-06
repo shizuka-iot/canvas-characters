@@ -37,6 +37,10 @@ let coordinates = {
 			x: 0,
 			y: 0,
 		},
+		n_eye_end: {
+			x: 0,
+			y: 0,
+		},
 		upper_eyeline_end: {
 			x: 0,
 			y: 0,
