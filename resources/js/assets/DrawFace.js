@@ -111,13 +111,126 @@ class DrawFace
 		this.eye_head = [ // 目頭
 			{ 
 				x: this.center.x + 35 + this.coordinates.eye.eye_head.width, 
-				y: this.center.y + this.coordinates.eye.eye_head.height
+				y: this.center.y + this.coordinates.eye.eye_head.height + 30,
 			},
 			{ 
 				x: this.center.x - 35 - this.coordinates.eye.eye_head.width, 
-				y: this.center.y + this.coordinates.eye.eye_head.height
+				y: this.center.y + this.coordinates.eye.eye_head.height + 30,
 			},
 		];
+		this.n_eye_end = [
+			{
+				x: this.eye_head[0].x + 90,
+				y: this.eye_head[0].y - 40,
+			},
+			{
+				x: this.eye_head[1].x - 90,
+				y: this.eye_head[1].y - 40,
+			},
+		];
+		this.lower_eyelid1 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.n_eye_end[0].x, 1/3),
+				y: this.eye_head[0].y + 10,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.n_eye_end[1].x, 1/3),
+				y: this.eye_head[1].y + 10,
+			},
+		];
+		this.lower_eyelid2 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.n_eye_end[0].x, 3/4),
+				y: this.eye_head[0].y + 8,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.n_eye_end[1].x, 3/4),
+				y: this.eye_head[1].y + 8,
+			},
+		];
+		this.upper_eyelid1 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.n_eye_end[0].x, 1/5),
+				y: this.n_eye_end[0].y ,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.n_eye_end[1].x, 1/5),
+				y: this.n_eye_end[0].y ,
+			},
+		];
+		this.upper_eyelid2 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.n_eye_end[0].x, 2/3),
+				y: this.n_eye_end[0].y - 5,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.n_eye_end[1].x, 2/3),
+				y: this.n_eye_end[0].y - 5,
+			},
+		];
+		this.eye_edge_cp1 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.lower_eyelid1[0].x, 1/2),
+				y: this.lower_eyelid1[0].y,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.lower_eyelid1[1].x, 1/2),
+				y: this.lower_eyelid1[1].y,
+			},
+		];
+		this.eye_edge_cp2 = [
+			{
+				x: this.lower_eyelid1[0].x + this.sp(this.lower_eyelid1[0].x, this.lower_eyelid2[0].x, 1/2),
+				y: this.lower_eyelid1[0].y + 2,
+			},
+			{
+				x: this.lower_eyelid1[1].x - this.sp(this.lower_eyelid1[1].x, this.lower_eyelid2[1].x, 1/2),
+				y: this.lower_eyelid1[1].y + 2,
+			},
+		];
+		this.eye_edge_cp3 = [
+			{
+				x: this.lower_eyelid2[0].x + this.sp(this.lower_eyelid2[0].x, this.n_eye_end[0].x, 1/2),
+				y: this.lower_eyelid2[0].y,
+			},
+			{
+				x: this.lower_eyelid2[1].x - this.sp(this.lower_eyelid2[1].x, this.n_eye_end[1].x, 1/2),
+				y: this.lower_eyelid2[1].y,
+			},
+		];
+		this.eye_edge_cp4 = [
+			{
+				x: this.upper_eyelid2[0].x + this.sp(this.upper_eyelid2[0].x, this.n_eye_end[0].x, 1/2),
+				y: this.upper_eyelid2[0].y,
+			},
+			{
+				x: this.upper_eyelid2[1].x - this.sp(this.upper_eyelid2[1].x, this.n_eye_end[1].x, 1/2),
+				y: this.upper_eyelid2[1].y,
+			},
+		];
+		this.eye_edge_cp5 = [
+			{
+				x: this.upper_eyelid1[0].x + this.sp(this.upper_eyelid1[0].x, this.upper_eyelid2[0].x, 1/2),
+				y: this.upper_eyelid2[0].y,
+			},
+			{
+				x: this.upper_eyelid1[1].x - this.sp(this.upper_eyelid1[1].x, this.upper_eyelid2[1].x, 1/2),
+				y: this.upper_eyelid2[1].y,
+			},
+		];
+		this.eye_edge_cp6 = [
+			{
+				x: this.eye_head[0].x + this.sp(this.eye_head[0].x, this.upper_eyelid1[0].x, 1/2),
+				y: this.upper_eyelid1[0].y,
+			},
+			{
+				x: this.eye_head[1].x - this.sp(this.eye_head[1].x, this.upper_eyelid1[1].x, 1/2),
+				y: this.upper_eyelid1[1].y,
+			},
+		];
+
+
+		
 
 		this.upper_eyeline_end = [ // アッパーアイライン
 			{ 
@@ -294,64 +407,6 @@ class DrawFace
 		];
 
 		/* まつげ */
-		this.eyelash_start = [
-			{
-				x : this.eye_end[0].x, 
-				y: this.eye_end[0].y
-			},
-			{
-				x : this.eye_end[1].x, 
-				y: this.eye_end[1].y
-			},
-		]
-		this.eyelash_end = [
-			{
-				x : this.upper_eyeline_end[0].x + 10, 
-				y: this.upper_eyeline_end[0].y
-			},
-			{
-				x : this.upper_eyeline_end[1].x - 10, 
-				y: this.upper_eyeline_end[1].y
-			},
-		]
-		this.eyelash_cp1 = [
-			{
-				x: this.eyelash_start[0].x 
-					+this.sp(this.eyelash_start[0].x, this.eyelash_end[0].x, 1/2), 
-				y: this.eyelash_end[0].y 
-					+this.sp(this.eyelash_start[0].y, this.eyelash_end[0].y, 1/2) -5
-			},
-			{
-				x: this.eyelash_start[1].x 
-					-this.sp(this.eyelash_start[1].x, this.eyelash_end[1].x, 1/2), 
-				y: this.eyelash_end[1].y 
-					+this.sp(this.eyelash_start[1].y, this.eyelash_end[1].y, 1/2) -5
-			},
-		]
-		this.eyelash_cp2 = [
-			{
-				x: this.eyelash_start[0].x 
-					+this.sp(this.eyelash_start[0].x, this.eyelash_end[0].x, 1/2), 
-				y: this.eyelash_end[0].y 
-					+this.sp(this.eyelash_start[0].y, this.eyelash_end[0].y, 1/2) -5
-			},
-			{
-				x: this.eyelash_start[1].x 
-					-this.sp(this.eyelash_start[1].x, this.eyelash_end[1].x, 1/2), 
-				y: this.eyelash_end[1].y 
-					+this.sp(this.eyelash_start[1].y, this.eyelash_end[1].y, 1/2) -5
-			},
-		]
-		this.eyelash_cp = [
-			{
-				x: this.upper_eyeline_end[0].x -10 , 
-				y: this.eyelash_end[0].y
-			},
-			{
-				x: this.upper_eyeline_end[1].x +10, 
-				y: this.eyelash_end[1].y
-			},
-		];
 
 		this.eyelid_cp1 = [
 			{
@@ -482,16 +537,7 @@ class DrawFace
 				y: this.eyelid_bottom[1].y
 			}, 
 		];
-		this.eyelid_bottom_cp4 = [
-			{
-				x: this.eye_head[0].x, 
-				y: this.eyelid_bottom[0].y
-			}, 
-			{
-				x: this.eye_head[1].x, 
-				y: this.eyelid_bottom[1].y
-			}, 
-		];
+
 		this.mouth_start = {
 			x: this.center.x - this.coordinates.mouth.width, 
 			y: this.center.y + 130 + this.coordinates.mouth.height
@@ -1175,6 +1221,58 @@ class DrawFace
 		this.initAllCoordinates();// 全ての座標を再計算
 	}
 
+	drawEyeEdge()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this.fillR(this.eye_head[i], "red");
+			this.fillR(this.n_eye_end[i], "green");
+			this.fillR(this.lower_eyelid1[i], "green");
+			this.fillR(this.lower_eyelid2[i], "green");
+			this.fillR(this.upper_eyelid1[i], "green");
+			this.fillR(this.upper_eyelid2[i], "green");
+			this.fillR(this.eye_edge_cp1[i], "orange");
+			this.fillR(this.eye_edge_cp2[i], "orange");
+			this.fillR(this.eye_edge_cp3[i], "orange");
+			this.fillR(this.eye_edge_cp4[i], "orange");
+			this.fillR(this.eye_edge_cp5[i], "orange");
+			this.fillR(this.eye_edge_cp6[i], "orange");
+			this.con.beginPath();
+			this._config("#fff", "#000");
+			this.drawCurve(
+				this.eye_head[i],
+				this.lower_eyelid1[i],
+				this.eye_edge_cp1[i], true
+			);
+			this.drawCurve(
+				this.lower_eyelid1[i],
+				this.lower_eyelid2[i],
+				this.eye_edge_cp2[i]
+			);
+			this.drawCurve(
+				this.lower_eyelid2[i],
+				this.n_eye_end[i],
+				this.eye_edge_cp3[i]
+			);
+			this.drawCurve(
+				this.n_eye_end[i],
+				this.upper_eyelid2[i],
+				this.eye_edge_cp4[i]
+			);
+			this.drawCurve(
+				this.upper_eyelid2[i],
+				this.upper_eyelid1[i],
+				this.eye_edge_cp5[i]
+			);
+			this.drawCurve(
+				this.upper_eyelid1[i],
+				this.eye_head[i],
+				this.eye_edge_cp6[i]
+			);
+			this.con.closePath();
+			this.con.stroke();
+		}
+	}
 
 	draw()
 	{
@@ -1199,12 +1297,12 @@ class DrawFace
 		this.drawNeckShadow();
 		this.drawEar();
 		this.drawOutline();
+		/*
 		this.drawWhiteEyes();
-		this.drawEyes();
 		this.drawEyelid();
 		this.drawEyeline2();
-		//this.drawEyelashes();
 		this.drawLowerEyelid();
+		*/
 		this.drawMouth();
 		this.drawEyeblow();
 		this.drawNose();
@@ -1221,6 +1319,8 @@ class DrawFace
 		{
 			this._selectSideHair();
 		}
+		this.drawEyes();
+		this.drawEyeEdge();
 	}
 
 	_selectBackHair()
@@ -2402,6 +2502,8 @@ class DrawFace
 		}
 	}
 
+
+	// 下まぶた
 	drawLowerEyelid()
 	{
 		this._config("#fee", "#ff0");
@@ -2451,32 +2553,8 @@ class DrawFace
 		);
 		this.lineTo(this.upper_eyeline_end[1]);
 		this.con.fill();
-	}
-
-	drawEyelashes(number = 3)
-	{
-		let split = 10;
-		let span = Math.floor(Math.abs(this.eyelash_end[0].x - this.eye_head[0].x, )/ split);
-		let cp_span = Math.floor(Math.abs(this.eyelash_end[0].x - this.eyelash_cp[0].x ));
-
-		for (let i=0; i<2; i++)
-		{
-			this._config(this.hair_color, "#f00");
-			this.con.beginPath();
-			this.drawCurve2(
-				this.eyelash_start[i], 
-				this.eyelash_end[i], 
-				this.eyelash_cp1[i], 
-				this.eyelash_cp2[i], true
-			);
-			this.drawCurve(
-				this.eyelash_end[i], 
-				this.upper_eyeline_end2[i], 
-				this.eyelash_cp[i]
-			);
-			this.con.closePath();
-			this.con.fill();
-		}
+		this.fillR(this.eyelid_bottom[0], "red");
+		this.fillR(this.eyelid_bottom[1], "red");
 	}
 
 
@@ -2565,7 +2643,7 @@ class DrawFace
 	drawEyes()
 	{
 		this._drawIris();
-		this._drawEyeline();
+		//this._drawEyeline();
 	}
 	_drawIris()
 	{
