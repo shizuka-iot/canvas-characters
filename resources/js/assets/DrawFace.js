@@ -1271,6 +1271,7 @@ class DrawFace
 			);
 			this.con.closePath();
 			this.con.stroke();
+			this.con.fill();
 		}
 	}
 
@@ -1299,10 +1300,12 @@ class DrawFace
 		this.drawOutline();
 		/*
 		this.drawWhiteEyes();
-		this.drawEyelid();
 		this.drawEyeline2();
 		this.drawLowerEyelid();
 		*/
+		this.drawEyeEdge();
+		this.drawEyes();
+		this.drawEyelid();
 		this.drawMouth();
 		this.drawEyeblow();
 		this.drawNose();
@@ -1319,8 +1322,6 @@ class DrawFace
 		{
 			this._selectSideHair();
 		}
-		this.drawEyes();
-		this.drawEyeEdge();
 	}
 
 	_selectBackHair()
@@ -2612,19 +2613,40 @@ class DrawFace
 	{
 		this._config("#fee", "#000");
 		this.con.beginPath();
-		this.drawCurve2(
-			this.upper_eyeline_end[1], 
+		this.drawCurve(
+			this.n_eye_end[1], 
+			this.upper_eyelid2[1], 
+			this.eye_edge_cp4[1], true
+		);
+		this.drawCurve(
+			this.upper_eyelid2[1], 
+			this.upper_eyelid1[1], 
+			this.eye_edge_cp5[1]
+		);
+		this.drawCurve(
+			this.upper_eyelid1[1], 
 			this.eye_head[1], 
-			this.upper_eyeline_cp2[1], 
-			this.upper_eyeline_cp1[1], true
+			this.eye_edge_cp6[1]
 		);
+
 		this.lineTo(this.eye_head[0]);
-		this.drawCurve2(
+
+		this.drawCurve(
 			this.eye_head[0], 
-			this.upper_eyeline_end[0], 
-			this.upper_eyeline_cp1[0], 
-			this.upper_eyeline_cp2[0]
+			this.upper_eyelid1[0], 
+			this.eye_edge_cp6[0]
 		);
+		this.drawCurve(
+			this.upper_eyelid1[0], 
+			this.upper_eyelid2[0], 
+			this.eye_edge_cp5[0]
+		);
+		this.drawCurve(
+			this.upper_eyelid2[0], 
+			this.n_eye_end[0], 
+			this.eye_edge_cp4[0]
+		);
+
 		this.lineTo(this.temple_right);
 		this.drawCurve2(
 			this.cheek_end[0], 
@@ -2632,8 +2654,9 @@ class DrawFace
 			this.head_cp1, 
 			this.head_cp2 
 		);
-		this.lineTo(this.upper_eyeline_end[1]);
+		this.lineTo(this.n_eye_end[1]);
 		this.con.fill();
+		//this.con.stroke();
 	}
 
 
