@@ -3,6 +3,9 @@ body {
 }
 .main {
 }
+aside {
+	display: none;
+}
 #can {
 	border: 1px solid #a73;
 }
@@ -48,8 +51,9 @@ main {
 	justify-content: center;
 }
 
-.canvas_wrapper {
+#canvas_wrapper {
 	margin: 1rem;
+	display: none;
 }
 
 .params {

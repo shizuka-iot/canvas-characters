@@ -15,7 +15,7 @@
 
 			<div class="sticky">
 
-				<div class="canvas_wrapper">
+				<div id="canvas_wrapper">
 					<canvas id="can" width="800" height="640">
 					<p>test</p>
 				</div>

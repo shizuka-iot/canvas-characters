@@ -84,6 +84,7 @@ $(function(){
 			}
 			else
 			{
+				document.getElementById("canvas_wrapper").style.display = "block";
 				$('.answers_wrapper').append('<p>全ての質問が終わりました</p>');
 			}
 			
