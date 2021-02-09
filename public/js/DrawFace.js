@@ -1179,7 +1179,7 @@ class DrawFace
 	draw()
 	{
 		this.con.clearRect(0, 0, this.can.width, this.can.height);
-		this.drawDebug();
+		//this.drawDebug();
 		if ( this.coordinates.hair.outside_back.flag )
 		{
 			this.drawOutsideBackHair(
