@@ -18,4 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/question', 'QuestionController@index');
 Route::get('/create_free', 'CreateFreeController@index');
+Route::get('/about', function () {return view('about');});
+Route::get('/terms', function () {return view('terms');});
+Route::get('/contact', function () {return view('contact');});
 Route::post('/_ajax', 'UpdateQuestionController@post');
