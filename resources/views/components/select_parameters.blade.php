@@ -99,6 +99,18 @@
 							<input class="slider" id="eye.position.x" type="range" value="1" min="1" max="100" step="1">
 						</div>
 					</div>
+
+					<div class="parts">
+						<div class="eye_move">
+							<label for="eye.move.x">視点左右</label>
+								<input type="range" class="slider" id="eye.move.x" value="0" min="-255" max="255">
+						</div>
+						<div class="eye_move">
+							<label for="eye.move.y">視点上下</label>
+								<input type="range" class="slider" id="eye.move.y" value="0" min="-255" max="255">
+						</div>
+					</div>
+
 					<div class="parts">
 						<div class="eye_head">
 							<label for="eye.eye_head.width">目頭の水平</label>

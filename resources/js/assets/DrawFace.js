@@ -2595,7 +2595,8 @@ class DrawFace
 			this.con.scale(1, eye_scale);
 			this.con.beginPath();
 			this.con.arc(
-				this.eye_head[i].x + this.coordinates.eye.position.x * pn, this.center.y + this.coordinates.eye.position.y, 
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x, 
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
 				this.coordinates.eye.size,  
 				Math.PI * 2, false);
 			this.con.restore();
@@ -2608,8 +2609,8 @@ class DrawFace
 			this.con.scale(1, eye_scale);
 			this.con.beginPath();
 			this.con.arc(
-				this.eye_head[i].x +this.coordinates.eye.position.x * pn,
-				this.center.y + this.coordinates.eye.position.y, 
+				this.eye_head[i].x +this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x,
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
 				10,  
 				Math.PI * 2, false);
 			this.con.restore();
@@ -2622,8 +2623,8 @@ class DrawFace
 			this.con.scale(1, eye_scale);
 			this.con.beginPath();
 			this.con.arc(
-				this.eye_head[i].x + this.coordinates.eye.position.x * pn,
-				this.center.y + this.coordinates.eye.position.y +14, 
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x,
+				this.center.y + this.coordinates.eye.position.y +14 + this.coordinates.eye.move.y, 
 				20,  
 				Math.PI * 2, false);
 			this.con.restore();
@@ -2638,8 +2639,8 @@ class DrawFace
 			this.con.scale(1, eye_scale);
 			this.con.beginPath();
 			this.con.arc(
-				this.eye_head[i].x + this.coordinates.eye.position.x * pn,
-				this.center.y + this.coordinates.eye.position.y, 
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x * 1.5,
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
 				7,  
 				Math.PI * 2, false);
 			this.con.restore();
@@ -2654,14 +2655,14 @@ class DrawFace
 
 			this.con.arc(
 				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn +10 +eye_position_rand , 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 +10 +eye_position_rand , 
 				this.center.y -10, 
 				5,  
 				Math.PI * 2, false);
 
 			this.con.arc(
 				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn +2 + eye_position_rand, 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x*1.5 +2 + eye_position_rand, 
 				this.center.y -5, 
 				2, 
 				Math.PI * 2, false);
@@ -2678,14 +2679,14 @@ class DrawFace
 
 			this.con.arc(
 				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn -10 + eye_position_rand , 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -10 + eye_position_rand , 
 				this.center.y +10, 
 				4,  
 				Math.PI * 2, false);
 
 			this.con.arc(
 				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn -2 + eye_position_rand, 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -2 + eye_position_rand, 
 				this.center.y +12, 
 				0, 
 				Math.PI * 2, false);
