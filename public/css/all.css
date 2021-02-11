@@ -1,8 +1,6 @@
 body {
 	margin: 0;
 }
-.main {
-}
 aside {
 	/*
 	display: none;
@@ -14,9 +12,39 @@ aside {
 	*/
 }
 
+header {
+	padding: 1rem;
+}
+footer {
+	padding: 1rem;
+	background-color: #eeffff; 
+}
+
+.header_imgs > img {
+	height: 100px;
+}
+
 .sticky {
 	position: sticky;
 	top: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+	margin: 0.5rem;
+}
+
+.fs14 {
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
 }
 
 .question_form {
@@ -35,6 +63,22 @@ p {
 
 main {
 	justify-content: center;
+}
+
+.select_mode {
+	max-width: 1000px;
+	margin: 2rem;
+}
+.select_mode_btn {
+	margin: 0 4rem;
+	border-radius: 100vh;
+	color: #222;
+	border-style: none;
+	border: 3px solid #222;
+	background-color: #fff;
+}
+.select_mode_btn > h2 {
+	margin: 0 2rem;
 }
 
 .row {
