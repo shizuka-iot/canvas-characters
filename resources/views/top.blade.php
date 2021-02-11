@@ -13,13 +13,19 @@
 
 	<main class="column center">
 		<div class="select_mode row between">
-			<a href="{{ asset('/question') }}" class="select_mode_btn">
-				<h2>診断する</h2>
-			</a>
+			<div class="left column center">
+				<img src="{{ asset('/imgs/fs_left.png')}}" alt="">
+				<a href="{{ asset('/question') }}" class="select_mode_btn">
+					<h2>診断する</h2>
+				</a>
+			</div>
 
-			<a href="{{ asset('/create_free') }}" class="select_mode_btn">
-				<h2>自由に作る</h2>
-			</a>
+			<div class="right column center">
+				<img src="{{ asset('/imgs/fs_right.png')}}" alt="">
+				<a href="{{ asset('/create_free') }}" class="select_mode_btn">
+					<h2>自由に作る</h2>
+				</a>
+			</div>
 		</div>
 	</main>
 

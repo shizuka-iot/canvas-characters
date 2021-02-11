@@ -65,9 +65,13 @@ main {
 	justify-content: center;
 }
 
+.left img , .right img {
+	width: 400px;
+	height: auto;
+}
 .select_mode {
-	max-width: 1000px;
-	margin: 2rem;
+	margin-bottom: 2rem;
+	width: 80%;
 }
 .select_mode_btn {
 	margin: 0 4rem;

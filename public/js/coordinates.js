@@ -29,6 +29,10 @@ let coordinates = {
 			x: 41, 
 			y: 0
 		},
+		move: {
+			x: 0,
+			y: 0,
+		},
 		eye_head: {
 			width: 0,
 			height: 0,
