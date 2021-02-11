@@ -1,5 +1,7 @@
 
 <header class="center column">
+		<div class="header-line">
+		</div>
 		<div class="header_imgs row">
 			<img src="{{ asset('/imgs/fs01.png')}}" alt="">
 			<img src="{{ asset('/imgs/fs02.png')}}" alt="">
