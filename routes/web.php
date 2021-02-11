@@ -13,11 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
 Route::get('/', function () {
-    return view('index');
+    return view('top');
 });
- */
-Route::get('/', 'QandAPullController@pull');
-//Route::post('/', 'AnswerController@index');
+Route::get('/question', 'QandAPullController@pull');
 Route::post('/_ajax', 'UpdateQuestionController@post');
