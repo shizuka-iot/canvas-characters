@@ -17,7 +17,7 @@
 				<h2>診断する</h2>
 			</a>
 
-			<a href="{{ asset('/question') }}" class="select_mode_btn">
+			<a href="{{ asset('/create_free') }}" class="select_mode_btn">
 				<h2>自由に作る</h2>
 			</a>
 		</div>
