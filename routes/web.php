@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('top');
 });
-Route::get('/question', 'QandAPullController@pull');
+Route::get('/question', 'QuestionController@index');
+Route::get('/create_free', 'CreateFreeController@index');
 Route::post('/_ajax', 'UpdateQuestionController@post');
