@@ -15,11 +15,6 @@
 
 			<div class="sticky">
 
-				<div id="canvas_wrapper">
-					<canvas id="can" width="800" height="640">
-					<p>test</p>
-				</div>
-
 				<div class="question_wrapper center">
 
 					<form class="question_form column center" action="" method="">
@@ -44,6 +39,11 @@
 
 					</form>
 				</div>
+
+				<div id="canvas_wrapper" class="row center">
+					<canvas id="can" width="800" height="640">
+				</div>
+
 			</div>
 		</div>
 
