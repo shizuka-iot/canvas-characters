@@ -11,7 +11,10 @@
 	@endcomponent
 
 	<main class="row">
-		<div class="main">
+		<div class="">
+			<div class="row center" id="save_btn_wrapper">
+				<button id="save_chara_btn" type="button">保存する</button>
+			</div>
 
 			<div class="sticky">
 
