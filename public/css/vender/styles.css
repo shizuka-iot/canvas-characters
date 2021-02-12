@@ -11,6 +11,17 @@ footer {
 	color: #fff;
 	margin-top: auto;
 }
+footer p {
+	margin-top: 1rem;
+}
+.footer_contents {
+	width: 400px;
+}
+.fa-twitter {
+	color: #fff;
+}
+.twitter_icon_wrapper {
+}
 
 main {
 	justify-content: center;
