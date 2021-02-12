@@ -6,13 +6,21 @@ header {
 	font-family: 'Yusei Magic', sans-serif;
 }
 footer {
-	padding: 1rem;
+	padding: 3rem 0;
 	background-color: #ff82b2; 
 	color: #fff;
+	margin-top: auto;
 }
 
 main {
 	justify-content: center;
+	box-sizing: border-box;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .container {
@@ -62,7 +70,15 @@ input[type=range] {
 	width: 10rem;
 	font-size: 1.8rem;
 	margin: 1rem;
+	border: 2px solid #555;
+	border-radius: 5px;
+	background: #fff;
 }
+#save_chara_btn:hover {
+	color: #fff;
+	background: #000;
+}
+
 
 .slider {
 	-webkit-appearance: none;
