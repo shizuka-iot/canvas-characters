@@ -1,23 +1,43 @@
+
 body {
 	margin: 0;
 }
+header {
+	font-family: 'Yusei Magic', sans-serif;
+}
+footer {
+	padding: 1rem;
+	background-color: #ff82b2; 
+	color: #fff;
+}
+
+main {
+	justify-content: center;
+}
+
 aside {
 	/*
 	display: none;
 	*/
 }
+
 #can {
 	/*
 	border: 1px solid #a73;
 	*/
 }
 
-header {
-	padding: 1rem;
+#save_chara_btn {
+	width: 10rem;
+	font-size: 1.8rem;
+	margin: 1rem;
 }
-footer {
-	padding: 1rem;
-	background-color: #eeffff; 
+
+.header-line {
+	width: 100%;
+	height: 0.5rem;
+	background-color: #ff82b2; 
+	margin-bottom: 0.5rem;
 }
 
 .header_imgs > img {
@@ -61,20 +81,20 @@ p {
 	margin: 0;
 }
 
-main {
-	justify-content: center;
+.left img , .right img {
+	width: 400px;
+	height: auto;
 }
-
 .select_mode {
-	max-width: 1000px;
-	margin: 2rem;
+	margin-bottom: 2rem;
+	width: 80%;
 }
 .select_mode_btn {
 	margin: 0 4rem;
 	border-radius: 100vh;
-	color: #222;
+	color: #555;
 	border-style: none;
-	border: 3px solid #222;
+	border: 3px solid #555;
 	background-color: #fff;
 }
 .select_mode_btn > h2 {

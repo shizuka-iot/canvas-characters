@@ -183,3 +183,16 @@ function _unionObj(obj, str_arr, update_val)
 }
 
 
+function saveCanvas(canvas_id)
+{
+	//$("#save_chara_btn").on('click', function(){
+	$(document).on('click',"#save_chara_btn", function(){
+		console.log("test");
+		let canvas = document.getElementById(canvas_id);
+		let a = document.createElement('a');
+		a.href = canvas.toDataURL();
+		a.download = "canvas.png";
+		a.click();
+	});
+}
+saveCanvas("can");
