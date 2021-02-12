@@ -15,6 +15,27 @@ main {
 	justify-content: center;
 }
 
+.container {
+	max-width: 1000px;
+}
+
+.agreement_wrap {
+	width: 80%;
+	background-color: #f0f0f0;
+	padding: 1rem;
+	letter-spacing: 0.1rem;
+	color: #555;
+	font-family: 'Noto Serif JP', serif;
+}
+.agreement_wrap h1 {
+	border-bottom: 4px solid pink;
+	margin-bottom: 1rem;
+}
+.agreement_wrap h2 {
+	background-color: #fff;
+	margin-top: 4rem;
+}
+
 aside {
 	/*
 	display: none;
@@ -111,7 +132,7 @@ p {
 }
 .select_mode {
 	margin-bottom: 2rem;
-	width: 80%;
+	flex-wrap: wrap;
 }
 .select_mode_btn {
 	margin: 0 4rem;
