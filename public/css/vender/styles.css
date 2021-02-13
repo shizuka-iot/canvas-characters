@@ -38,6 +38,16 @@ main {
 	max-width: 1000px;
 }
 
+.mode {
+	width: 400px;
+	align-items: center;
+}
+
+.explain_mode {
+	width: 80%;
+	padding: 1rem;
+}
+
 .agreement_wrap, .privacy_wrap {
 	width: 80%;
 	background-color: #f0f0f0;
