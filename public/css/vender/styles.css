@@ -38,19 +38,19 @@ main {
 	max-width: 1000px;
 }
 
-.agreement_wrap {
+.agreement_wrap, .privacy_wrap {
 	width: 80%;
 	background-color: #f0f0f0;
 	padding: 1rem;
 	letter-spacing: 0.1rem;
-	color: #555;
+	color: #444;
 	font-family: 'Noto Serif JP', serif;
 }
-.agreement_wrap h1 {
+.agreement_wrap h1, .privacy_wrap h1 {
 	border-bottom: 4px solid pink;
 	margin-bottom: 1rem;
 }
-.agreement_wrap h2 {
+.agreement_wrap h2, .privacy_wrap h2{
 	background-color: #fff;
 	margin-top: 4rem;
 }
