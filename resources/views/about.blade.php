@@ -7,14 +7,16 @@
 </head>
 
 <body>
-	@component ('components.header')
-	@endcomponent
+	<div id="wrapper">
+		@component ('components.header')
+		@endcomponent
 
-	<main class="column center">
-	<!-- TODO: キャンバス・キャラクターズについて-->
-	</main>
+		<main class="column center">
+		<!-- TODO: キャンバス・キャラクターズについて-->
+		</main>
 
-	@component ('components.footer')
-	@endcomponent
+		@component ('components.footer')
+		@endcomponent
+	</div>
 </body>
 </html>
