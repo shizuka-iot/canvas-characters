@@ -21,4 +21,5 @@ Route::get('/create_free', 'CreateFreeController@index');
 Route::get('/about', function () {return view('about');});
 Route::get('/terms', function () {return view('terms');});
 Route::get('/contact', function () {return view('contact');});
+Route::get('/privacy', function () {return view('privacy');});
 Route::post('/_ajax', 'UpdateQuestionController@post');
