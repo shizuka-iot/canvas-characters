@@ -6,13 +6,70 @@ header {
 	font-family: 'Yusei Magic', sans-serif;
 }
 footer {
-	padding: 1rem;
+	padding: 3rem 0;
 	background-color: #ff82b2; 
 	color: #fff;
+	margin-top: auto;
+}
+footer p {
+	margin-top: 1rem;
+}
+.footer_contents {
+	width: 400px;
+}
+.fa-twitter {
+	color: #fff;
+}
+.twitter_icon_wrapper {
+}
+
+.hide {
+	display: none;
+}
+.show {
+	display: flex;
 }
 
 main {
 	justify-content: center;
+	box-sizing: border-box;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.container {
+	max-width: 1000px;
+}
+
+.mode {
+	width: 400px;
+	align-items: center;
+}
+
+.explain_mode {
+	width: 80%;
+	padding: 1rem;
+}
+
+.agreement_wrap, .privacy_wrap {
+	width: 80%;
+	background-color: #f0f0f0;
+	padding: 1rem;
+	letter-spacing: 0.1rem;
+	color: #444;
+	font-family: 'Noto Serif JP', serif;
+}
+.agreement_wrap h1, .privacy_wrap h1 {
+	border-bottom: 4px solid pink;
+	margin-bottom: 1rem;
+}
+.agreement_wrap h2, .privacy_wrap h2{
+	background-color: #fff;
+	margin-top: 4rem;
 }
 
 aside {
@@ -41,7 +98,15 @@ input[type=range] {
 	width: 10rem;
 	font-size: 1.8rem;
 	margin: 1rem;
+	border: 2px solid #555;
+	border-radius: 5px;
+	background: #fff;
 }
+#save_chara_btn:hover {
+	color: #fff;
+	background: #000;
+}
+
 
 .slider {
 	-webkit-appearance: none;
@@ -111,7 +176,7 @@ p {
 }
 .select_mode {
 	margin-bottom: 2rem;
-	width: 80%;
+	flex-wrap: wrap;
 }
 .select_mode_btn {
 	margin: 0 4rem;

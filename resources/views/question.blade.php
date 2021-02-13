@@ -42,7 +42,7 @@
 					</div>
 
 					<div id="canvas_wrapper" class="row center">
-						<canvas id="can" width="800" height="640">
+						<canvas id="can" width="800" height="640" class="hide">
 					</div>
 
 				</div>

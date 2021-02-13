@@ -23,6 +23,13 @@ footer p {
 .twitter_icon_wrapper {
 }
 
+.hide {
+	display: none;
+}
+.show {
+	display: flex;
+}
+
 main {
 	justify-content: center;
 	box-sizing: border-box;

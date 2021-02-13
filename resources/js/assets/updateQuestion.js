@@ -88,6 +88,7 @@ $(function(){
 				$('.answers_wrapper').append('<p>全ての質問が終わりました</p>');
 				$('.answers_wrapper').append(
 					'<div class="row center" id="save_btn_wrapper"><button id="save_chara_btn" type="button">保存する</button></div>');
+				$('#can').removeClass("hide");
 			}
 			
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
