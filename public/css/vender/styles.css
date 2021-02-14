@@ -186,6 +186,10 @@ p {
 	border: 3px solid #555;
 	background-color: #fff;
 }
+.select_mode_btn:hover {
+	color: #fff;
+	background-color: #555;
+}
 .select_mode_btn > h2 {
 	margin: 0 2rem;
 }
