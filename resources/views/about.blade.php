@@ -13,7 +13,7 @@
 
 		<main class="column center">
 			<!-- キャンバス・キャラクターズについて-->
-			<h2>キャンバス・キャラクターズについて</h2>
+			<h1 class="about_h1">キャンバス・キャラクターズについて</h1>
 
 			<div class="talk_wrapper">
 
