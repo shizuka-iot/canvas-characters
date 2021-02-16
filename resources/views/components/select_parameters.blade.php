@@ -19,47 +19,6 @@
 					</div>
 				</fieldset>
 
-				<div id="test.test">
-				</div>
-
-
-
-
-				<fieldset>
-					<legend>鼻</legend>
-
-					<div class="parts">
-						<div class="nose">
-							<input type="range" class="slider" id="nose.position.y" value="0" min="-255" max="255">
-							<label for="nose.position.y">位置</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.bottom.x" value="0" min="-255" max="255">
-							<label for="nose.bottom.x">鼻先のX座標</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.bottom.y" value="0" min="-255" max="255">
-							<label for="nose.bottom.y">長さ</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.cp1.x" value="0" min="-255" max="255">
-							<label for="nose.cp1.x">CP1 X</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.cp2.x" value="0" min="-255" max="255">
-							<label for="nose.cp2.x">CP2 X</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.cp1.y" value="0" min="-255" max="255">
-							<label for="nose.cp1.y">CP1 Y</label>
-						</div>
-						<div class="nose">
-							<input type="range" class="slider" id="nose.cp2.y" value="0" min="-255" max="255">
-							<label for="nose.cp2.y">CP2 Y</label>
-						</div>
-					</div>
-				</fieldset>
-
 
 
 
@@ -184,6 +143,41 @@
 							<label for="eyelid.lower.y">下まぶたの高さ</label>
 						</div>
 
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend>鼻</legend>
+
+					<div class="parts">
+						<div class="nose">
+							<input type="range" class="slider" id="nose.position.y" value="0" min="-255" max="255">
+							<label for="nose.position.y">位置</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.bottom.x" value="0" min="-255" max="255">
+							<label for="nose.bottom.x">鼻先のX座標</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.bottom.y" value="0" min="-255" max="255">
+							<label for="nose.bottom.y">長さ</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.cp1.x" value="0" min="-255" max="255">
+							<label for="nose.cp1.x">CP1 X</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.cp2.x" value="0" min="-255" max="255">
+							<label for="nose.cp2.x">CP2 X</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.cp1.y" value="0" min="-255" max="255">
+							<label for="nose.cp1.y">CP1 Y</label>
+						</div>
+						<div class="nose">
+							<input type="range" class="slider" id="nose.cp2.y" value="0" min="-255" max="255">
+							<label for="nose.cp2.y">CP2 Y</label>
+						</div>
 					</div>
 				</fieldset>
 
