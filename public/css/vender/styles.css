@@ -318,18 +318,15 @@ fieldset {
 	max-width: 800px;
 }
 .answers_wrapper {
-	width: 40rem;
-	flex-wrap: wrap;
-	/*
-	padding: 0.5rem 0.5rem 0 0.5rem;
-	*/
 	margin-bottom: 0.5rem;
+	width: 80%;
+	flex-direction: column;
 }
 
 .answer_btn_wrapper {
 	padding: 0.5rem;
-	width: 50%;
 	box-sizing: border-box;
+	width: 100%;
 }
 .answer_btn {
 	width: 100%;
@@ -354,5 +351,12 @@ fieldset {
 	}
 	.header_imgs_wrapper {
 		flex-direction: row;
+	}
+	.answers_wrapper {
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+	.answer_btn_wrapper {
+		width: 50%;
 	}
 }

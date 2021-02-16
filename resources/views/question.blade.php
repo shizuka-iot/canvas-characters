@@ -26,7 +26,7 @@
 									{{ $question->id}} : {{ $question->question}}
 								</h2>
 							</div>
-							<div class="answers_wrapper row center">
+							<div class="answers_wrapper center">
 									@foreach ($answers as $index => $answer)
 									<div class="answer_btn_wrapper">
 										<button class="answer_btn" type="button" value="{{ $answer->id }}" 
