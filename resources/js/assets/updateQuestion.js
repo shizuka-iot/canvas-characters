@@ -87,7 +87,7 @@ $(function(){
 				document.getElementById("canvas_wrapper").style.display = "flex";
 				$('.answers_wrapper').append('<p>全ての質問が終わりました</p>');
 				$('.answers_wrapper').append(
-					'<div class="row center" id="save_btn_wrapper"><button id="save_chara_btn" type="button">保存する</button></div>');
+					'<div class="row center"><button id="save_chara_btn" type="button">保存する</button></div>');
 				$('#can').removeClass("hide");
 			}
 			
