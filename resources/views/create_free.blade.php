@@ -12,25 +12,27 @@
 		@endcomponent
 
 		<main class="row">
-			<div class="">
-				<div class="sticky">
+			<div class="create_free_contents_wrapper">
+				<div class="show_face_area sticky">
+					<div class="sticky">
 
-					<div id="canvas_wrapper" class="row center">
-						<canvas id="can" width="800" height="640">
-					</div>
+						<div id="canvas_wrapper" class="row center">
+							<canvas id="can" width="800" height="640">
+						</div>
 
-					<div class="row center" id="save_btn_wrapper">
-						<button id="save_chara_btn" type="button">保存する</button>
+						<div class="row center" id="save_btn_wrapper">
+							<button id="save_chara_btn" type="button">保存する</button>
+						</div>
+
 					</div>
 
 				</div>
 
+				<aside>
+					@component ('components.select_parameters')
+					@endcomponent
+				</aside>
 			</div>
-
-			<aside>
-				@component ('components.select_parameters')
-				@endcomponent
-			</aside>
 
 		</main>
 		
