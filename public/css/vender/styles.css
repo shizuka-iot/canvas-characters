@@ -10,17 +10,27 @@ footer {
 	background-color: #ff82b2; 
 	color: #fff;
 	margin-top: auto;
+	width: 100%;
+}
+header h1 {
+	font-size: 1.5rem;
+}
+header p {
+	font-size: 1rem;
 }
 footer p {
 	margin-top: 1rem;
 }
 .footer_contents {
-	width: 400px;
+	width: 80%;
+	max-width: 400px;
+	flex-wrap: wrap;
 }
 .fa-twitter {
 	color: #fff;
 }
 .twitter_icon_wrapper {
+	width: 100%;
 }
 
 .hide {
@@ -102,7 +112,7 @@ main {
 }
 
 .mode {
-	width: 400px;
+	width: 100%;
 	align-items: center;
 }
 
@@ -188,8 +198,11 @@ input[type=range] {
 	margin-bottom: 0.5rem;
 }
 
-.header_imgs > img {
+.header_imgs_wrapper img {
 	height: 100px;
+}
+.header_imgs_wrapper {
+	flex-wrap: wrap;
 }
 
 .sticky {
@@ -233,7 +246,7 @@ p {
 }
 
 .left img , .right img {
-	width: 400px;
+	width: 100%;
 	height: auto;
 }
 .select_mode {
@@ -327,4 +340,19 @@ fieldset {
 
 .question_title {
 	width: 100%;
+}
+
+/* ここからPCビュー */
+@media screen and (min-width: 801px)
+{
+	.twitter_icon_wrapper {
+		width: auto;
+	}
+	.mode {
+		width: auto;
+		max-width: 360px;
+	}
+	.header_imgs_wrapper {
+		flex-direction: row;
+	}
 }
