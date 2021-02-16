@@ -6,6 +6,7 @@
 			<li class="fs14"><a href="{{ asset('/terms') }}">利用規約</a></li>
 			<li class="fs14"><a href="{{ asset('/privacy') }}">プライバシーポリシー</a></li>
 			<li class="fs14"><a href="{{ asset('/contact') }}">お問い合わせ</a></li>
+			<li class="fs14"><a href="{{ asset('/') }}">トップページ</a></li>
 		</ul>
 		<div class="twitter_icon_wrapper center">
 			<a href="https://twitter.com/tatakitsubusu">
