@@ -11,10 +11,8 @@
 		@component ('components.header')
 		@endcomponent
 
-		<main class="row">
-			<div class="main">
+		<main class="column center">
 
-				<div class="sticky">
 
 					<div class="question_wrapper center">
 
@@ -45,8 +43,6 @@
 						<canvas id="can" width="800" height="640" class="hide">
 					</div>
 
-				</div>
-			</div>
 
 		</main>
 		
