@@ -183,15 +183,24 @@ function _unionObj(obj, str_arr, update_val)
 }
 
 
+// キャンバスを画像として保存
 function saveCanvas(canvas_id)
 {
 	//$("#save_chara_btn").on('click', function(){
+	
+	//クリックされたら...
 	$(document).on('click',"#save_chara_btn", function(){
-		console.log("test");
+
+		// 現在日時を取得
+		const date = new Date();
+		const datetime = date.getFullYear() + 
+			("00" + (date.getMonth() + 1)).slice(-2) +
+			("00" + (date.getDate())).slice(-2);
+
 		let canvas = document.getElementById(canvas_id);
 		let a = document.createElement('a');
 		a.href = canvas.toDataURL();
-		a.download = "canvas.png";
+		a.download = "canchara" + datetime + ".png";
 		a.click();
 	});
 }
