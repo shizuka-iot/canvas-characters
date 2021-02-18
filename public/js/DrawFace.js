@@ -17,7 +17,7 @@ class DrawFace
 	constructor(canvas_id, coordinates)
 	{
 		// キャンバス初期化
-		this.initCanvas(canvas_id, 800, 640)
+		this.initCanvas(canvas_id, 640, 640)
 
 		// マウスイベント監視開始
 		window.addEventListener('mousemove', this.mouseMove, false);
