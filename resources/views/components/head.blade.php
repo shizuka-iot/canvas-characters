@@ -1,12 +1,31 @@
+
+
 <meta charset="UTF-8">
-<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- csrf-token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+<!-- title -->
 <title>{{ config('const.SITE_TITLE') }}</title>
+
+
+<!-- style -->
 <link rel="stylesheet" href="{{ asset('css/vender/styles.css') }}">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+
+
+<!-- fontawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+
+<!-- favicon -->
+<link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+<link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" href="{{ asset('/android-chrome-256x256.png') }}">
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -20,6 +39,7 @@
 </script>
 
 
+<!-- js -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
 	const public_path = '{{ asset('/') }}';
