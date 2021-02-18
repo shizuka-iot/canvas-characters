@@ -26,6 +26,9 @@ footer p {
 	max-width: 400px;
 	flex-wrap: wrap;
 }
+.header_logo_wrapper {
+	margin: 0 1rem;
+}
 .fa-twitter {
 	color: #fff;
 }
