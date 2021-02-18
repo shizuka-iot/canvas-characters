@@ -214,7 +214,8 @@ input[type=range] {
 }
 
 .header_imgs_wrapper img {
-	height: 100px;
+	width: 100px;
+	height: auto;
 }
 .header_imgs_wrapper {
 	flex-wrap: wrap;
