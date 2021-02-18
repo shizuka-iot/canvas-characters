@@ -17,7 +17,7 @@
 					<div class="sticky">
 
 						<div id="canvas_wrapper" class="row center">
-							<canvas id="can" width="800" height="640">
+							<canvas id="can" width="640" height="640">
 						</div>
 
 						<div class="row center" id="save_btn_wrapper">
