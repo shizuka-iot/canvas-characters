@@ -35,6 +35,10 @@ footer p {
 .twitter_icon_wrapper {
 	width: 100%;
 }
+.twitter_link {
+	color: #00a1e9;
+	font-size: 1.2rem;
+}
 
 #save_btn_wrapper {
 	position: absolute;
