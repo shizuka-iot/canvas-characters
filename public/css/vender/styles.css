@@ -308,6 +308,7 @@ p {
 #canvas_wrapper {
 	position: relative;
 	z-index: 1;
+	margin-top: 1rem;
 }
 
 .params {
