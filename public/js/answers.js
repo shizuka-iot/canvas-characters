@@ -2,165 +2,115 @@
 let answers = [
 	[],
 
-	// 質問1
+	// 質問1あなたの性別を教えてください
 	[
 		// 回答1
 		{
-			eye: { iris: { color: {	r: 200,	g: 200,	b: 200,	},},},
 		},
 		// 回答2
 		{
-			eye: { iris: { color: {	r: 200,	g: 20,	b: 200,	},},},
 		},
 		// 回答3
 		{
-			eye: { iris: { color: {	r: 200,	g: 200,	b: 20,	},},},
 		},
 		// 回答4
 		{
-			eye: { iris: { color: {	r: 0,	g: 0,	b: 20,	},},},
 		},
 	],
 
 
 
-	// 質問2
+	// 質問2人は見た目ではなく中身だと思いますか？
 	[
 		{
-			hair: { front: { flag: 1, type: 2},},
+			chin: {width: 55},
 		},
 		{
-			hair: { front: { flag: 1, type: 5},},
 		},
 		{
-			hair: { front: { flag: 1, type: 0},},
 		},
 		{
-			hair: { front: { flag: 1, type: 0},},
+			chin: {width: rand(-100, 100)},
 		},
 	],
 
 
-	// 質問3
+	// 質問3あなたにとって人生とは退屈なものですか?
 	[
 		{
-			hair: { back: { flag: 1, type: 2},},
 		},
 		{
-			hair: { back: { flag: 1, type: 3},},
+			hair: {
+				color: {
+					r: rand(0, 100),
+					g: rand(0, 100),
+					b: rand(0, 100),
+				},
+			},
 		},
 		{
-			hair: { back: { flag: 1, type: 4},},
+			hair: {
+				color: {
+					r: 255,
+					g: 255,
+					b: 255,
+				},
+			},
 		},
 		{
-			hair: { back: { flag: 1, type: 5},},
 		},
 	],
 
 
-	// 質問4
+	// 質問4あなたにとって親とはどういう存在ですか?
 	[
 		{
-			hair: { side: { flag: 1, type: 0},},
+			eye: { upper_eyeline_cp: { y: -6},},
 		},
 		{
-			hair: { side: { flag: 1, type: 0},},
+			eyeblow: { cp: {y:10}, head: { y: -22}, end: { x: -16, y: -41}, },
 		},
 		{
-			hair: { side: { flag: 0, type: 0},},
+			lip: { lower: { cp: {height: 24 },}, upper: { cp: {height: 24 },}, },
 		},
 		{
-			hair: { side: { flag: 0, type: 0},},
+			mouth: {width: 37, cp: {y: 9},},
+			lip: {upper: {cp: {height: 17},}, lower: {cp: {height: 14, width: 10, },},},
 		},
 	],
 
-	
+	// 質問5普通よりは個性的なほうが良いと思いますか?
 	[
 		{
-			eye: {
-				size: 20,
-				scale: 1.00,
-				eye_head: {
-					width: 10,
-					height: -10,
-				},
-			},
+			hair: { front: {flag: 1, type: 2},},
+			twin_tail: {flag: 1,},
 		},
 		{
-			eye: {
-				size: 30,
-				scale: 1.00,
-				eye_head: {
-					width: 10,
-					height: 10,
-				},
-			},
+			hair: { front: {flag: 1, type: 2},},
 		},
 		{
-			eye: {
-				size: 24,
-				scale: 1.05,
-				eye_head: {
-					width: 4,
-					height: 2,
-				},
-			},
+			hair: { front: {flag: 0, },},
 		},
 		{
-			eye: {
-				size: 22,
-				scale: 1.00,
-				eye_head: {
-					width: 0,
-					height: 0,
-				},
-			},
+			hair: { front: {flag: 1, type: 2},},
 		},
-	],// 質問5
+	],
 
-
+	// 質問19あなたは肉体派ですか？それとも頭脳派ですか?
 	[
 		{
-			lip: {
-				upper: {
-					cp: {
-					width: -30,
-					height: 30,
-					},
-				},
-			},
 		},
 		{
-			lip: {
-				upper: {
-					cp: {
-					width: 0,
-					height: 0,
-					},
-				},
-			},
 		},
 		{
-			lip: {
-				upper: {
-					cp: {
-					width: rand(-10, 10),
-					height: rand(-10, 30),
-					},
-				},
-			},
 		},
 		{
-			lip: {
-				upper: {
-					cp: {
-					width: -30,
-					height: 30,
-					},
-				},
-			},
 		},
-	],// 質問6
+	],
+
+
+
+	// 質問6
 	[
 		{
 			hair: { back: { length: 50}, },
@@ -174,7 +124,11 @@ let answers = [
 		{
 			hair: { back: { length: 200}, },
 		},
-	],// 質問7
+	],
+
+
+
+	// 質問7
 	[
 		{
 			chin: { height: 0},

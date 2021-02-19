@@ -26,11 +26,18 @@ footer p {
 	max-width: 400px;
 	flex-wrap: wrap;
 }
+.header_logo_wrapper {
+	margin: 0 1rem;
+}
 .fa-twitter {
 	color: #fff;
 }
 .twitter_icon_wrapper {
 	width: 100%;
+}
+.twitter_link {
+	color: #00a1e9;
+	font-size: 1.2rem;
 }
 
 #save_btn_wrapper {
@@ -46,7 +53,9 @@ footer p {
 }
 
 .hide {
+	/*
 	display: none;
+	*/
 }
 .show {
 	display: flex;
@@ -264,6 +273,7 @@ p {
 .left img , .right img {
 	width: 100%;
 	height: auto;
+	margin-bottom: 1rem;
 }
 .select_mode {
 	margin-bottom: 2rem;
@@ -386,5 +396,8 @@ fieldset {
 		border: 2px solid #555;
 		border-radius: 5px;
 		background: #fff;
+	}
+	#canvas_wrapper {
+		margin-top: 1rem;
 	}
 }
