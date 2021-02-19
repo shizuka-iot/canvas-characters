@@ -82,8 +82,10 @@ let answers = [
 	// 質問5普通よりは個性的なほうが良いと思いますか?
 	[
 		{
-			hair: { front: {flag: 1, type: 2},},
-			twin_tail: {flag: 1,},
+			hair: {
+				twin_tail: {flag: 1, length: 315, terminal: {x: 22, y: -84},}, 
+				front: {flag: 1, type: 2},
+			},
 		},
 		{
 			hair: { front: {flag: 1, type: 2},},
@@ -92,7 +94,24 @@ let answers = [
 			hair: { front: {flag: 0, },},
 		},
 		{
-			hair: { front: {flag: 1, type: 2},},
+			hair: { front: {flag: 1, type: 5},},
+		},
+	],
+
+
+	// 質問6かわいいよりはキレイな子が好きですか?
+	[
+		{
+			hair: { back: { length: 700}, },
+		},
+		{
+			hair: { back: { length: 400}, },
+		},
+		{
+			hair: { back: { length: rand(0, 900),}, },
+		},
+		{
+			hair: { back: { length: 200}, },
 		},
 	],
 
@@ -105,24 +124,6 @@ let answers = [
 		{
 		},
 		{
-		},
-	],
-
-
-
-	// 質問6
-	[
-		{
-			hair: { back: { length: 50}, },
-		},
-		{
-			hair: { back: { length: 100}, },
-		},
-		{
-			hair: { back: { length: 150}, },
-		},
-		{
-			hair: { back: { length: 200}, },
 		},
 	],
 
