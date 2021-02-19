@@ -53,9 +53,7 @@ footer p {
 }
 
 .hide {
-	/*
 	display: none;
-	*/
 }
 .show {
 	display: flex;
