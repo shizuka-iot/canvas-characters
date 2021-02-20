@@ -181,7 +181,18 @@
 				<fieldset>
 					<legend>鼻</legend>
 
+					<div class="nose">
+						<input class="" id="nose.flag" name="show" value="nose_flag" type="checkbox">
+						<label for="nose.flag">鼻1表示</label>
+					</div>
+
+					<div class="nose">
+						<input class="" id="nose2.flag" name="show" value="nose_flag" type="checkbox" checked="checked">
+						<label for="nose2.flag">鼻2表示</label>
+					</div>
+
 					<div class="parts">
+
 						<div class="nose">
 							<input type="range" class="slider" id="nose.position.y" value="0" min="-255" max="255">
 							<label for="nose.position.y">位置</label>
@@ -210,6 +221,7 @@
 							<input type="range" class="slider" id="nose.cp2.y" value="0" min="-255" max="255">
 							<label for="nose.cp2.y">CP2 Y</label>
 						</div>
+
 					</div>
 				</fieldset>
 

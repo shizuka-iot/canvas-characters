@@ -11,6 +11,7 @@ let coordinates = {
 		},
 	},
 	nose : {
+		flag : 0,
 		position: {
 			x: 0,
 			y: 0,
@@ -24,6 +25,17 @@ let coordinates = {
 			y: 0,
 		},
 		cp2: {
+			x: 0,
+			y: 0,
+		},
+	},
+	nose2 : {
+		flag : 1,
+		start : {
+			x: 0,
+			y: 0,
+		},
+		end : {
 			x: 0,
 			y: 0,
 		},

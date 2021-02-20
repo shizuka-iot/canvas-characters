@@ -459,6 +459,37 @@ class DrawFace
  				+this.coordinates.nose.cp2.y
 		};
 
+		this.nose2_start = [
+			{
+				x: this.nose_bottom.x + this.coordinates.nose2.start.x + 4,
+				y: this.nose_bottom.y + this.coordinates.nose2.start.y,
+			},
+			{
+				x: this.nose_bottom.x - this.coordinates.nose2.start.x - 4,
+				y: this.nose_bottom.y + this.coordinates.nose2.start.y,
+			},
+		];
+		this.nose2_end = [
+			{
+				x: this.nose2_start[0].x + 4,
+				y: this.nose2_start[0].y - 5,
+			},
+			{
+				x: this.nose2_start[1].x - 4,
+				y: this.nose2_start[1].y - 5,
+			},
+		];
+		this.nose2_cp = [
+			{
+				x: this.nose2_start[0].x ,
+				y: this.nose2_end[0].y,
+			},
+			{
+				x: this.nose2_start[1].x ,
+				y: this.nose2_end[1].y,
+			},
+		];
+
 
 		this.eyelid_bottom = [
 			{
@@ -3319,20 +3350,41 @@ class DrawFace
 
 	drawNose()
 	{
-		this._config("#000", "#222", 0.8);
-		this.con.beginPath();
-		this.moveTo(this.nose_top);
-		this.lineTo(this.nose_bottom);
-		this.drawCurve2(
-			this.nose_bottom, 
-			this.nose_top, 
-			this.nose_cp1, 
-			this.nose_cp2
-		);
-		this.con.stroke();
-		this._config("#000", "#000", 0.3);
-		this.con.fill();
-		this.con.globalAlpha = 1;
+		if (this.coordinates.nose.flag)
+		{
+			this._config("#000", "#222", 0.8);
+			this.con.beginPath();
+			this.moveTo(this.nose_top);
+			this.lineTo(this.nose_bottom);
+			this.drawCurve2(
+				this.nose_bottom, 
+				this.nose_top, 
+				this.nose_cp1, 
+				this.nose_cp2
+			);
+			this.con.stroke();
+			this._config("#000", "#000", 0.3);
+			this.con.fill();
+			this.con.globalAlpha = 1;
+		}
+
+		if (this.coordinates.nose2.flag)
+		{
+			for (let i=0; i<2; i++)
+			{
+				this._config("#000", "#000", 1);
+				this.con.beginPath();
+				this.drawCurve(
+					this.nose2_start[i],
+					this.nose2_end[i],
+					this.nose2_cp[i],
+					true
+				);
+				this.con.stroke();
+				this.con.fill();
+				this.con.globalAlpha = 1;
+			}
+		}
 	}
 
 
