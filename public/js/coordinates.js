@@ -3,6 +3,13 @@
 // 顔の座標
 // クラスのコンストラクタに渡し、値を変更する
 let coordinates = {
+	skin: {
+		color: {
+			r: 255,
+			g: 220,
+			b: 220,
+		},
+	},
 	nose : {
 		position: {
 			x: 0,

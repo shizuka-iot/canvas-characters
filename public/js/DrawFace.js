@@ -85,6 +85,11 @@ class DrawFace
 			x: this.center.x, 
 			y: this.center.y -240
 		};
+		this.skin_color = "rgb("
+			+this.coordinates.skin.color.r+", "
+			+this.coordinates.skin.color.g+", "
+			+this.coordinates.skin.color.b+")";
+
 		this.iris_color = "rgb("
 			+this.coordinates.eye.iris.color.r+", "
 			+this.coordinates.eye.iris.color.g+", "
@@ -2404,7 +2409,7 @@ class DrawFace
 
 	drawLowerEyelid()
 	{
-		this._config("#fee", "#ff0");
+		this._config(this.skin_color, "#ff0");
 		this.con.beginPath();
 		this.moveTo(this.upper_eyeline_end[1]);
 		this.lineTo(this.eye_end[1]);
@@ -2532,7 +2537,7 @@ class DrawFace
 
 	drawEyelid()
 	{
-		this._config("#fee", "#000");
+		this._config(this.skin_color, "#000");
 		this.con.beginPath();
 		this.drawCurve2(
 			this.upper_eyeline_end[1], 
@@ -3176,7 +3181,7 @@ class DrawFace
 
 	drawNeck()
 	{
-		this._config("#fee", "#000");
+		this._config(this.skin_color, "#000");
 		this.con.beginPath();
 		this.drawCurve2(
 			this.neck_start[0], 
@@ -3225,7 +3230,7 @@ class DrawFace
 	{
 		for (let i=0; i<2; i++)
 		{
-			this._config("#fee", "#000");
+			this._config(this.skin_color, "#000");
 			this.con.beginPath();
 
 			this.drawCurve2(
@@ -3267,7 +3272,7 @@ class DrawFace
 
 	drawOutline()
 	{
-		this._config("#fee", "#000", 1, 3);
+		this._config(this.skin_color, "#000", 1, 3);
 		this.con.beginPath();
 
 		// あごの左からあごの右
@@ -3360,7 +3365,7 @@ class DrawFace
 	}
 	drawLowerLip()
 	{
-		this._config("#fee", "#000", 1, 1);
+		this._config(this.skin_color, "#000", 1, 1);
 		this.con.beginPath();
 		this.moveTo(this.mouth_end);
 		this.drawLowerLipLine();

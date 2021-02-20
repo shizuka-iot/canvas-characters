@@ -9,27 +9,27 @@ function onInput(element_id)
 		{
 			case 1:
 				face.coordinates[arr[0]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			case 2:
 				face.coordinates[arr[0]][arr[1]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			case 3:
 				face.coordinates[arr[0]][arr[1]][arr[2]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			case 4:
 				face.coordinates[arr[0]][arr[1]][arr[2]][arr[3]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			case 5:
 				face.coordinates[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			case 6:
 				face.coordinates[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]][arr[5]] = Number(elem.value);
-				//console.log(element_id + ': ' + Number(elem.value));
+				console.log(element_id + ': ' + Number(elem.value));
 				break;
 			default:
 				break;
