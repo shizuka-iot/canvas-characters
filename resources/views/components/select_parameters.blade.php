@@ -20,6 +20,23 @@
 				</fieldset>
 
 
+				<fieldset>
+					<legend>スキンカラー</legend>
+					<div class="parts">
+						<div class="skin_color height_center">
+							<input type="range" class="slider" id="skin.color.r" value="50" min="0" max="255">
+							<label for="skin.color.r">スキンカラー赤</label>
+						</div>
+						<div class="skin.color height_center">
+							<input type="range" class="slider" id="skin.color.g" value="50" min="0" max="255">
+							<label for="skin.color.g">スキンカラー緑</label>
+						</div>
+						<div class="skin.color height_center">
+							<input type="range" class="slider" id="skin.color.b" value="50" min="0" max="255">
+							<label for="skin.color.b">スキンカラー青</label>
+						</div>
+					</div>
+				</fieldset>
 
 
 				<fieldset>
