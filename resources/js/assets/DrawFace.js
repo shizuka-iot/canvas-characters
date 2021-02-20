@@ -90,6 +90,11 @@ class DrawFace
 			+this.coordinates.skin.color.g+", "
 			+this.coordinates.skin.color.b+")";
 
+		this.pupil_color = "rgb("
+			+this.coordinates.eye.pupil.color.r+", "
+			+this.coordinates.eye.pupil.color.g+", "
+			+this.coordinates.eye.pupil.color.b+")";
+
 		this.iris_color = "rgb("
 			+this.coordinates.eye.iris.color.r+", "
 			+this.coordinates.eye.iris.color.g+", "
@@ -2636,7 +2641,7 @@ class DrawFace
 			this._config("#fff", "#fff", 0.4);
 			this.con.fill();
 
-			this._config("#000", "#000", 1);
+			this._config(this.pupil_color, "#000", 1);
 
 			/* 瞳孔 */
 			this.con.save();

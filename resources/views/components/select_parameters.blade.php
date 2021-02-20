@@ -43,6 +43,21 @@
 					<legend>目</legend>
 
 					<div class="parts">
+						<div class="pupil_color">
+							<input type="range" class="slider" id="eye.pupil.color.r" value="50" min="0" max="255">
+							<label for="eye.pupil.color.r">瞳孔の赤</label>
+						</div>
+						<div class="pupil_color">
+							<input type="range" class="slider" id="eye.pupil.color.g" value="50" min="0" max="255">
+							<label for="eye.pupil.color.g">瞳孔の緑</label>
+						</div>
+						<div class="pupil_color">
+							<input type="range" class="slider" id="eye.pupil.color.b" value="50" min="0" max="255">
+							<label for="eye.pupil.color.b">瞳孔の青</label>
+						</div>
+					</div>
+
+					<div class="parts">
 						<div class="iris_color">
 							<input type="range" class="slider" id="eye.iris.color.r" value="50" min="0" max="255">
 							<label for="eye.iris.color.r">虹彩の赤</label>

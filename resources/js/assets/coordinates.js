@@ -36,6 +36,13 @@ let coordinates = {
 			x: 41, 
 			y: 0
 		},
+		pupil: {
+			color: {
+				r: 0,
+				g: 0,
+				b: 0,
+			},
+		},
 		move: {
 			x: 0,
 			y: 0,
