@@ -49,6 +49,7 @@ let coordinates = {
 			y: 0
 		},
 		pupil: {
+			size: 0,
 			color: {
 				r: 0,
 				g: 0,

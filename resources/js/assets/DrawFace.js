@@ -2666,7 +2666,7 @@ class DrawFace
 			this.con.arc(
 				this.eye_head[i].x +this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x,
 				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
-				10,  
+				10 + (this.coordinates.eye.pupil.size > this.coordinates.eye.size ? this.coordinates.eye.size : this.coordinates.eye.pupil.size),
 				Math.PI * 2, false);
 			this.con.restore();
 			this._config("#fff", "#fff", 0.2);
@@ -2696,7 +2696,7 @@ class DrawFace
 			this.con.arc(
 				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x * 1.5,
 				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
-				7,  
+				7 + (this.coordinates.eye.pupil.size > this.coordinates.eye.size ? this.coordinates.eye.size : this.coordinates.eye.pupil.size),  
 				Math.PI * 2, false);
 			this.con.restore();
 			this.con.fill();

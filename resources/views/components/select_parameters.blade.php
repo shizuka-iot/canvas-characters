@@ -81,6 +81,10 @@
 							<input class="slider" id="eye.size" type="range" value="1" min="1" max="100" step="1">
 							<label for="eye.size">目の大きさ</label>
 						</div>
+						<div class="pupil">
+							<input class="slider" id="eye.pupil.size" type="range" value="1" min="1" max="100" step="1">
+							<label for="eye.pupil.size">瞳の大きさ</label>
+						</div>
 						<div class="eye">
 							<input class="slider" id="eye.position.y" type="range" value="1" min="-100" max="100" step="1">
 							<label for="eye.position.y">目の高さ</label>
