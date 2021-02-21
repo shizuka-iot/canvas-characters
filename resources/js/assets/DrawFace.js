@@ -1943,6 +1943,20 @@ class DrawFace
 		this.con.fill();
 	}
 
+
+	/*
+	 * 座標生成メソッド2
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 * @param int start_x // 任意の毛先の開始座標
+	 * @param int tip_span // 毛先の間隔
+	 * @param array cp1
+	 * @param array cp2
+	 */
 	_generateHairCoordinates2(arrays, start_coordinate, hair_length, hair_bunch, span, start_x, tip_span, cp1, cp2)
 	{
 		// 1. 配列をリセット
@@ -1966,7 +1980,6 @@ class DrawFace
 				//y: start_coordinate.y + rand(10, 20) + hair_length};
 				y: this.top_of_head.y + rand(10, 20) + hair_length
 			};
-
 
 			if (i< hair_bunch/2)
 			{
@@ -2231,7 +2244,8 @@ class DrawFace
 						x: this.temple_left.x 
 							+i*this.coordinates.hair.front.tip_span 
 							+this.coordinates.hair.front.tips + rand(-10, 10), // 毛先のx座標は根本の座標から前後に揺らす
-						y: this.forehead_right.y 
+						//y: this.forehead_right.y 
+						y: this.top_of_head.y 
 							+hair_length + hair_length_plus
 					};
 				}
@@ -2249,7 +2263,7 @@ class DrawFace
 							+i*this.coordinates.hair.front.tip_span 
 							// 毛先のx座標は根本の座標から前後に揺らす
 							+this.coordinates.hair.front.tips + rand(-10, 10), 
-						y: this.forehead_right.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 				else// 間
@@ -2266,7 +2280,7 @@ class DrawFace
 							+i*this.coordinates.hair.front.tip_span 
 							+this.coordinates.hair.front.tips + rand(-10, 10), 
 						// 毛先のx座標は根本の座標から前後に揺らす
-						y: this.forehead_right.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 
@@ -3086,6 +3100,7 @@ class DrawFace
 
 
 
+	// パッツン
 	drawBackHair2(hair_bunch, hair_length) 
 	{
 		this._initBackHairArrays();
@@ -3104,6 +3119,7 @@ class DrawFace
 
 
 				// 毛先に傾きをつける処理
+				/*
 				if (i <hair_bunch/2)
 				{
 					// 毛束の半分以下は少しづつ増やし
@@ -3118,6 +3134,7 @@ class DrawFace
 					// 毛束の半分以上は少しずつ減らす
 					hair_length_plus -= 5;
 				}
+				*/
 
 
 				// 根本の座標
