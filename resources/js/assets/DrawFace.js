@@ -251,54 +251,66 @@ class DrawFace
 		this.upper_eyeline_end2 = [
 			{ 
 				x: this.upper_eyeline_end[0].x, 
-				y: this.center.y -10
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
 			},
 			{ 
 				x: this.upper_eyeline_end[1].x, 
-				y: this.center.y -10
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
 			},
 		];
 		/* アイライン2CP1 */
 		this.eyeline2_cp1 = [
 			{ 
-				x: this.upper_eyeline_cp1[0].x, 
+				x: this.upper_eyeline_cp1[0].x
+					+this.coordinates.eyeline_double.both_cp1.x,
 				y: this.upper_eyeline_cp1[0].y -5
+					-this.coordinates.eyeline_double.both_cp1.y,
 			},
 			{ 
-				x: this.upper_eyeline_cp1[1].x, 
+				x: this.upper_eyeline_cp1[1].x
+					-this.coordinates.eyeline_double.both_cp1.x,
 				y: this.upper_eyeline_cp1[1].y -5
+					-this.coordinates.eyeline_double.both_cp1.y,
 			},
 		];
 		/* アイライン2CP2 */
 		this.eyeline2_cp2 = [
 			{ 
-				x: this.upper_eyeline_cp2[0].x, 
+				x: this.upper_eyeline_cp2[0].x 
+					+this.coordinates.eyeline_double.both_cp2.x,
 				y: this.upper_eyeline_cp2[0].y -5
+					-this.coordinates.eyeline_double.both_cp2.y,
 			},
 			{ 
-				x: this.upper_eyeline_cp2[1].x, 
+				x: this.upper_eyeline_cp2[1].x 
+					-this.coordinates.eyeline_double.both_cp2.x,
 				y: this.upper_eyeline_cp2[1].y -5
+					-this.coordinates.eyeline_double.both_cp2.y,
 			},
 		];
-		/* アイライン2CP1 */
+		/* アイライン2CP3 */
 		this.eyeline2_cp3 = [
 			{ 
-				x: this.upper_eyeline_cp1[0].x, 
+				x: this.upper_eyeline_cp1[0].x
+					+this.coordinates.eyeline_double.both_cp1.x,
 				y: this.eyeline2_cp1[0].y -2
 			},
 			{ 
-				x: this.upper_eyeline_cp1[1].x, 
+				x: this.upper_eyeline_cp1[1].x 
+					-this.coordinates.eyeline_double.both_cp1.x,
 				y: this.eyeline2_cp1[1].y -2
 			},
 		];
-		/* アイライン2CP2 */
+		/* アイライン2CP4 */
 		this.eyeline2_cp4 = [
 			{ 
-				x: this.upper_eyeline_cp2[0].x, 
+				x: this.upper_eyeline_cp2[0].x 
+					+this.coordinates.eyeline_double.both_cp2.x,
 				y: this.eyeline2_cp2[0].y -2
 			},
 			{ 
-				x: this.upper_eyeline_cp2[1].x, 
+				x: this.upper_eyeline_cp2[1].x 
+					-this.coordinates.eyeline_double.both_cp2.x,
 				y: this.eyeline2_cp2[1].y -2
 			},
 		];

@@ -183,6 +183,31 @@
 				</fieldset>
 
 				<fieldset>
+					<legend>二重</legend>
+					<div class="parts">
+
+						<div class="double">
+							<input type="range" class="slider" id="eyeline_double.both_cp1.y" value="0" min="-255" max="255">
+							<label for="eyeline_double.both_cp1.y">cp1y</label>
+						</div>
+						<div class="double">
+							<input type="range" class="slider" id="eyeline_double.both_cp2.y" value="0" min="-255" max="255">
+							<label for="eyeline_double.both_cp2.y">cp2y</label>
+						</div>
+
+						<div class="double">
+							<input type="range" class="slider" id="eyeline_double.both_cp1.x" value="0" min="-255" max="255">
+							<label for="eyeline_double.both_cp1.x">cp1x</label>
+						</div>
+						<div class="double">
+							<input type="range" class="slider" id="eyeline_double.both_cp2.x" value="0" min="-255" max="255">
+							<label for="eyeline_double.both_cp2.x">cp2x</label>
+						</div>
+
+					</div>
+				</fieldset>
+
+				<fieldset>
 					<legend>鼻</legend>
 
 					<div class="nose">

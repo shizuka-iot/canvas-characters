@@ -40,6 +40,33 @@ let coordinates = {
 			y: 0,
 		},
 	},
+	// 二重
+	eyeline_double: {
+		cp1: {
+			x: 0,
+			y: 0,
+		},
+		cp2: {
+			x: 0,
+			y: 0,
+		},
+		cp3: {
+			x: 0,
+			y: 0,
+		},
+		cp4: {
+			x: 0,
+			y: 0,
+		},
+		both_cp1: {
+			x: 0,
+			y: 0,
+		},
+		both_cp2: {
+			x: 0,
+			y: 0,
+		},
+	},
 	// 目
 	eye: {
 		size: 28,
