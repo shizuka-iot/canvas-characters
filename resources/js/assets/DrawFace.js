@@ -3005,7 +3005,7 @@ class DrawFace
 					// 毛先の座標生成
 					this.back_hair_tips[i] = {
 						x: this.temple_left.x + i*span + rand(-60, 1), // 毛先のx座標は根本の座標から前後に揺らす
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 				else if (i===hair_bunch)// 最後
@@ -3019,7 +3019,7 @@ class DrawFace
 					// 毛先の座標生成
 					this.back_hair_tips[i] = {
 						x: this.temple_right.x + rand(-60, 2), 
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 
 				}
@@ -3032,7 +3032,7 @@ class DrawFace
 
 					this.back_hair_tips[i] = {
 						x: this.temple_left.x + i*span + rand(-10, 10), 
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 
@@ -3099,8 +3099,12 @@ class DrawFace
 	}// 閉じ括弧
 
 
-
-	// パッツン
+	/*
+	 * 後ろ髪ナチュラル
+	 *
+	 * @param int hair_bunch
+	 * @param int hair_length
+	 */
 	drawBackHair2(hair_bunch, hair_length) 
 	{
 		this._initBackHairArrays();
@@ -3119,7 +3123,6 @@ class DrawFace
 
 
 				// 毛先に傾きをつける処理
-				/*
 				if (i <hair_bunch/2)
 				{
 					// 毛束の半分以下は少しづつ増やし
@@ -3134,7 +3137,6 @@ class DrawFace
 					// 毛束の半分以上は少しずつ減らす
 					hair_length_plus -= 5;
 				}
-				*/
 
 
 				// 根本の座標
@@ -3148,7 +3150,7 @@ class DrawFace
 					// 毛先の座標生成
 					this.back_hair_tips[i] = {
 						x: this.temple_left.x + i*span +span/2 + rand(-60, 1),
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 				else if (i===hair_bunch)// 最後
@@ -3160,7 +3162,7 @@ class DrawFace
 
 					this.back_hair_tips[i] = {
 						x: this.temple_right.x +span/2 + rand(-60, 2),
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 				else// 間
@@ -3172,7 +3174,7 @@ class DrawFace
 
 					this.back_hair_tips[i] = {
 						x: this.temple_left.x + i*span +span/2  + rand(-60, 10),
-						y: this.temple_left.y + hair_length + hair_length_plus
+						y: this.top_of_head.y + hair_length + hair_length_plus
 					};
 				}
 
