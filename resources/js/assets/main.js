@@ -199,6 +199,9 @@ function saveCanvas(canvas_id)
 
 		let canvas = document.getElementById(canvas_id);
 		let a = document.createElement('a');
+
+		// toDataURL()は画像フォーマット(デフォルトはPNG)形式のdata URIを返すメソッド。
+		// data:image/png;base64,〜のようにbase64形式でdataURIが出力される。
 		a.href = canvas.toDataURL();
 		a.download = "canchara" + datetime + ".png";
 		a.click();
