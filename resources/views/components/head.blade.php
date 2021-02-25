@@ -12,7 +12,7 @@
 <meta name="twitter:creator" content="@shizuka-iot">
 <meta name="twitter:title" content="Webブラウザで自在にキャラメイク出来るサイト : キャンバスキャラクターズ">
 <meta name="twitter:description" content="スライダーを動かすことで細かく自由にキャラメイクできます">
-<meta name="twitter:image" content="">
+<meta name="twitter:image" content="{{ asset('/imgs/twitter_card.png') }}">
 
 <!-- title -->
 <title>{{ config('const.SITE_TITLE') }}</title>
