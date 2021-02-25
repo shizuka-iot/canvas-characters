@@ -6,6 +6,13 @@
 <!-- csrf-token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<!-- ツイッターカード -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@shizuka-iot">
+<meta name="twitter:creator" content="@shizuka-iot">
+<meta name="twitter:title" content="Webブラウザで自在にキャラメイク出来るサイト : キャンバスキャラクターズ">
+<meta name="twitter:description" content="スライダーを動かすことで細かく自由にキャラメイクできます">
+<meta name="twitter:image" content="">
 
 <!-- title -->
 <title>{{ config('const.SITE_TITLE') }}</title>
