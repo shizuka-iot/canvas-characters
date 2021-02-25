@@ -199,12 +199,26 @@ function saveCanvas(canvas_id)
 
 		let canvas = document.getElementById(canvas_id);
 		let a = document.createElement('a');
-
-		// toDataURL()は画像フォーマット(デフォルトはPNG)形式のdata URIを返すメソッド。
-		// data:image/png;base64,〜のようにbase64形式でdataURIが出力される。
 		a.href = canvas.toDataURL();
 		a.download = "canchara" + datetime + ".png";
 		a.click();
 	});
 }
 saveCanvas("can");
+
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));

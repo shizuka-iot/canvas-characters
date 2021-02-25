@@ -21,7 +21,18 @@
 						</div>
 
 						<div class="row center" id="save_btn_wrapper">
-							<button id="save_chara_btn" type="button">保存する</button>
+							<button id="save_chara_btn" type="button">保存</button>
+						</div>
+
+						<div class="tweet-character-wrapper">
+							<a class="tweet-character column center"
+								href="https://twitter.com/intent/tweet?text=キャンバスキャラクターズでキャラメイクしました！&url=https://canvas-characters.com&hashtags=キャンバスキャラクターズ">
+								<div class="tweet_button_main">
+									<i class="fab fa-twitter"></i>
+									Tweet
+								</div>
+								<span class="fs-10 fw-normal tweet-alert">※作ったキャラを保存して<br>ツイート画面で指定してください</span>
+							</a>
 						</div>
 
 					</div>
