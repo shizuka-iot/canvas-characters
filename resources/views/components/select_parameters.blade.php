@@ -38,10 +38,8 @@
 					</div>
 				</fieldset>
 
-
 				<fieldset>
-					<legend>目</legend>
-
+					<legend>アイカラー</legend>
 					<div class="parts">
 						<div class="pupil_color">
 							<input type="range" class="slider" id="eye.pupil.color.r" value="50" min="0" max="255">
@@ -71,6 +69,11 @@
 							<label for="eye.iris.color.b">虹彩の青</label>
 						</div>
 					</div>
+
+				</fieldset>
+
+				<fieldset>
+					<legend>目</legend>
 
 					<div class="parts">
 						<div class="eye">
@@ -265,11 +268,11 @@
 						</div>
 						<div class="cheek">
 							<input type="range" class="slider" id="cheek.cp1.x" value="0" min="-255" max="255">
-							<label for="cheek.cp1.x">頬のCP1X</label>
+							<label for="cheek.cp1.x">頬の広がり1</label>
 						</div>
 						<div class="cheek">
 							<input type="range" class="slider" id="cheek.cp2.x" value="30" min="-255" max="255">
-							<label for="cheek.cp2.x">頬のCP2X</label>
+							<label for="cheek.cp2.x">頬の広がり2</label>
 						</div>
 						<div class="chin">
 							<input type="range" class="slider" id="chin.width" value="0" min="-255" max="255">
@@ -394,11 +397,11 @@
 						</div>
 						<div class="">
 							<input class="slider" id="hair.front.cp1.x" type="range" value="1" min="-255" max="500" step="1">
-							<label for="hair.front.cp1.x">前髪cp1x</label>
+							<label for="hair.front.cp1.x">前髪の広がり1</label>
 						</div>
 						<div class="">
 							<input class="slider" id="hair.front.cp2.x" type="range" value="1" min="-255" max="500" step="1">
-							<label for="hair.front.cp2.x">前髪cp2x</label>
+							<label for="hair.front.cp2.x">前髪の広がり2</label>
 						</div>
 						<div class="">
 							<input class="slider" id="hair.front.bunch" type="range" value="1" min="1" max="40" step="1">
@@ -410,7 +413,7 @@
 						</div>
 						<div class="">
 							<input class="slider" id="hair.front.tip_span" type="range" value="0" min="0" max="100" step="1">
-							<label for="hair.front.tip_span">毛先同士の間隔</label>
+							<label for="hair.front.tip_span">毛先の広がり</label>
 						</div>
 					</div>
 				</fieldset>
@@ -450,11 +453,11 @@
 						</div>
 						<div class="back_hair">
 							<input class="slider" id="hair.back.cp1.x" type="range" value="1" min="-255" max="500" step="1">
-							<label for="hair.back.cp1.x">後ろ髪cp1x</label>
+							<label for="hair.back.cp1.x">後ろ髪の広がり1</label>
 						</div>
 						<div class="back_hair">
 							<input class="slider" id="hair.back.cp2.x" type="range" value="1" min="-255" max="500" step="1">
-							<label for="hair.back.cp2.x">後ろ髪cp2x</label>
+							<label for="hair.back.cp2.x">後ろ髪の広がり2</label>
 						</div>
 						<div class="back_hair">
 							<input class="slider" id="hair.back.bunch" type="range" value="1" min="1" max="40" step="1">
@@ -466,55 +469,7 @@
 						</div>
 						<div class="back_hair">
 							<input class="slider" id="hair.back.tip_span" type="range" value="0" min="0" max="100" step="1">
-							<label for="hair.back.tip_span">毛先同士の間隔</label>
-						</div>
-					</div>
-
-					<div class="parts">
-						<div class="back_hair">
-							<input class="" id="hair.twin_tail.flag" name="show" value="twin_tail" type="checkbox">
-							<label for="hair.twin_tail.flag">ツインテール表示</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.terminal.y" type="range" value="0" min="-500" max="500" step="1">
-							<label for="hair.twin_tail.terminal.y">ツインテール高さ</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.terminal.x" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.terminal.x">ツインテールのX座標</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.bunch" type="range" value="0" min="1" max="40" step="1">
-							<label for="hair.twin_tail.bunch">ツインテールの束数</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.length" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.length">ツインテールの長さ</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.width" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.width">ツインテールの幅</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.tip_span" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.tip_span">ツインテールの毛先の間隔</label>
-						</div>
-
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.cp3.x" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.cp3.x">ツインテールのCP3のX座標</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.cp4.x" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.cp4.x">ツインテールのCP4のX座標</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.cp3.y" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.cp3.y">ツインテールのCP3のY座標</label>
-						</div>
-						<div class="back_hair">
-							<input class="slider" id="hair.twin_tail.cp4.y" type="range" value="0" min="-100" max="400" step="1">
-							<label for="hair.twin_tail.cp4.y">ツインテールのCP4のY座標</label>
+							<label for="hair.back.tip_span">毛先の広がり</label>
 						</div>
 					</div>
 
@@ -534,6 +489,57 @@
 					</div>
 				</fieldset>
 
+
+				<fieldset>
+					<legend>ツインテール</legend>
+					<div class="parts">
+						<div class="twin_tail">
+							<input class="" id="hair.twin_tail.flag" name="show" value="twin_tail" type="checkbox">
+							<label for="hair.twin_tail.flag">ツインテール表示</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.terminal.y" type="range" value="0" min="-500" max="500" step="1">
+							<label for="hair.twin_tail.terminal.y">結び目の高さ</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.terminal.x" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.terminal.x">結び目の広がり</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.bunch" type="range" value="0" min="1" max="40" step="1">
+							<label for="hair.twin_tail.bunch">ツインテールの束数</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.length" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.length">ツインテールの長さ</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.width" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.width">ツインテールの幅</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.tip_span" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.tip_span">ツインテールの毛先の間隔</label>
+						</div>
+
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.cp3.x" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.cp3.x">ツインテールのCP3のX座標</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.cp4.x" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.cp4.x">ツインテールのCP4のX座標</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.cp3.y" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.cp3.y">ツインテールのCP3のY座標</label>
+						</div>
+						<div class="twin_tail">
+							<input class="slider" id="hair.twin_tail.cp4.y" type="range" value="0" min="-100" max="400" step="1">
+							<label for="hair.twin_tail.cp4.y">ツインテールのCP4のY座標</label>
+						</div>
+					</div>
+				</fieldset>
 
 
 
