@@ -571,25 +571,62 @@
 
 				<fieldset>
 					<legend>横髪</legend>
+
 					<div class="side_hair">
 						<input class="" id="hair.side.flag" name="show" value="side_hair" type="checkbox">
 						<label for="side_hair_flag">表示</label>
 					</div>
+
 					<div class="parts">
+
 						<div class="">
-							<input class="slider" id="hair.side.left.length" type="range" value="1" min="1" max="500" step="1">
-							<label for="hair.side.left.length">横髪長さ: 左</label>
+							<input class="slider" id="hair.side.start.x" type="range" value="1" min="-300" max="300" step="1">
+							<label for="hair.side.start.x">横髪start.x</label>
+						</div>
+
+						<div class="">
+							<input class="slider" id="hair.side.cp1.y" type="range" value="1" min="-300" max="300" step="1">
+							<label for="hair.side.cp1.y">横髪cp1y</label>
 						</div>
 						<div class="">
-							<input class="slider" id="hair.side.left.bunch" type="range" value="1" min="1" max="30" step="1">
-							<label for="hair.side.left.bunch">横髪束数: 左</label>
+							<input class="slider" id="hair.side.cp2.y" type="range" value="1" min="-300" max="300" step="1">
+							<label for="hair.side.cp2.y">横髪cp2y</label>
+						</div>
+
+						<div class="">
+							<input class="slider" id="hair.side.cp1.x" type="range" value="1" min="-300" max="300" step="1">
+							<label for="hair.side.cp1.x">横髪cp1x</label>
+						</div>
+						<div class="">
+							<input class="slider" id="hair.side.cp2.x" type="range" value="1" min="-300" max="300" step="1">
+							<label for="hair.side.cp2.x">横髪cp2x</label>
 						</div>
 					</div>
 
 					<div class="parts">
 						<div class="">
-							<input class="slider" id="hair.side.right.length" type="range" value="1" min="1" max="500" step="1">
+							<input class="slider" id="hair.side.left.length" type="range" value="1" min="-500" max="500" step="1">
+							<label for="hair.side.left.length">横髪長さ: 左</label>
+						</div>
+						<div class="">
+							<input class="slider" id="hair.side.left.width" type="range" value="1" min="1" max="500" step="1">
+							<label for="hair.side.left.width">横髪ボリューム: 左</label>
+						</div>
+						<div class="">
+							<input class="slider" id="hair.side.left.bunch" type="range" value="1" min="1" max="30" step="1">
+							<label for="hair.side.left.bunch">横髪束数: 左</label>
+						</div>
+
+					</div>
+
+					<div class="parts">
+						<div class="">
+							<input class="slider" id="hair.side.right.length" type="range" value="1" min="-500" max="500" step="1">
 							<label for="hair.side.right.length">横髪長さ: 右</label>
+						</div>
+						<div class="">
+							<input class="slider" id="hair.side.right.width" type="range" value="1" min="1" max="500" step="1">
+							<label for="hair.side.right.width">横髪ボリューム: 右</label>
 						</div>
 						<div class="">
 							<input class="slider" id="hair.side.right.bunch" type="range" value="1" min="1" max="30" step="1">

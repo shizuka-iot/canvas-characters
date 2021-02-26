@@ -1215,6 +1215,12 @@ class DrawFace
 		this.front_hair_cp2 = [];
 	}
 
+
+	/*
+	 * 髪の配列オブジェクトを初期化する汎用メソッド
+	 *
+	 * @param array arrays // roots tips cp1 cp2プロパティを含んでいる
+	 */
 	_initHairArrays(arrays)
 	{
 		arrays.roots = [];
@@ -2017,6 +2023,18 @@ class DrawFace
 			}
 		}
 	}
+
+
+
+	/*
+	 * 座標生成メソッド1
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 */
 	_generateHairCoordinates(arrays, start_coordinate, hair_length, hair_bunch, span)
 	{
 		// 1. 配列をリセット
@@ -2057,6 +2075,54 @@ class DrawFace
 		}
 	}
 
+	/*
+	 * 座標生成メソッド1
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 */
+	_generateSideHairCoordinates(arrays, start_coordinate, hair_length, hair_bunch, span, direction)
+	{
+		// 1. 配列をリセット
+		this._initHairArrays(arrays);
+
+		// 2. 髪の束の数ループ
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			// 3. 根元の座標
+			// 根元はtop_of_headにすることが殆どなのでこの座標は直接は使わない
+			arrays.roots[i] = {
+				x: start_coordinate.x + i*span + this.coordinates.hair.side.start.x * direction,
+				y: start_coordinate.y
+			};
+
+			// 4. 毛先の座標
+			// 基準となる固定の座標にiの回数分任意のスパンを足していく
+			arrays.tips[i] = {
+				x: start_coordinate.x + i*span +span/2 + rand(-60, 10) + this.coordinates.hair.side.start.x * direction, 
+				y: start_coordinate.y + rand(10, 20) + hair_length
+			};
+
+			// 5. CP1の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp1[i] = {
+				x: arrays.roots[i].x + this.coordinates.hair.side.cp1.x * direction + rand(-10, 10),
+				y: this.top_of_head.y + this.coordinates.hair.side.cp1.y
+			};
+
+			// 6. CP2の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp2[i] = {
+				x: arrays.roots[i].x + this.coordinates.hair.side.cp2.x * direction + rand(-10, 10),
+				y: this.top_of_head.y + 100 + this.coordinates.hair.side.cp2.y 
+			};
+		}
+	}
 	
 	drawSideburns(coordinates)
 	{
@@ -2081,29 +2147,47 @@ class DrawFace
 		}
 	}
 
+
+
+
+	/*
+	 * 横髪描画メソッド
+	 *
+	 * @param array side_coordinates // 横髪の座標の配列オブジェクト
+	 * @param array arrays // 横髪の配列オブジェクト
+	 * @param array start_left_coordinate // 左の開始座標
+	 * @param array start_right_coordinate // 右の開始座標
+	 *
+	 */
 	drawSideHairStandard(side_coordinates, arrays, start_left_coordinate, start_right_coordinate)
 	{
-		let left_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x)/side_coordinates.left.bunch);
-		let right_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x)/side_coordinates.right.bunch);
+		let left_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x + this.coordinates.hair.side.left.width)/side_coordinates.left.bunch);
+		let right_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x + this.coordinates.hair.side.right.width)/side_coordinates.right.bunch);
 
 		/* サイクル */
-		for (let j=0; j<2; j++)
+		for (let j=0; j<1; j++)
 		{
-			this._generateHairCoordinates(
+			this._generateSideHairCoordinates(
 				arrays, 
 				start_left_coordinate, 
 				side_coordinates.left.length, 
-				side_coordinates.left.bunch, left_span
+				side_coordinates.left.bunch, left_span,
+				LEFT
 			);
+
 			this._drawSideHairStandardLeft2(side_coordinates.left.bunch, arrays);
-			this._generateHairCoordinates(
+
+			this._generateSideHairCoordinates(
 				arrays, 
 				start_right_coordinate, 
 				side_coordinates.right.length, 
 				side_coordinates.right.bunch, 
-				right_span
+				right_span,
+				RIGHT
 			);
+
 			this._drawSideHairStandardRight(side_coordinates.right.bunch, arrays);
+
 			this.con.stroke();
 			this.con.fill();
 		}

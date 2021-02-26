@@ -197,13 +197,27 @@ let coordinates = {
 			type: 0,
 			bunch: 1,
 			length: 10,
+			start: {
+				x: 0,
+				y: 0,
+			},
+			cp1: {
+				x: 0,
+				y: 0,
+			},
+			cp2: {
+				x: 0,
+				y: 0,
+			},
 			left: {
 				length: 10,
 				bunch: 1,
+				width: 0,
 			},
 			right: {
 				length: 10,
 				bunch: 1,
+				width: 0,
 			},
 		},
 		sideburns: {
