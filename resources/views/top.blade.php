@@ -14,8 +14,17 @@
 
 		<main class="column center">
 
-			<div class="introduction">
+			<div class="introduction column center">
 				<!-- Todo: キャンバスキャラクターズについての紹介文入れる -->
+				<ul class="column center">
+					<li>パラメーターを細かく調整可能！</li>
+					<li>髪の長さ・髪の本数自由自在！</li>
+					<li>顎の長くして大人っぽい顔に！</li>
+					<li>頬をふっくらさせて子供っぽく！</li>
+					<p>などなど</p>
+				</ul>
+					<h1>全てあなたの思うがまま！</h1>
+				
 			</div>
 
 			<div class="select_mode row between">
