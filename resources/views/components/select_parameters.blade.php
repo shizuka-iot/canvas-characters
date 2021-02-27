@@ -77,16 +77,16 @@
 
 					<div class="parts">
 						<div class="eye">
-							<input class="slider" id="eye.scale" type="range" value="1" min="1" max="5" step="0.01">
-							<label for="eye.scale">目の縦幅</label>
-						</div>
-						<div class="eye">
 							<input class="slider" id="eye.size" type="range" value="1" min="1" max="100" step="1">
 							<label for="eye.size">目の大きさ</label>
 						</div>
 						<div class="pupil">
 							<input class="slider" id="eye.pupil.size" type="range" value="1" min="1" max="100" step="1">
 							<label for="eye.pupil.size">瞳の大きさ</label>
+						</div>
+						<div class="eye">
+							<input class="slider" id="eye.scale" type="range" value="1" min="1" max="5" step="0.01">
+							<label for="eye.scale">目の縦幅</label>
 						</div>
 						<div class="eye">
 							<input class="slider" id="eye.position.y" type="range" value="1" min="-100" max="100" step="1">
@@ -111,12 +111,12 @@
 
 					<div class="parts">
 						<div class="eye_head">
-							<input type="range" class="slider" id="eye.eye_head.width" value="0" min="-255" max="255">
-							<label for="eye.eye_head.width">目頭の水平</label>
-						</div>
-						<div class="eye_head">
 							<input type="range" class="slider" id="eye.eye_head.height" value="0" min="-255" max="255">
 							<label for="eye.eye_head.height">目頭の高さ</label>
+						</div>
+						<div class="eye_head">
+							<input type="range" class="slider" id="eye.eye_head.width" value="0" min="-255" max="255">
+							<label for="eye.eye_head.width">目頭の水平</label>
 						</div>
 						<div class="eye_end">
 							<input type="range" class="slider" id="eye.eye_end.x" value="0" min="-255" max="255">
@@ -139,27 +139,33 @@
 							<input type="range" class="slider" id="eye.upper_eyeline_end.y" value="0" min="-255" max="255">
 							<label for="eye.upper_eyeline_end.y">アイライン終端Y</label>
 						</div>
+					</div>
+
+
+					<div class="parts">
 						<div class="upper_eyeline_cp">
 							<input type="range" class="slider" id="eye.upper_eyeline_cp1.y" value="0" min="-255" max="255">
-							<label for="eye.upper_eyeline_cp1.y">アッパーアイラインCP1高さ</label>
+							<label for="eye.upper_eyeline_cp1.y">アイライン高さ1</label>
 						</div>
 						<div class="upper_eyeline_cp">
 							<input type="range" class="slider" id="eye.upper_eyeline_cp2.y" value="0" min="-255" max="255">
-							<label for="eye.upper_eyeline_cp2.y">アッパーアイラインCP2高さ</label>
+							<label for="eye.upper_eyeline_cp2.y">アイライン高さ2</label>
 						</div>
 						<div class="upper_eyeline_cp">
 							<input type="range" class="slider" id="eye.upper_eyeline_cp1.x" value="0" min="-255" max="255">
-							<label for="eye.upper_eyeline_cp1.x">アッパーアイラインCP1x座標</label>
+							<label for="eye.upper_eyeline_cp1.x">アイラインx座標1</label>
 						</div>
 						<div class="upper_eyeline_cp">
 							<input type="range" class="slider" id="eye.upper_eyeline_cp2.x" value="0" min="-255" max="255">
-							<label for="eye.upper_eyeline_cp2.x">アッパーアイラインCP2x座標</label>
+							<label for="eye.upper_eyeline_cp2.x">アイラインx座標2</label>
 						</div>
 						<div class="upper_eyeline_cp">
 							<input type="range" class="slider" id="eye.upper_eyeline_cp.y" value="0" min="-255" max="255">
-							<label for="eye.upper_eyeline_cp.y">アッパーアイラインCP両方高さ</label>
+							<label for="eye.upper_eyeline_cp.y">アイライン上側両方高さ</label>
 						</div>
+					</div>
 
+					<div class="parts">
 						<div class="lower_eyeline_cp">
 							<input type="range" class="slider" id="eye.lower_eyeline_cp1.y" value="0" min="-255" max="255">
 							<label for="eye.lower_eyeline_cp1.y">ロウワーアイラインCP1高さ</label>
@@ -176,7 +182,9 @@
 							<input type="range" class="slider" id="eye.lower_eyeline_cp2.x" value="0" min="-255" max="255">
 							<label for="eye.lower_eyeline_cp2.x">ロウワーアイラインCP2x座標</label>
 						</div>
+					</div>
 
+					<div class="parts">
 						<div class="lower_eyelid">
 							<input type="range" class="slider" id="eyelid.lower.y" value="0" min="-255" max="255">
 							<label for="eyelid.lower.y">下まぶたの高さ</label>
