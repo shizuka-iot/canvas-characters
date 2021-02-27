@@ -374,7 +374,7 @@
 					<div class="parts">
 
 						<div class="front_hair_type">
-							<label>スタンダード<input type="radio" name="front_hair_type" value="2"></label>
+							<label>スタンダード<input type="radio" name="front_hair_type" value="2" checked="checked"></label>
 						</div>
 
 						<div class="front_hair_type">
@@ -429,7 +429,7 @@
 					</div>
 					<div class="parts">
 						<div class="back_hair_type">
-							<label>スタンダード<input type="radio" name="back_hair_type" value="2"></label>
+							<label>スタンダード<input type="radio" name="back_hair_type" value="2" checked="checked"></label>
 						</div>
 						<div class="back_hair_type">
 							<label>パッツン<input type="radio" name="back_hair_type" value="3"></label>
