@@ -26,6 +26,29 @@ footer p {
 	max-width: 400px;
 	flex-wrap: wrap;
 }
+.introduction {
+	padding: 1rem;
+	margin-top: 2rem;
+}
+.introduction h1 {
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-weight: 400;
+	font-size: 1.5rem;
+	color: #222;
+	border-bottom: 4px solid pink;
+}
+
+.introduction ul {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #444;
+	padding: 0;
+	margin: 0.5rem 0;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+.introduction p{
+	align-self: flex-end;
+}
 .header_logo_wrapper {
 	margin: 0 1rem;
 }
@@ -51,8 +74,13 @@ footer p {
 	position: absolute;
 	left: 0;
 	top: 0;
-	z-index: 2;
+	z-index: 3;
 	margin: 1rem;
+}
+.relative {
+	position: relative;
+	width: 100px;
+	height: 100px;
 }
 .tweet-character {
 	padding: 0.3rem 1rem;
@@ -203,20 +231,12 @@ aside {
 }
 
 #can {
-	/*
-	border: 1px solid #a73;
-	width: 80%;
-	height: 80%;
-	*/
 	width: 100%;
 	background-color: pink;
 }
 
 .height_center {
 	display: flex;
-	/*
-	margin: 0.4rem;
-	*/
 	align-items: center;
 }
 input[type=range] {
@@ -448,5 +468,25 @@ fieldset {
 	}
 	.tweet-alert {
 		display: inline;
+	}
+	.introduction {
+		padding: 1rem;
+		margin-top: 2rem;
+	}
+	.introduction h1 {
+		font-family: 'M PLUS Rounded 1c', sans-serif;
+		font-weight: 400;
+		color: #222;
+		border-bottom: 4px solid pink;
+		font-size: 2.4rem;
+	}
+
+	.introduction ul {
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: #444;
+		padding: 0;
+		margin: 0.5rem 0;
+		font-family: 'M PLUS Rounded 1c', sans-serif;
 	}
 }

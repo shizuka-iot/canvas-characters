@@ -39,6 +39,18 @@
 						</form>
 					</div>
 
+					<div class="tweet-character-wrapper2 hide">
+						<a class="tweet-character column center"
+							href="https://twitter.com/intent/tweet?text=キャンバスキャラクターズでキャラメイクしました！&url=https://canvas-characters.com&hashtags=キャンバスキャラクターズ">
+							<div class="tweet_button_main">
+								<i class="fab fa-twitter"></i>
+								Tweet
+							</div>
+							<span class="fs-10 fw-normal tweet-alert">※作ったキャラを保存して<br>ツイート画面で指定してください</span>
+						</a>
+					</div>
+
+
 					<div id="canvas_wrapper" class="row center">
 						<canvas id="can" width="640" height="640" class="hide">
 					</div>

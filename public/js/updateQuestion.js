@@ -89,6 +89,7 @@ $(function(){
 				$('.answers_wrapper').append(
 					'<div class="row center"><button id="save_chara_btn" type="button">保存する</button></div>');
 				$('#can').removeClass("hide");
+				$('.tweet-character-wrapper2').removeClass("hide");
 			}
 			
 		}).fail(function(XMLHttpRequest, textStatus, errorThrown){
