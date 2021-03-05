@@ -6,6 +6,9 @@
     "/js/coordinates.js": "/js/coordinates.js",
     "/js/DrawFace.js": "/js/DrawFace.js",
     "/js/main.js": "/js/main.js",
+    "/js/top_animation.js": "/js/top_animation.js",
+    "/js/chara1_coordinates.js": "/js/chara1_coordinates.js",
+    "/js/chara2_coordinates.js": "/js/chara2_coordinates.js",
     "/js/updateQuestion.js": "/js/updateQuestion.js",
     "/css/all.css": "/css/all.css"
 }
