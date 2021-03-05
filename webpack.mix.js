@@ -22,6 +22,8 @@ mix.js('resources/js/app.js', 'public/js')
 		.scripts('resources/js/assets/DrawFace.js', 'public/js/DrawFace.js')
 		.scripts('resources/js/assets/main.js', 'public/js/main.js')
 		.scripts('resources/js/assets/top_animation.js', 'public/js/top_animation.js')
+		.scripts('resources/js/assets/chara1_coordinates.js', 'public/js/chara1_coordinates.js')
+		.scripts('resources/js/assets/chara2_coordinates.js', 'public/js/chara2_coordinates.js')
 		.scripts('resources/js/assets/updateQuestion.js', 'public/js/updateQuestion.js')
     .sass('resources/sass/app.scss', 'public/css');
 
