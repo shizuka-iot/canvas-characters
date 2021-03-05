@@ -59,5 +59,11 @@
 		@component ('components.footer')
 		@endcomponent
 	</div>
+
+	<script src="{{ asset('js/functions.js') }}"></script>
+	<script src="{{ asset('js/coordinates.js') }}"></script>
+	<script src="{{ asset('js/DrawFace.js') }}"></script>
+	<script src="{{ asset('js/main.js') }}"></script>
+
 </body>
 </html>
