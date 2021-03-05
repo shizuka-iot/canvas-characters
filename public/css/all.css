@@ -327,6 +327,11 @@ p {
 	height: auto;
 	margin-bottom: 1rem;
 }
+#toppage_canvas1, #toppage_canvas2 {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+}
 .select_mode {
 	margin-bottom: 2rem;
 	flex-wrap: wrap;
