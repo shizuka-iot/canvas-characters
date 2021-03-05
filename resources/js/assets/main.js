@@ -68,6 +68,7 @@ for (let i=0; i<front_hair_types.length; i++)
 {
 	front_hair_types[i].onclick = ()=>{
 		face.coordinates.hair.front.type = Number(front_hair_types[i].value);
+		//console.log(face.coordinates.hair.front.type);
 	}
 }
 
@@ -77,6 +78,7 @@ for (let i=0; i<side_hair_types.length; i++)
 {
 	side_hair_types[i].onclick = ()=>{
 		face.coordinates.hair.side.type = Number(side_hair_types[i].value);
+		//console.log(face.coordinates.hair.side.type);
 	}
 }
 
@@ -86,6 +88,7 @@ for (let i=0; i<back_hair_types.length; i++)
 {
 	back_hair_types[i].onclick = ()=>{
 		face.coordinates.hair.back.type = Number(back_hair_types[i].value);
+		//console.log(face.coordinates.hair.back.type);
 	}
 }
 
