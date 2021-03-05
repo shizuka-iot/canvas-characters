@@ -77,11 +77,6 @@ footer p {
 	z-index: 3;
 	margin: 1rem;
 }
-.relative {
-	position: relative;
-	width: 100px;
-	height: 100px;
-}
 .tweet-character {
 	padding: 0.3rem 1rem;
 	background-color: rgb(29, 161, 242);
@@ -233,6 +228,7 @@ aside {
 #can {
 	width: 100%;
 	background-color: pink;
+	position: relative;
 }
 
 .height_center {
