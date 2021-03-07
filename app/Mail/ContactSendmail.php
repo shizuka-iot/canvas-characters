@@ -20,7 +20,7 @@ class ContactSendmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( $inputs )
     {
 			$this->email = $inputs['email'];
 			$this->title = $inputs['title'];
@@ -35,7 +35,7 @@ class ContactSendmail extends Mailable
     public function build()
     {
 			return $this
-				->form('tatakitubusu@gmail.com')
+				->from('tatakitubusu@gmail.com')
 				->subject('自動送信メール')
 				->view('contact.mail')
 				->with([
