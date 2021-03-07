@@ -32,7 +32,7 @@
 
 
 					<label for="">お問い合わせ内容</label>
-					{{ !! nl2br(e($inputs['body'])) }}
+					{!! nl2br(e($inputs['body'])) !!}
 					<textarea id="" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
 
 
