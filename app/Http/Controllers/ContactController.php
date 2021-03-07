@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactSendmail;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -12,7 +13,7 @@ class ContactController extends Controller
 		return view('contact.index');
 	}
 
-	public function confirm(Request $request)
+	public function confirm(ContactRequest $request)
 	{
 		// バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
 		$request->validate([
@@ -29,7 +30,7 @@ class ContactController extends Controller
 
 	}
 
-	public function send(Request $request)
+	public function send(ContactRequest $request)
 	{
 		// バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
 		$request->validate([
@@ -37,6 +38,7 @@ class ContactController extends Controller
 			'title' => 'required',
 			'body' => 'required',
 		]);
+
 
 		// フォームから受け取ったactionの値を取得
 		$action = $request->input('action');
