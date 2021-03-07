@@ -17,7 +17,7 @@
 			<div class="container column center">
 				<h2>お問い合わせ</h2>
 
-				<form method="POST" action="{{ route('contact.send') }}">
+				<form class="column" method="POST" action="{{ route('contact.send') }}">
 					@csrf
 
 
