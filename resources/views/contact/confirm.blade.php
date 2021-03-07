@@ -23,17 +23,17 @@
 
 					<label for="">メールアドレス</label>
 					{{ $inputs['email'] }}
-					<input type="hidden" name="email" value="{{ old('email') }}">
+					<input type="hidden" name="email" value="{{ $inputs['email'] }}">
 
 
 					<label for="">タイトル</label>
 					{{ $inputs['title'] }}
-					<input type="hidden" name="title" value="{{ old('title') }}">
+					<input type="hidden" name="title" value="{{ $inputs['title'] }}">
 
 
 					<label for="">お問い合わせ内容</label>
 					{!! nl2br(e($inputs['body'])) !!}
-					<textarea id="" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
+					<input type="hidden" name="body" value="{{ $inputs['body'] }}">
 
 
 					<button type="submit" name="action" value="back">
