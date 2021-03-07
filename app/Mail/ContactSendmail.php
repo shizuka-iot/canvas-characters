@@ -11,6 +11,10 @@ class ContactSendmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+		private $email;
+		private $title;
+		private $body;
+
     /**
      * Create a new message instance.
      *
@@ -18,7 +22,9 @@ class ContactSendmail extends Mailable
      */
     public function __construct()
     {
-        //
+			$this->email = $inputs['email'];
+			$this->title = $inputs['title'];
+			$this->body = $inputs['body'];
     }
 
     /**
@@ -28,6 +34,14 @@ class ContactSendmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+			return $this
+				->form('tatakitubusu@gmail.com')
+				->subject('自動送信メール')
+				->view('contact.mail')
+				->with([
+					'email' => $this->email,
+					'title' => $this->title,
+					'body' => $this->body,
+				]);
     }
 }
