@@ -23,7 +23,7 @@ Route::get('/terms', function () {return view('terms');});
 Route::get('/privacy', function () {return view('privacy');});
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
-Route::get('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
-Route::get('/contact/thanks', 'ContactController@send')->name('contact.send');
+Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
+Route::post('/contact/thanks', 'ContactController@send')->name('contact.send');
 
 Route::post('/_ajax', 'UpdateQuestionController@post');
