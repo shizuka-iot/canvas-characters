@@ -67,6 +67,38 @@ footer p {
 	display: none;
 }
 
+.require {
+	background-color: red;
+	color: #fff;
+	font-size: 12px;
+	box-sizing: border-box;
+	padding: 0.1rem 0.5rem;
+	margin-right: 0.5rem;
+}
+.error-message {
+	color: red;
+}
+#contact_form {
+	width: 100%;
+	max-width: 800px;
+}
+#contact_form input {
+	width: 80%;
+}
+#contact_form label {
+	font-weight: bold;
+}
+.contact_form_item {
+	margin: 0.5rem 0;
+}
+.contact_form_button {
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+}
+.contact_form_button button {
+	font-size: 1.4rem;
+}
+
 .tweet-character-wrapper .fa-twitter{
 	margin-right: 0.1rem;
 }
