@@ -15,39 +15,51 @@
 		<main class="column center">
 
 			<!-- お問い合わせ -->
-			<div class="container column center">
 				<h2>お問い合わせ</h2>
 
-				<form class="column" method="POST" action="{{ route('contact.confirm') }}">
+				<form id="contact_form" class="column" method="POST" action="{{ route('contact.confirm') }}">
 					@csrf
 
 
-					<label for="">メールアドレス</label>
-					<input type="text" name="email" value="{{ old('email') }}">
-					@if ($errors->has('email'))
-						<p class="error-message">{{ $errors->first('email') }}</p>
-					@endif
+					<div class="contact_form_item column">
+						<label for="">
+							<span class="require">必須</span>メールアドレス
+							@if ($errors->has('email'))
+								<span class="error-message">{{ $errors->first('email') }}</span>
+							@endif
+						</label>
+						<input type="text" name="email" value="{{ old('email') }}">
+					</div>
 
 
-					<label for="">タイトル</label>
-					<input type="text" name="title" value="{{ old('title') }}">
-					@if ($errors->has('title'))
-						<p class="error-message">{{ $errors->first('title') }}</p>
-					@endif
+					<div class="contact_form_item column">
+						<label for="">
+							<span class="require">必須</span>タイトル
+							@if ($errors->has('title'))
+								<span class="error-message">{{ $errors->first('title') }}</span>
+							@endif
+						</label>
+						<input type="text" name="title" value="{{ old('title') }}">
+					</div>
 
 
-					<label for="">お問い合わせ内容</label>
-					<textarea id="" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
-					@if ($errors->has('body'))
-						<p class="error-message">{{ $errors->first('body') }}</p>
-					@endif
+					<div class="contact_form_item column">
+						<label for="">
+							<span class="require">必須</span>お問い合わせ内容
+							@if ($errors->has('body'))
+								<span class="error-message">{{ $errors->first('body') }}</span>
+							@endif
+						</label>
+						<textarea id="" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
+					</div>
 
 
-					<button type="submit">入力内容確認</button>
+					<div class="contact_form_button center">
+						<button type="submit">入力内容確認</button>
+					</div>
 
 
 				</form>
-			</div>
 		</main>
 
 		@component ('components.footer')
