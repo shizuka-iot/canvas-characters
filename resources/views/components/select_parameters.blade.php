@@ -291,6 +291,11 @@
 							<label for="chin.height">顎の高さ</label>
 						</div>
 					</div>
+
+					<div class="cheek_blur">
+						<input class="" id="cheek.blur.flag" name="show" value="cheek_blur" type="checkbox" checked="checked">
+						<label for="cheek.blur.flag">チーク表示</label>
+					</div>
 				</fieldset>
 
 
