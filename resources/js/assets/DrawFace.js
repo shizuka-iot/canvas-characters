@@ -2818,7 +2818,9 @@ class DrawFace
 				Math.PI * 2, false);
 			this.con.restore();
 			this._config("#fff", "#fff", 0.2);
+			this._setBlur("#fff", 0, 0, 10);
 			this.con.fill();
+			this._resetBlur();
 
 			/* 虹彩の中の光 */
 			this.con.save();
@@ -2832,7 +2834,9 @@ class DrawFace
 				Math.PI * 2, false);
 			this.con.restore();
 			this._config("#fff", "#fff", 0.4);
+			this._setBlur("#fff", 0, 0, 10);
 			this.con.fill();
+			this._resetBlur();
 
 			this._config(this.pupil_color, "#000", 1);
 
@@ -2873,7 +2877,7 @@ class DrawFace
 			this.con.fill();
 
 
-			this._config("#fff", "#fff", 0.8);
+			this._config("#fff", "#fff", 1);
 			/* 瞳の反射 */
 			this.con.save();
 			this.con.translate(0, -(this.center.y*eye_highlight_scale - this.center.y));
@@ -2882,20 +2886,16 @@ class DrawFace
 
 			this.con.arc(
 				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -10 + eye_position_rand , 
-				this.center.y +10, 
-				4,  
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -24 + eye_position_rand , 
+				this.center.y -2, 
+				6,  
 				Math.PI * 2, false);
 
-			this.con.arc(
-				this.eye_head[i].x 
-				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -2 + eye_position_rand, 
-				this.center.y +12, 
-				0, 
-				Math.PI * 2, false);
 			this.con.restore();
+			this._setBlur("#fff", 0, 0, 10);
 			this.con.fill();
 			this.con.globalAlpha = 1;
+			this._resetBlur();
 		}
 	}
 	_drawEyeline()
