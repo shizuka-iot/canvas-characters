@@ -19,5 +19,5 @@ function mainLoop()
 window.onload = ()=>{
 	//ループを止めたい時にアンコメントしてsetIntervalのほうをコメントアウト
 	//mainLoop(); 
-	setInterval(mainLoop, 1000/5);
+	setInterval(mainLoop, 1000/4);
 }
