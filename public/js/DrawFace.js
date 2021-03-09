@@ -2306,7 +2306,7 @@ class DrawFace
 			this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
 			this._drawStandardHairSub(hair_bunch, hair_arrays, true);
 			this.con.restore();
-			this._config("#000", "#000", 0.2);
+			this._config("#000", "#000", 0.3);
 			this.con.fill();
 		}
 
