@@ -89,7 +89,7 @@ let coordinates = {
 		},
 		eye_head: {
 			width: 0,
-			height: 0,
+			height: 10,
 		},
 		eye_end: {
 			x: 0,
@@ -104,7 +104,7 @@ let coordinates = {
 			y: 0,
 		},
 		upper_eyeline_cp1: {
-			x: 0,
+			x: -10,
 			y: 0,
 		},
 		upper_eyeline_cp2: {
@@ -112,7 +112,7 @@ let coordinates = {
 			y: 0,
 		},
 		lower_eyeline_cp1: {
-			x: 0,
+			x: -5,
 			y: 0,
 		},
 		lower_eyeline_cp2: {
