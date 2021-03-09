@@ -722,25 +722,25 @@ class DrawFace
 		this.ear_cp1 = [
 			{
 				x: this.earlobe_start[0].x 
-					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 1), 
+					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 1/3), 
 				y: this.ear_start[0].y - 20
 			},
 			{
 				x: this.earlobe_start[1].x 
-					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 1), 
+					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 1/3), 
 				y: this.ear_start[1].y - 20
 			},
 		];
 		this.ear_cp2 = [
 			{
 				x: this.earlobe_start[0].x 
-					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 1), 
+					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 3/4), 
 				y: this.ear_start[0].y 
 					+this.sp(this.ear_start[0].y ,this.earlobe_start[0].y, 1/2)
 			},
 			{
 				x: this.earlobe_start[1].x 
-					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 1), 
+					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 3/4), 
 				y: this.ear_start[1].y 
 					+this.sp(this.ear_start[1].y ,this.earlobe_start[1].y, 1/2)
 			},
@@ -748,12 +748,12 @@ class DrawFace
 		this.inner_ear_cp1 = [
 			{
 				x: this.inner_ear_end[0].x 
-					+this.sp(this.inner_ear_start[0].x ,this.inner_ear_end[0].x, 1), 
+					+this.sp(this.inner_ear_start[0].x ,this.inner_ear_end[0].x, 1/3), 
 				y: this.inner_ear_start[0].y - 20
 			},
 			{
 				x: this.inner_ear_end[1].x 
-					-this.sp(this.inner_ear_start[1].x ,this.inner_ear_end[1].x, 1), 
+					-this.sp(this.inner_ear_start[1].x ,this.inner_ear_end[1].x, 1/3), 
 				y: this.inner_ear_start[1].y - 20
 			},
 		];
@@ -773,10 +773,10 @@ class DrawFace
 		];
 		this.earlobe_cp1 = [
 			{
-				x: this.earlobe_start[0].x, 
+				x: this.earlobe_start[0].x -10, 
 				y: this.ear_end[0].y},
 			{
-				x: this.earlobe_start[1].x, 
+				x: this.earlobe_start[1].x +10, 
 				y: this.ear_end[1].y
 			},
 		];
@@ -3454,6 +3454,7 @@ class DrawFace
 			this.con.globalAlpha = 0.2;
 			this.con.beginPath();
 
+			// 内耳の線
 			this.drawCurve2(
 				this.inner_ear_start[i], 
 				this.inner_ear_end[i], 
@@ -3463,11 +3464,13 @@ class DrawFace
 			this.con.fillStyle = "#000";
 			this.con.beginPath();
 
+			// 内耳の影
 			this.drawCurve2(
 				this.inner_ear_start[i], 
 				this.inner_ear_end[i], 
 				this.inner_ear_cp1[i], 
 				this.inner_ear_cp2[i], true );
+			this.lineTo(this.ear_end[i]);
 			this.con.fill();
 			this.con.globalAlpha = 1;
 		}
