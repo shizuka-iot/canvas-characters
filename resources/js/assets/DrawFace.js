@@ -1280,7 +1280,62 @@ class DrawFace
 		{
 			this._selectSideHair();
 		}
+		this.drawCheekBlur();
 	}
+
+	drawCheekBlur()
+	{
+		if (this.coordinates.cheek.blur.flag)
+		{
+			let scale = 2.0
+			let pn = 1;
+			for (let i=0; i<2; i++)
+			{
+				if (i===1) {
+					pn = -1;
+				}
+				this.con.save();
+				this.con.translate(-(this.center.x * scale - this.center.x) -54 * pn, 0);
+				this.con.scale(scale, 1);
+				this._setBlur('pink', 0, 0, 10);
+				this._config('pink', 'pink', 0.3, 1);
+				this.con.beginPath();
+				this.con.arc(
+					this.eye_head[i].x // 目頭のX座標
+					+this.coordinates.eye.position.x * pn, // 可変できる目のX座標
+					this.center.y + 60,
+					25,  
+					Math.PI * 2, false);
+				this.con.fill();
+				this.con.restore();
+				this._resetBlur();
+			}
+		}
+	}
+
+
+	/*
+	 * @param string shadowColor
+	 * @param int offsetX
+	 * @param int offsetY
+	 * @param int blur
+	 *
+	 * @return void
+	 */
+	_setBlur(shadowColor, offsetX, offsetY, blur)
+	{
+		this.con.shadowColor = shadowColor;
+		this.con.shadowOffsetX = offsetX;
+		this.con.shadowOffsetY = offsetY;
+		this.con.shadowBlur = blur;
+	}
+	_resetBlur()
+	{
+		this.con.shadowOffsetX = 0;
+		this.con.shadowOffsetY = 0;
+		this.con.shadowBlur = 0;
+	}
+
 
 	_selectBackHair()
 	{
