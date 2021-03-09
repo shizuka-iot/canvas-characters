@@ -67,6 +67,66 @@ footer p {
 	display: none;
 }
 
+.require {
+	background-color: red;
+	color: #fff;
+	font-size: 12px;
+	box-sizing: border-box;
+	padding: 0.1rem 0.5rem;
+	margin-right: 0.5rem;
+}
+.error-message {
+	color: red;
+}
+#contact_form {
+	width: 100%;
+	max-width: 800px;
+}
+#contact_form input {
+	width: 80%;
+}
+#contact_form label {
+	font-weight: bold;
+}
+.contact_form_item {
+	margin: 0.5rem 0;
+}
+.contact_form_button {
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+}
+.confirm_input_item {
+	background-color: #ddd;
+	box-sizing: border-box;
+	border: 1px solid #222;
+	padding:0.1rem 0.5rem;
+	display: inline-block;
+	width: 300px;
+	transform: translateX(-8px);
+}
+.confirm_input_items_wrapper label {
+	display: inline-block;
+	width: 240px;
+	background-color: #afa;
+	box-sizing: border-box;
+	border: 1px solid #222;
+	padding:0.1rem;
+}
+.contact_form_button button {
+	font-size: 1.4rem;
+}
+#contact_form button {
+	font-size: 1.4rem;
+}
+.contact_fix_button {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+.confirm_button {
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+}
+
 .tweet-character-wrapper .fa-twitter{
 	margin-right: 0.1rem;
 }
@@ -227,7 +287,9 @@ aside {
 
 #can {
 	width: 100%;
+	/*
 	background-color: pink;
+	*/
 	position: relative;
 }
 
