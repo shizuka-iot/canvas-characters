@@ -1264,6 +1264,7 @@ class DrawFace
 		this.drawEyeline2();
 		//this.drawEyelashes();
 		this.drawLowerEyelid();
+		this.drawCheekBlur();
 		this.drawMouth();
 		this.drawEyeblow();
 		this.drawNose();
@@ -1280,7 +1281,6 @@ class DrawFace
 		{
 			this._selectSideHair();
 		}
-		this.drawCheekBlur();
 	}
 
 	drawCheekBlur()
