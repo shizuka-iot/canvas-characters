@@ -1250,10 +1250,7 @@ class DrawFace
 		{
 			this._selectBackHair();
 		}
-		if ( this.coordinates.hair.twin_tail.flag )
-		{
-			this.drawTwinTails();
-		}
+		this.drawTwinTails();
 		this.drawNeck();
 		this.drawNeckShadow();
 		this.drawEar();
@@ -1297,14 +1294,14 @@ class DrawFace
 				this.con.save();
 				this.con.translate(-(this.center.x * scale - this.center.x) -60 * pn, 0);
 				this.con.scale(scale, 1);
-				this._setBlur('pink', 0, 0, 30);
+				this._setBlur('orange', 0, 0, 30);
 				this._config('pink', 'pink', 0.2, 1);
 				this.con.beginPath();
 				this.con.arc(
 					this.eye_head[i].x // 目頭のX座標
 					+this.coordinates.eye.position.x * pn, // 可変できる目のX座標
 					this.center.y + 60,
-					22,  
+					20,  
 					Math.PI * 2, false);
 				this.con.fill();
 				this.con.restore();
@@ -1358,9 +1355,6 @@ class DrawFace
 					this.coordinates.hair.back.bunch, 
 					this.coordinates.hair.back.length
 				);
-				break;
-			case 5:
-				this.drawTwinTails();
 				break;
 			default:
 				break;
@@ -1477,15 +1471,18 @@ class DrawFace
 	**********************************************************************/
 	drawTwinTails()
 	{
-		// 右
-		this._generateTwinTailCoordinates();
-		this.drawTwinTailFromRootsToTerminals();
-		this.drawTwinTailFromTerminalsToTips();
+		if ( this.coordinates.hair.twin_tail.flag )
+		{
+			// 右
+			this._generateTwinTailCoordinates();
+			this.drawTwinTailFromRootsToTerminals();
+			this.drawTwinTailFromTerminalsToTips();
 
-		// 左
-		this._generateTwinTailCoordinates(LEFT);
-		this.drawTwinTailFromRootsToTerminals();
-		this.drawTwinTailFromTerminalsToTips();
+			// 左
+			this._generateTwinTailCoordinates(LEFT);
+			this.drawTwinTailFromRootsToTerminals();
+			this.drawTwinTailFromTerminalsToTips();
+		}
 	}
 	_generateTwinTailCoordinates(direction = RIGHT)// ツインテールの座標生成
 	{
