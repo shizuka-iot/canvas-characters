@@ -1295,16 +1295,16 @@ class DrawFace
 					pn = -1;
 				}
 				this.con.save();
-				this.con.translate(-(this.center.x * scale - this.center.x) -54 * pn, 0);
+				this.con.translate(-(this.center.x * scale - this.center.x) -60 * pn, 0);
 				this.con.scale(scale, 1);
-				this._setBlur('pink', 0, 0, 10);
-				this._config('pink', 'pink', 0.3, 1);
+				this._setBlur('pink', 0, 0, 30);
+				this._config('pink', 'pink', 0.2, 1);
 				this.con.beginPath();
 				this.con.arc(
 					this.eye_head[i].x // 目頭のX座標
 					+this.coordinates.eye.position.x * pn, // 可変できる目のX座標
 					this.center.y + 60,
-					25,  
+					22,  
 					Math.PI * 2, false);
 				this.con.fill();
 				this.con.restore();
