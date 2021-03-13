@@ -1,1 +1,3732 @@
-"use strict";const LEFT=-1,RIGHT=1;let px,py,ox,oy;class DrawFace{constructor(t,i){this.initCanvas(t,640,640),window.addEventListener("mousemove",this.mouseMove,!1),this.coordinates=i,this.initAllCoordinates()}initCanvas(t,i,e){this.can=document.getElementById(t),this.con=this.can.getContext("2d"),this.can.width=i,this.can.height=e}lineTo(t){this.con.lineTo(t.x,t.y)}moveTo(t){this.con.moveTo(t.x,t.y)}_initBackHairArrays(){this.back_hair_roots=[],this.back_hair_tips=[],this.back_hair_cp1=[],this.back_hair_cp2=[]}_initOutsideHairArrays(){this.outside_hair_roots=[],this.outside_hair_tips=[],this.outside_hair_cp1=[],this.outside_hair_cp2=[]}_initOutsideBackHairArrays(){this.outside_back_hair_roots=[],this.outside_back_hair_tips=[],this.outside_back_hair_cp1=[],this.outside_back_hair_cp2=[]}initAllCoordinates(){this.pn=0,this.center={x:this.can.width/2,y:this.can.height/2+40},this.top_of_head={x:this.center.x,y:this.center.y-240},this.skin_color="rgb("+this.coordinates.skin.color.r+", "+this.coordinates.skin.color.g+", "+this.coordinates.skin.color.b+")",this.pupil_color="rgb("+this.coordinates.eye.pupil.color.r+", "+this.coordinates.eye.pupil.color.g+", "+this.coordinates.eye.pupil.color.b+")",this.iris_color="rgb("+this.coordinates.eye.iris.color.r+", "+this.coordinates.eye.iris.color.g+", "+this.coordinates.eye.iris.color.b+")",this.hair_color="rgb("+this.coordinates.hair.color.r+", "+this.coordinates.hair.color.g+", "+this.coordinates.hair.color.b+")",this.coordinates.hair.color.r<50&&this.coordinates.hair.color.g<50&&this.coordinates.hair.color.b<50?this.hair_stroke_color="#ddd":this.hair_stroke_color="#000",this.eye_head=[{x:this.center.x+35+this.coordinates.eye.eye_head.width,y:this.center.y+this.coordinates.eye.eye_head.height},{x:this.center.x-35-this.coordinates.eye.eye_head.width,y:this.center.y+this.coordinates.eye.eye_head.height}],this.upper_eyeline_end=[{x:this.eye_head[0].x+100+this.coordinates.eye.upper_eyeline_end.x,y:this.center.y+this.coordinates.eye.upper_eyeline_end.y},{x:this.eye_head[1].x-100-this.coordinates.eye.upper_eyeline_end.x,y:this.center.y+this.coordinates.eye.upper_eyeline_end.y}],this.upper_eyeline_cp1=[{x:this.eye_head[0].x+this.sp(this.eye_head[0].x,this.upper_eyeline_end[0].x,1/3)+this.coordinates.eye.upper_eyeline_cp1.x,y:this.center.y-30+this.coordinates.eye.upper_eyeline_cp1.y+this.coordinates.eye.upper_eyeline_cp.y},{x:this.eye_head[1].x-this.sp(this.eye_head[1].x,this.upper_eyeline_end[1].x,1/3)-this.coordinates.eye.upper_eyeline_cp1.x,y:this.center.y-30+this.coordinates.eye.upper_eyeline_cp1.y+this.coordinates.eye.upper_eyeline_cp.y}],this.upper_eyeline_cp2=[{x:this.eye_head[0].x+this.sp(this.eye_head[0].x,this.upper_eyeline_end[0].x,2/3)+this.coordinates.eye.upper_eyeline_cp2.x,y:this.center.y-30+this.coordinates.eye.upper_eyeline_cp2.y+this.coordinates.eye.upper_eyeline_cp.y},{x:this.eye_head[1].x-this.sp(this.eye_head[1].x,this.upper_eyeline_end[1].x,2/3)-this.coordinates.eye.upper_eyeline_cp2.x,y:this.center.y-30+this.coordinates.eye.upper_eyeline_cp2.y+this.coordinates.eye.upper_eyeline_cp.y}],this.lower_eyeline_cp1=[{x:this.eye_head[0].x+this.sp(this.eye_head[0].x,this.upper_eyeline_end[0].x,1/3)+this.coordinates.eye.lower_eyeline_cp1.x,y:this.center.y-30-this.coordinates.eye.lower_eyeline_cp1.y},{x:this.eye_head[1].x-this.sp(this.eye_head[1].x,this.upper_eyeline_end[1].x,1/3)-this.coordinates.eye.lower_eyeline_cp1.x,y:this.center.y-30-this.coordinates.eye.lower_eyeline_cp1.y}],this.lower_eyeline_cp2=[{x:this.upper_eyeline_end[0].x+10+this.coordinates.eye.lower_eyeline_cp2.x,y:this.center.y-25-this.coordinates.eye.lower_eyeline_cp2.y},{x:this.upper_eyeline_end[1].x-10-this.coordinates.eye.lower_eyeline_cp2.x,y:this.center.y-25-this.coordinates.eye.lower_eyeline_cp2.y}],this.upper_eyeline_start=[{x:this.eye_head[0].x,y:this.eye_head[0].y},{x:this.eye_head[1].x,y:this.eye_head[1].y}],this.eye_end=[{x:this.upper_eyeline_end[0].x-20+this.coordinates.eye.eye_end.x,y:this.center.y+20+this.coordinates.eye.eye_end.y},{x:this.upper_eyeline_end[1].x+20-this.coordinates.eye.eye_end.x,y:this.center.y+20+this.coordinates.eye.eye_end.y}],this.upper_eyeline_start2=[{x:this.eye_head[0].x,y:this.eye_head[0].y-10},{x:this.eye_head[1].x,y:this.eye_head[1].y-10}],this.upper_eyeline_end2=[{x:this.upper_eyeline_end[0].x,y:this.center.y+this.coordinates.eye.upper_eyeline_end.y},{x:this.upper_eyeline_end[1].x,y:this.center.y+this.coordinates.eye.upper_eyeline_end.y}],this.eyeline2_cp1=[{x:this.upper_eyeline_cp1[0].x+this.coordinates.eyeline_double.both_cp1.x,y:this.upper_eyeline_cp1[0].y-5-this.coordinates.eyeline_double.both_cp1.y},{x:this.upper_eyeline_cp1[1].x-this.coordinates.eyeline_double.both_cp1.x,y:this.upper_eyeline_cp1[1].y-5-this.coordinates.eyeline_double.both_cp1.y}],this.eyeline2_cp2=[{x:this.upper_eyeline_cp2[0].x+this.coordinates.eyeline_double.both_cp2.x,y:this.upper_eyeline_cp2[0].y-5-this.coordinates.eyeline_double.both_cp2.y},{x:this.upper_eyeline_cp2[1].x-this.coordinates.eyeline_double.both_cp2.x,y:this.upper_eyeline_cp2[1].y-5-this.coordinates.eyeline_double.both_cp2.y}],this.eyeline2_cp3=[{x:this.upper_eyeline_cp1[0].x+this.coordinates.eyeline_double.both_cp1.x,y:this.eyeline2_cp1[0].y-2},{x:this.upper_eyeline_cp1[1].x-this.coordinates.eyeline_double.both_cp1.x,y:this.eyeline2_cp1[1].y-2}],this.eyeline2_cp4=[{x:this.upper_eyeline_cp2[0].x+this.coordinates.eyeline_double.both_cp2.x,y:this.eyeline2_cp2[0].y-2},{x:this.upper_eyeline_cp2[1].x-this.coordinates.eyeline_double.both_cp2.x,y:this.eyeline2_cp2[1].y-2}],this.eyelash_start=[{x:this.eye_end[0].x,y:this.eye_end[0].y},{x:this.eye_end[1].x,y:this.eye_end[1].y}],this.eyelash_end=[{x:this.upper_eyeline_end[0].x+10,y:this.upper_eyeline_end[0].y},{x:this.upper_eyeline_end[1].x-10,y:this.upper_eyeline_end[1].y}],this.eyelash_cp1=[{x:this.eyelash_start[0].x+this.sp(this.eyelash_start[0].x,this.eyelash_end[0].x,.5),y:this.eyelash_end[0].y+this.sp(this.eyelash_start[0].y,this.eyelash_end[0].y,.5)-5},{x:this.eyelash_start[1].x-this.sp(this.eyelash_start[1].x,this.eyelash_end[1].x,.5),y:this.eyelash_end[1].y+this.sp(this.eyelash_start[1].y,this.eyelash_end[1].y,.5)-5}],this.eyelash_cp2=[{x:this.eyelash_start[0].x+this.sp(this.eyelash_start[0].x,this.eyelash_end[0].x,.5),y:this.eyelash_end[0].y+this.sp(this.eyelash_start[0].y,this.eyelash_end[0].y,.5)-5},{x:this.eyelash_start[1].x-this.sp(this.eyelash_start[1].x,this.eyelash_end[1].x,.5),y:this.eyelash_end[1].y+this.sp(this.eyelash_start[1].y,this.eyelash_end[1].y,.5)-5}],this.eyelash_cp=[{x:this.upper_eyeline_end[0].x-10,y:this.eyelash_end[0].y},{x:this.upper_eyeline_end[1].x+10,y:this.eyelash_end[1].y}],this.eyelid_cp1=[{x:this.upper_eyeline_start[0].x,y:this.upper_eyeline_start[0].y-60},{x:this.upper_eyeline_start[1].x,y:this.upper_eyeline_start[1].y-60}],this.eyelid_cp2=[{x:this.upper_eyeline_end[0].x,y:this.upper_eyeline_end[0].y-60},{x:this.upper_eyeline_end[1].x,y:this.upper_eyeline_end[1].y-60}],this.lower_eyelid_start=[{x:this.eye_head[0].x+10,y:this.eye_end[0].y},{x:this.eye_head[1].x-10,y:this.eye_end[1].y}],this.lower_eyelid_cp1=[{x:this.lower_eyelid_start[0].x+this.sp(this.lower_eyelid_start[0].x,this.eye_end[0].x,1/3),y:this.eye_end[0].y+30},{x:this.lower_eyelid_start[1].x-this.sp(this.lower_eyelid_start[1].x,this.eye_end[1].x,1/3),y:this.eye_end[1].y+30}],this.lower_eyelid_cp2=[{x:this.lower_eyelid_start[0].x+this.sp(this.lower_eyelid_start[0].x,this.eye_end[0].x,2/3),y:this.eye_end[0].y+30},{x:this.lower_eyelid_start[1].x-this.sp(this.lower_eyelid_start[1].x,this.eye_end[1].x,2/3),y:this.eye_end[1].y+30}],this.lower_eyelid_cp3=[{x:this.eye_head[0].x,y:this.eye_head[0].y+80},{x:this.eye_head[1].x,y:this.eye_head[1].y+80}],this.lower_eyelid_cp4=[{x:this.eye_end[0].x,y:this.eye_end[0].y+60},{x:this.eye_end[1].x,y:this.eye_end[1].y+60}],this.nose_top={x:this.center.x,y:this.center.y+90+this.coordinates.nose.position.y},this.nose_bottom={x:this.center.x+this.coordinates.nose.bottom.x,y:this.nose_top.y+12+this.coordinates.nose.bottom.y},this.nose_cp1={x:this.nose_top.x+5+this.coordinates.nose.cp1.x,y:this.nose_top.y+this.coordinates.nose.cp1.y+this.sp(this.nose_top.y,this.nose_bottom.y,.5)},this.nose_cp2={x:this.nose_top.x+this.coordinates.nose.cp2.x,y:this.nose_top.y+this.sp(this.nose_top.y,this.nose_bottom.y,2/3)+this.coordinates.nose.cp2.y},this.nose2_start=[{x:this.nose_bottom.x+this.coordinates.nose2.start.x+4,y:this.nose_bottom.y+this.coordinates.nose2.start.y},{x:this.nose_bottom.x-this.coordinates.nose2.start.x-4,y:this.nose_bottom.y+this.coordinates.nose2.start.y}],this.nose2_end=[{x:this.nose2_start[0].x+4,y:this.nose2_start[0].y-5},{x:this.nose2_start[1].x-4,y:this.nose2_start[1].y-5}],this.nose2_cp=[{x:this.nose2_start[0].x,y:this.nose2_end[0].y},{x:this.nose2_start[1].x,y:this.nose2_end[1].y}],this.eyelid_bottom=[{x:this.eye_head[0].x+40,y:this.center.y+28+5+this.coordinates.eyelid.lower.y},{x:this.eye_head[1].x-40,y:this.center.y+28+5+this.coordinates.eyelid.lower.y}],this.eyelid_bottom_cp1=[{x:this.eye_head[0].x,y:this.eyelid_bottom[0].y},{x:this.eye_head[1].x,y:this.eyelid_bottom[1].y}],this.eyelid_bottom_cp3=[{x:this.eye_end[0].x-this.sp(this.eye_end[0].x,this.eyelid_bottom[0].x,.5),y:this.eyelid_bottom[0].y},{x:this.eye_end[1].x+this.sp(this.eyelid_bottom[1].x,this.eye_end[1].x,.5),y:this.eyelid_bottom[1].y}],this.eyelid_bottom_cp4=[{x:this.eye_head[0].x,y:this.eyelid_bottom[0].y},{x:this.eye_head[1].x,y:this.eyelid_bottom[1].y}],this.mouth_start={x:this.center.x-this.coordinates.mouth.width,y:this.center.y+130+this.coordinates.mouth.height},this.mouth_end={x:this.center.x+this.coordinates.mouth.width,y:this.center.y+130+this.coordinates.mouth.height},this.mouth_cp1={x:this.mouth_start.x+this.sp(this.mouth_start.x,this.mouth_end.x,1/3),y:this.mouth_start.y+this.coordinates.mouth.cp.y},this.mouth_cp2={x:this.mouth_start.x+this.sp(this.mouth_start.x,this.mouth_end.x,2/3),y:this.mouth_start.y+this.coordinates.mouth.cp.y},this.chin_start={x:this.center.x-30-this.coordinates.chin.width,y:this.mouth_start.y+50+this.coordinates.chin.height+this.coordinates.mouth.cp.y/2},this.chin_end={x:this.center.x+30+this.coordinates.chin.width,y:this.mouth_start.y+50+this.coordinates.chin.height+this.coordinates.mouth.cp.y/2},this.chin_cp1={x:this.chin_start.x+this.sp(this.chin_start.x,this.chin_end.x,1/3),y:this.chin_start.y+10},this.chin_cp2={x:this.chin_start.x+this.sp(this.chin_start.x,this.chin_end.x,2/3),y:this.chin_start.y+10},this.nape={x:this.center.x,y:this.chin_start.y},this.twin_terminal_right={x:this.top_of_head.x+140+this.coordinates.hair.twin_tail.terminal.x,y:this.top_of_head.y+this.sp(this.top_of_head.y,this.nape.y,.5)+this.coordinates.hair.twin_tail.terminal.y},this.twin_terminal_left={x:this.top_of_head.x-140-this.coordinates.hair.twin_tail.terminal.x,y:this.top_of_head.y+this.sp(this.top_of_head.y,this.nape.y,.5)+this.coordinates.hair.twin_tail.terminal.y},this.cheek_start=[{x:this.chin_end.x+this.coordinates.chin.width+this.coordinates.cheek.width,y:this.chin_end.y},{x:this.chin_start.x-this.coordinates.chin.width-this.coordinates.cheek.width,y:this.chin_start.y}],this.cheek_end=[{x:this.upper_eyeline_end[0].x+20+this.coordinates.eye.span_to_eye_x,y:this.upper_eyeline_end[0].y},{x:this.upper_eyeline_end[1].x-20-this.coordinates.eye.span_to_eye_x,y:this.upper_eyeline_end[1].y}],this.temple_left={x:this.cheek_end[1].x,y:this.cheek_end[1].y},this.temple_right={x:this.cheek_end[0].x,y:this.cheek_end[0].y},this.cheek_cp1=[{x:this.cheek_start[0].x+this.sp(this.cheek_start[0].x,this.cheek_end[0].x,1/3)+this.coordinates.cheek.cp1.x,y:this.cheek_start[0].y-this.sp(this.cheek_start[0].y,this.cheek_end[0].y,1/8)+this.coordinates.cheek.cp1.y},{x:this.cheek_start[1].x-this.sp(this.cheek_start[1].x,this.cheek_end[1].x,1/3)-this.coordinates.cheek.cp1.x,y:this.cheek_start[1].y-this.sp(this.cheek_start[1].y,this.cheek_end[1].y,1/8)+this.coordinates.cheek.cp1.y}],this.cheek_cp2=[{x:this.cheek_start[0].x+this.sp(this.cheek_start[0].x,this.cheek_end[0].x,.8)+this.coordinates.cheek.cp2.x,y:this.cheek_start[0].y-this.sp(this.cheek_start[0].y,this.cheek_end[0].y,.25)+this.coordinates.cheek.cp2.y},{x:this.cheek_start[1].x-this.sp(this.cheek_start[1].x,this.cheek_end[1].x,.8)-this.coordinates.cheek.cp2.x,y:this.cheek_start[1].y-this.sp(this.cheek_start[1].y,this.cheek_end[1].y,.25)+this.coordinates.cheek.cp2.y}],this.head_cp1={x:this.cheek_end[0].x+60,y:this.center.y-320},this.head_cp2={x:this.cheek_end[1].x-60,y:this.center.y-320},this.ear_start=[{x:this.temple_right.x-20,y:this.temple_right.y-20},{x:this.temple_left.x+20,y:this.temple_left.y-20}],this.ear_end=[{x:this.eye_end[0].x,y:this.eye_end[0].y+50},{x:this.eye_end[1].x,y:this.eye_end[1].y+50}],this.earlobe_start=[{x:this.ear_start[0].x+30,y:this.ear_start[0].y+this.sp(this.ear_start[0].y,this.ear_end[0].y,2/3)},{x:this.ear_start[1].x-30,y:this.ear_start[1].y+this.sp(this.ear_start[1].y,this.ear_end[1].y,2/3)}],this.inner_ear_start=[{x:this.ear_start[0].x-10,y:this.ear_start[0].y+10},{x:this.ear_start[1].x+10,y:this.ear_start[1].y+10}],this.inner_ear_end=[{x:this.earlobe_start[0].x-10,y:this.earlobe_start[0].y-10},{x:this.earlobe_start[1].x+10,y:this.earlobe_start[1].y-10}],this.ear_cp1=[{x:this.earlobe_start[0].x+this.sp(this.ear_start[0].x,this.earlobe_start[0].x,1/3),y:this.ear_start[0].y-20},{x:this.earlobe_start[1].x-this.sp(this.ear_start[1].x,this.earlobe_start[1].x,1/3),y:this.ear_start[1].y-20}],this.ear_cp2=[{x:this.earlobe_start[0].x+this.sp(this.ear_start[0].x,this.earlobe_start[0].x,.75),y:this.ear_start[0].y+this.sp(this.ear_start[0].y,this.earlobe_start[0].y,.5)},{x:this.earlobe_start[1].x-this.sp(this.ear_start[1].x,this.earlobe_start[1].x,.75),y:this.ear_start[1].y+this.sp(this.ear_start[1].y,this.earlobe_start[1].y,.5)}],this.inner_ear_cp1=[{x:this.inner_ear_end[0].x+this.sp(this.inner_ear_start[0].x,this.inner_ear_end[0].x,1/3),y:this.inner_ear_start[0].y-20},{x:this.inner_ear_end[1].x-this.sp(this.inner_ear_start[1].x,this.inner_ear_end[1].x,1/3),y:this.inner_ear_start[1].y-20}],this.inner_ear_cp2=[{x:this.inner_ear_end[0].x+this.sp(this.inner_ear_start[0].x,this.inner_ear_end[0].x,1),y:this.inner_ear_start[0].y+this.sp(this.inner_ear_start[0].y,this.inner_ear_end[0].y,.5)},{x:this.inner_ear_end[1].x-this.sp(this.inner_ear_start[1].x,this.inner_ear_end[1].x,1),y:this.inner_ear_start[1].y+this.sp(this.inner_ear_start[1].y,this.inner_ear_end[1].y,.5)}],this.earlobe_cp1=[{x:this.earlobe_start[0].x-10,y:this.ear_end[0].y},{x:this.earlobe_start[1].x+10,y:this.ear_end[1].y}],this.earlobe_cp2=[],this.neck_start=[{x:this.center.x+70,y:this.chin_start.y-60},{x:this.center.x-70,y:this.chin_start.y-60}],this.neck_end=[{x:this.neck_start[0].x+150,y:this.neck_start[0].y+180},{x:this.neck_start[1].x-150,y:this.neck_start[1].y+180}],this.neck_start2=[{x:this.neck_start[0].x,y:this.neck_start[0].y+60},{x:this.neck_start[1].x,y:this.neck_start[1].y+60}],this.neck_end2=[{x:this.neck_end[0].x,y:this.neck_end[0].y+50},{x:this.neck_end[1].x,y:this.neck_end[1].y+50}],this.neck_terminal1=[{x:this.neck_start[0].x,y:this.neck_start[0].y-150},{x:this.neck_start[1].x,y:this.neck_start[1].y-150}],this.neck_terminal2=[{x:this.neck_end[0].x,y:this.neck_terminal1[0].y},{x:this.neck_end[1].x,y:this.neck_terminal1[1].y}],this.neck_cp1=[{x:this.neck_start[0].x-5,y:this.neck_start[0].y+130},{x:this.neck_start[1].x+5,y:this.neck_start[1].y+130}],this.neck_cp2=[{x:this.neck_start[0].x-30,y:this.neck_start[0].y+160},{x:this.neck_start[1].x+30,y:this.neck_start[1].y+160}],this.neck_shadow_cp1={x:this.neck_start[1].x+this.sp(this.neck_start[1].x,this.neck_end[1].x,2/3),y:this.neck_start2[1].y+50},this.neck_shadow_cp2={x:this.neck_start[1].x+this.sp(this.neck_start[1].x,this.neck_end[1].x,1/3),y:this.neck_start2[1].y+50},this.upper_lip_cp1={x:this.mouth_start.x-this.coordinates.lip.upper.cp.width+this.sp(this.mouth_start.x,this.mouth_end.x,1/3),y:this.mouth_start.y+10-this.coordinates.lip.upper.cp.height},this.upper_lip_cp2={x:this.mouth_start.x+this.coordinates.lip.upper.cp.width+this.sp(this.mouth_start.x,this.mouth_end.x,2/3),y:this.mouth_start.y+10-this.coordinates.lip.upper.cp.height},this.lower_lip_cp1={x:this.mouth_start.x-this.coordinates.lip.lower.cp.width+this.sp(this.mouth_start.x,this.mouth_end.x,1/3),y:this.mouth_start.y+10+this.coordinates.mouth.cp.y+this.coordinates.lip.lower.cp.height},this.lower_lip_cp2={x:this.mouth_start.x+this.coordinates.lip.lower.cp.width+this.sp(this.mouth_start.x,this.mouth_end.x,2/3),y:this.mouth_start.y+10+this.coordinates.mouth.cp.y+this.coordinates.lip.lower.cp.height},this.forehead_right={x:this.cheek_end[0].x-this.sp(this.cheek_end[0].y,this.cheek_start[0].y,1/6),y:this.cheek_end[0].y-140},this.forehead_left={x:this.cheek_end[1].x+this.sp(this.cheek_end[1].y,this.cheek_start[1].y,1/6),y:this.cheek_end[1].y-140},this.eyeblow_start=[{x:this.eye_head[0].x-10+this.coordinates.eyeblow.head.x,y:this.eye_head[0].y-40+this.coordinates.eyeblow.head.y},{x:this.eye_head[1].x+10-this.coordinates.eyeblow.head.x,y:this.eye_head[1].y-40+this.coordinates.eyeblow.head.y}],this.eyeblow_end=[{x:this.upper_eyeline_end[0].x+5+this.coordinates.eyeblow.end.x,y:this.upper_eyeline_end[0].y-50+this.coordinates.eyeblow.end.y},{x:this.upper_eyeline_end[1].x-5-this.coordinates.eyeblow.end.x,y:this.upper_eyeline_end[1].y-50+this.coordinates.eyeblow.end.y}],this.eyeblow_upper_cp1=[{x:this.eyeblow_start[0].x+this.sp(this.eyeblow_end[0].x,this.eyeblow_start[0].x,1/3),y:this.eyeblow_start[0].y-10},{x:this.eyeblow_start[1].x-this.sp(this.eyeblow_end[1].x,this.eyeblow_start[1].x,1/3),y:this.eyeblow_start[1].y-10}],this.eyeblow_upper_cp2=[{x:this.eyeblow_start[0].x+this.sp(this.eyeblow_end[0].x,this.eyeblow_start[0].x,2/3),y:this.eyeblow_start[0].y-20},{x:this.eyeblow_start[1].x-this.sp(this.eyeblow_end[1].x,this.eyeblow_start[1].x,2/3),y:this.eyeblow_start[1].y-20}],this.eyeblow_lower_cp1=[{x:this.eyeblow_start[0].x+this.sp(this.eyeblow_end[0].x,this.eyeblow_start[0].x,1/3),y:this.eyeblow_start[0].y+this.coordinates.eyeblow.cp.y},{x:this.eyeblow_start[1].x-this.sp(this.eyeblow_end[1].x,this.eyeblow_start[1].x,1/3),y:this.eyeblow_start[1].y+this.coordinates.eyeblow.cp.y}],this.eyeblow_lower_cp2=[{x:this.eyeblow_start[0].x+this.sp(this.eyeblow_end[0].x,this.eyeblow_start[0].x,2/3),y:this.eyeblow_start[0].y-20},{x:this.eyeblow_start[1].x-this.sp(this.eyeblow_end[1].x,this.eyeblow_start[1].x,2/3),y:this.eyeblow_start[1].y-20}],this.front_hair_roots=[],this.front_hair_tips=[],this.front_hair_cp1=[],this.front_hair_cp2=[],this.back_hair_roots=[],this.back_hair_tips=[],this.back_hair_cp1=[],this.back_hair_cp2=[],this.side_hair_arrays={roots:[],tips:[],cp1:[],cp2:[]},this.front_hair_arrays={roots:[],tips:[],cp1:[],cp2:[]},this.back_hair_arrays={roots:[],tips:[],cp1:[],cp2:[]},this.outside_back_hair_arrays={roots:[],tips:[],cp1:[],cp2:[]},this.outside_hair_arrays={roots:[],tips:[],cp1:[],cp2:[]},this.twin_tail_arrays={roots:[],terminals:[],tips:[],cp1:[],cp2:[],cp3:[],cp3sub:[],cp4:[],cp4sub:[]},this.side_hair_roots=[],this.side_hair_tips=[],this.side_hair_cp1=[],this.side_hair_cp2=[],this.outside_hair_roots=[],this.outside_hair_tips=[],this.outside_hair_cp1=[],this.outside_hair_cp2=[],this.outside_hair_upper_cp1={x:this.head_cp1.x-10,y:this.head_cp1.y-20},this.outside_hair_upper_cp2={x:this.head_cp2.x+10,y:this.head_cp2.y-20},this.temple=[{x:this.cheek_end[1].x,y:this.cheek_end[1].y},{x:this.cheek_end[0].x,y:this.cheek_end[0].y}],this.outside_back_hair_roots=[],this.outside_back_hair_tips=[],this.outside_back_hair_cp1=[],this.outside_back_hair_cp2=[],this.outside_back_hair_left={x:this.center.x-170,y:this.center.y},this.outside_back_hair_right={x:this.center.x+170,y:this.center.y},this.outside_back_head_cp1={x:this.head_cp1.x-10,y:this.head_cp1.y-5},this.outside_back_head_cp2={x:this.head_cp2.x+10,y:this.head_cp2.y-5},this.eye_shadow_start=[{x:this.eye_head[0].x,y:this.eye_head[0].y+10},{x:this.eye_head[1].x,y:this.eye_head[1].y+10}],this.eye_shadow_end=[{x:this.upper_eyeline_end[0].x-10,y:this.eye_head[0].y+10},{x:this.upper_eyeline_end[1].x+10,y:this.eye_head[1].y+10}],this.eye_shadow_cp1=[{x:this.upper_eyeline_cp1[0].x,y:this.upper_eyeline_cp1[0].y+10},{x:this.upper_eyeline_cp1[1].x,y:this.upper_eyeline_cp1[1].y+10}],this.eye_shadow_cp2=[{x:this.upper_eyeline_cp2[0].x,y:this.upper_eyeline_cp2[0].y+10},{x:this.upper_eyeline_cp2[1].x,y:this.upper_eyeline_cp2[1].y+10}],this.outside_hair_left={x:this.temple_left.x-this.coordinates.hair.outside.volume,y:this.temple_left.y},this.outside_hair_right={x:this.temple_right.x+this.coordinates.hair.outside.volume,y:this.temple_right.y}}mouseMove(t){px=t.pageX,py=t.pageY,ox=t.offsetX,oy=t.offsetY}static clear(t){let i=document.getElementById(t);i.getContext("2d").clearRect(0,0,i.width,i.height)}_config(t,i="#000",e=1,s=1){this.con.fillStyle=t,this.con.strokeStyle=i,this.con.globalAlpha=e,this.con.lineWidth=s}fillR(t,i="#000"){this.con.fillStyle=i,this.con.fillRect(t.x,t.y,4,4)}drawCurve(t,i,e,s=!1){s&&this.con.moveTo(t.x,t.y),this.con.quadraticCurveTo(e.x,e.y,i.x,i.y)}drawCurve2(t,i,e,s,h=!1){h&&this.con.moveTo(t.x,t.y),this.con.bezierCurveTo(e.x,e.y,s.x,s.y,i.x,i.y)}sp(t,i,e){return Math.floor(Math.abs(i-t)*e)}_initFrontHairArrays(){this.front_hair_roots=[],this.front_hair_tips=[],this.front_hair_cp1=[],this.front_hair_cp2=[]}_initHairArrays(t){t.roots=[],t.tips=[],t.cp1=[],t.cp2=[]}update(){this.initAllCoordinates()}draw(){this.con.clearRect(0,0,this.can.width,this.can.height),this.coordinates.hair.outside_back.flag&&this.drawOutsideBackHair(this.coordinates.hair.outside_back.bunch,this.coordinates.hair.outside_back.length),this.coordinates.hair.back.flag&&this._selectBackHair(),this.drawTwinTails(),this.drawNeck(),this.drawNeckShadow(),this.drawEar(),this.drawOutline(),this.drawWhiteEyes(),this.drawEyes(),this.drawEyelid(),this.drawEyeline2(),this.drawLowerEyelid(),this.drawCheekBlur(),this.drawMouth(),this.drawEyeblow(),this.drawNose(),this.drawSkinHead(),this.coordinates.hair.sideburns.flag&&this.drawSideburns(this.coordinates.hair.sideburns),this.coordinates.hair.front.flag&&this._selectFrontHair(),this.coordinates.hair.side.flag&&this._selectSideHair()}drawCheekBlur(){if(this.coordinates.cheek.blur.flag){let t=2,i=1;for(let e=0;e<2;e++)1===e&&(i=-1),this.con.save(),this.con.translate(-(this.center.x*t-this.center.x)-60*i,0),this.con.scale(t,1),this._setBlur("orange",0,0,30),this._config("pink","pink",.2,1),this.con.beginPath(),this.con.arc(this.eye_head[e].x+this.coordinates.eye.position.x*i,this.center.y+60,20,2*Math.PI,!1),this.con.fill(),this.con.restore(),this._resetBlur()}}_setBlur(t,i,e,s){this.con.shadowColor=t,this.con.shadowOffsetX=i,this.con.shadowOffsetY=e,this.con.shadowBlur=s}_resetBlur(){this.con.shadowOffsetX=0,this.con.shadowOffsetY=0,this.con.shadowBlur=0}_selectBackHair(){switch(this.coordinates.hair.back.type){case 2:this.drawBackHairStandard(this.coordinates.hair.back.bunch,this.coordinates.hair.back.length);break;case 3:this.drawBackHair(this.coordinates.hair.back.bunch,this.coordinates.hair.back.length);break;case 4:this.drawBackHair2(this.coordinates.hair.back.bunch,this.coordinates.hair.back.length)}}_selectFrontHair(){switch(this.coordinates.hair.front.type){case 2:this.drawFrontHairStandard(this.coordinates.hair.front.bunch,this.coordinates.hair.front.length);break;case 5:this.drawFrontPrincessCut(this.coordinates.hair.front.bunch,this.coordinates.hair.front.length)}}_selectSideHair(){switch(this.coordinates.hair.side.type){case 0:this.drawSideHairStandard(this.coordinates.hair.side,this.side_hair_arrays,this.temple_left,this.forehead_right)}}generateCoordinateY(t,i,e){let s=Math.abs(i.x-t.x);return e*Math.abs(i.y-t.y)/s}generateCoordinateX(t,i,e){let s=Math.abs(i.x-t.x),h=Math.abs(i.y-t.y),r=Math.floor(e/(h/s)*100)/100;return t.x>i.x?-r:r}_initializeSideHairArray(){this.side_hair_roots=[],this.side_hair_tips=[],this.side_hair_cp1=[],this.side_hair_cp2=[]}_generateSideburnsLeftCoordinates(t,i,e){this._initializeSideHairArray();for(let s=0;s<=i;s++)this.side_hair_roots[s]={x:this.temple_left.x+s*e,y:this.temple_left.y+this.generateSideburnsCoordinateLeft(s*e)},this.side_hair_tips[s]={x:this.temple_left.x+s*e+rand(-30,10),y:this.temple_left.y+rand(0,20)+t},this.side_hair_cp1[s]={x:this.temple_left.x+s*e/2+rand(-5,5),y:this.side_hair_roots[s].y+this.sp(this.side_hair_roots[s].y,this.side_hair_tips[s].y,1/3)},this.side_hair_cp2[s]={x:this.temple_left.x+s*e/2+rand(-1,1),y:this.side_hair_roots[s].y+this.sp(this.side_hair_roots[s].y,this.side_hair_tips[s].y,2/3)}}drawTwinTails(){this.coordinates.hair.twin_tail.flag&&(this._generateTwinTailCoordinates(),this.drawTwinTailFromRootsToTerminals(),this.drawTwinTailFromTerminalsToTips(),this._generateTwinTailCoordinates(LEFT),this.drawTwinTailFromRootsToTerminals(),this.drawTwinTailFromTerminalsToTips())}_generateTwinTailCoordinates(t=RIGHT){this._generateTwinTailRoots(),this._generateTwinTailTerminals(t),this._generateTwinTailTips(t),this._generateTwinTailTipCp(t)}drawTwinTailFromTerminalsToTips(){this._config(this.hair_color,this.hair_stroke_color,1,1);for(let t=0;t<=this.coordinates.hair.twin_tail.bunch;t++)t+1<=this.coordinates.hair.twin_tail.bunch&&(this.con.beginPath(),this.drawCurve2(this.twin_tail_arrays.terminals[t],this.twin_tail_arrays.tips[t],this.twin_tail_arrays.cp3sub[t],this.twin_tail_arrays.cp4sub[t],!0),this.drawCurve2(this.twin_tail_arrays.tips[t],this.twin_tail_arrays.terminals[t+1],this.twin_tail_arrays.cp4[t],this.twin_tail_arrays.cp3[t]),this.con.fill(),this.con.stroke(),this.con.closePath())}drawTwinTailFromRootsToTerminals(){this.con.beginPath(),this._config(this.hair_color,this.hair_stroke_color,1,1),this.moveTo(this.twin_tail_arrays.roots[0]);for(let t=0;t<=this.coordinates.hair.twin_tail.bunch;t++)t+1<=this.coordinates.hair.twin_tail.bunch&&(this.drawCurve2(this.twin_tail_arrays.roots[t],this.twin_tail_arrays.terminals[t],this.twin_tail_arrays.cp1[t],this.twin_tail_arrays.cp2[t]),this.lineTo(this.twin_tail_arrays.terminals[t+1]),this.drawCurve2(this.twin_tail_arrays.terminals[t+1],this.twin_tail_arrays.roots[t+1],this.twin_tail_arrays.cp2[t+1],this.twin_tail_arrays.cp1[t+1]),this.con.fill(),this.con.stroke())}_generateTwinTailTips(t=RIGHT){let i,e=this.coordinates.hair.twin_tail.tip_span;i=t===RIGHT?this.twin_terminal_right:this.twin_terminal_left;for(let s=0;s<=this.coordinates.hair.twin_tail.bunch;s++)this.twin_tail_arrays.tips[s]={x:i.x+s*e*t+40*t+rand(-10,10),y:i.y+this.coordinates.hair.twin_tail.length+100+rand(0,5)};this.twin_tail_arrays.tips.reverse()}_generateTwinTailTipCp(t=RIGHT){for(let i=0;i<=this.coordinates.hair.twin_tail.bunch;i++)this.twin_tail_arrays.cp3[i]={x:this.twin_tail_arrays.terminals[i].x+t*this.coordinates.hair.twin_tail.cp3.x+t*this.sp(this.twin_tail_arrays.terminals[i].x,this.twin_tail_arrays.tips[i].x,1),y:this.twin_tail_arrays.terminals[i].y+this.coordinates.hair.twin_tail.cp3.y},this.twin_tail_arrays.cp3sub[i]={x:this.twin_tail_arrays.cp3[i].x+t*this.coordinates.hair.twin_tail.cp3.x+t*this.coordinates.hair.twin_tail.width,y:this.twin_tail_arrays.cp3[i].y+this.coordinates.hair.twin_tail.cp3.y},this.twin_tail_arrays.cp4[i]={x:this.twin_tail_arrays.tips[i].x+t*this.coordinates.hair.twin_tail.cp4.x,y:this.twin_tail_arrays.terminals[i].y+this.coordinates.hair.twin_tail.cp4.y+this.sp(this.twin_tail_arrays.terminals[i].y,this.twin_tail_arrays.tips[i].y,.5)},this.twin_tail_arrays.cp4sub[i]={x:this.twin_tail_arrays.cp4[i].x+t*this.coordinates.hair.twin_tail.width+t*this.coordinates.hair.twin_tail.cp4.x,y:this.twin_tail_arrays.cp4[i].y+this.coordinates.hair.twin_tail.cp4.y}}_generateTwinTailTerminals(t=RIGHT){let i,e,s;t===RIGHT?(e={x:(i=this.twin_terminal_right).x+this._getTwinTerminalX(this._getTwinTerminalLean(t),-10),y:i.y-10},s={x:i.x+this._getTwinTerminalX(this._getTwinTerminalLean(t),10),y:i.y+10}):(e={x:(i=this.twin_terminal_left).x-this._getTwinTerminalX(this._getTwinTerminalLean(t),-10),y:i.y-10},s={x:i.x-this._getTwinTerminalX(this._getTwinTerminalLean(t),10),y:i.y+10});let h=40/this.coordinates.hair.twin_tail.bunch;for(let i=0;i<=this.coordinates.hair.twin_tail.bunch;i++)this.twin_tail_arrays.terminals[i]={x:e.x+t*this._getTwinTerminalX(this._getTwinTerminalLean(t),h*i),y:e.y+h*i},this.twin_tail_arrays.cp1[i]={x:this.twin_tail_arrays.roots[i].x+t*this.sp(this.twin_tail_arrays.roots[i].x,this.twin_tail_arrays.terminals[i].x,.5),y:this.twin_tail_arrays.roots[i].y},i<this.coordinates.hair.twin_tail.bunch/2?this.twin_tail_arrays.cp2[i]={x:this.twin_tail_arrays.terminals[i].x,y:this.twin_tail_arrays.roots[i].y+this.sp(this.twin_tail_arrays.roots[i].y,this.twin_tail_arrays.terminals[i].y,.5)}:this.twin_tail_arrays.cp2[i]={x:this.twin_tail_arrays.terminals[i].x,y:this.twin_tail_arrays.roots[i].y-this.sp(this.twin_tail_arrays.roots[i].y,this.twin_tail_arrays.terminals[i].y,.5)}}_getTwinTerminalLean(t=RIGHT){let i,e=this.top_of_head;i=t===RIGHT?this.twin_terminal_right:this.twin_terminal_left;let s={y:this.top_of_head.y},h=Math.sqrt((i.x-e.x)*(i.x-e.x)+(i.y-e.y)*(i.y-e.y)),r=(180-this.getAngleFrom3coordinates(this.top_of_head,t===RIGHT?this.twin_terminal_right:this.twin_terminal_left,this.nape))/2,a=180-r-(90-this.getAngleFrom3coordinates(t===RIGHT?this.twin_terminal_right:this.twin_terminal_left,this.top_of_head,this.nape)),_=Math.sin(this.getRad(r))*h/Math.sin(this.getRad(a));return s.x=t===RIGHT?e.x+_:e.x-_,(s.y-i.y)/(s.x-i.x)*t}_getTwinTerminalY(t,i){return i*t}_getTwinTerminalX(t,i){return i/t}getAngleFrom3coordinates(t,i,e){let s=t.x-i.x,h=t.y-i.y,r=e.x-i.x,a=e.y-i.y,_=s*r+h*a,o=s*s+h*h,n=r*r+a*a;return 180*Math.acos(_/Math.sqrt(o*n))/Math.PI}getRad(t){return t*(Math.PI/180)}_generateTwinTailRoots(){let t=(this.nape.y-this.top_of_head.y)/this.coordinates.hair.twin_tail.bunch;for(let i=0;i<=this.coordinates.hair.twin_tail.bunch;i++)this.twin_tail_arrays.roots[i]={x:this.center.x,y:this.top_of_head.y+i*t}}_drawSideburnsLeft(t){this.con.beginPath(),this.con.moveTo(this.side_hair_roots[0].x,this.side_hair_roots[0].y),this._config(this.hair_color,this.hair_stroke_color);for(let i=0;i<t;i++)this.drawCurve2(this.side_hair_roots[i],this.side_hair_tips[i],this.side_hair_cp1[i],this.side_hair_cp2[i]),i+1<t?this.drawCurve2(this.side_hair_tips[i+1],this.side_hair_roots[i+1],this.side_hair_cp2[i],this.side_hair_cp1[i+1]):this.drawCurve2(this.side_hair_tips[this.side_hair_tips.length-1],this.forehead_left,this.side_hair_cp2[this.side_hair_tips.length-1],this.side_hair_cp1[this.side_hair_tips.length-1]),this.con.stroke();this.con.fill()}_drawSideburnsRight(t){this.con.beginPath(),this.con.moveTo(this.side_hair_roots[0].x,this.side_hair_roots[0].y);for(let i=0;i<t;i++)this.drawCurve2(this.side_hair_roots[i],this.side_hair_tips[i],this.side_hair_cp1[i],this.side_hair_cp2[i]),this._config(this.hair_color,"#000"),i+1<t?this.drawCurve2(this.side_hair_tips[i+1],this.side_hair_roots[i+1],this.side_hair_cp2[i],this.side_hair_cp1[i+1]):this.drawCurve2(this.side_hair_tips[this.side_hair_tips.length-1],this.cheek_end[0],this.side_hair_cp2[this.side_hair_tips.length-1],this.side_hair_cp1[this.side_hair_tips.length-1])}_generateSideburnsRightCoordinates(t,i,e){this._initializeSideHairArray();for(let s=0;s<=i;s++)this.side_hair_roots[s]={x:this.forehead_right.x+s*e,y:this.forehead_right.y+this.generateSideburnsCoordinateRight(s*e)},this.side_hair_tips[s]={x:this.forehead_right.x+s*e+rand(-30,10),y:this.cheek_end[0].y+rand(10,20)+t},this.side_hair_cp1[s]={x:this.forehead_right.x+s*e/2+rand(0,10),y:this.side_hair_roots[s].y+this.sp(this.side_hair_roots[s].y,this.side_hair_tips[s].y,1/3)},this.side_hair_cp2[s]={x:this.forehead_right.x+s*e/2+rand(-10,10),y:this.side_hair_roots[s].y+this.sp(this.side_hair_roots[s].y,this.side_hair_tips[s].y,2/3)}}_generateSideHairStandardLeftCoordinates(t,i,e){this._initializeSideHairArray();for(let s=0;s<=i;s++)this.side_hair_roots[s]={x:this.temple_left.x+s*e,y:this.temple_left.y+this.generateSideburnsCoordinateLeft(s*e)},this.side_hair_tips[s]={x:this.temple_left.x+s*e+e/2+rand(-30,0),y:this.temple_left.y+rand(0,20)+t},this.side_hair_cp1[s]={x:this.side_hair_tips[s].x+rand(-1,1),y:this.top_of_head.y},this.side_hair_cp2[s]={x:this.side_hair_tips[s].x+rand(-1,1),y:this.top_of_head.y+100}}_generateSideHairStandardRightCoordinates(t,i,e){this._initializeSideHairArray();for(let s=0;s<=i;s++)this.side_hair_roots[s]={x:this.forehead_right.x+s*e,y:this.forehead_right.y+this.generateSideburnsCoordinateRight(s*e)},this.side_hair_tips[s]={x:this.forehead_right.x+s*e+e/2+rand(-30,10),y:this.temple_right.y+rand(0,20)+t},this.side_hair_cp1[s]={x:this.side_hair_roots[s].x+rand(-10,10),y:this.top_of_head.y},this.side_hair_cp2[s]={x:this.side_hair_roots[s].x+rand(-10,10),y:this.top_of_head.y+100}}_drawSideHairStandardLeft2(t,i){this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y),this._config(this.hair_color,this.hair_stroke_color);for(let e=0;e<t;e++)this.drawCurve2(this.top_of_head,i.tips[e],i.cp1[e],i.cp2[e]),e+1<t?this.drawCurve2(i.tips[e+1],this.top_of_head,i.cp2[e],i.cp1[e+1]):this.drawCurve2(i.tips[i.tips.length-1],this.top_of_head,i.cp2[i.tips.length-1],i.cp1[i.tips.length-1]),this.con.stroke();this.con.fill()}_drawSideHairStandardRight(t,i){this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y),this._config(this.hair_color,this.hair_stroke_color);for(let e=0;e<t;e++)this.drawCurve2(this.top_of_head,i.tips[e],i.cp1[e],i.cp2[e]),e+1<t?this.drawCurve2(i.tips[e+1],this.top_of_head,i.cp2[e],i.cp1[e+1]):this.drawCurve2(i.tips[i.tips.length-1],this.top_of_head,i.cp2[i.tips.length-1],i.cp1[i.tips.length-1]),this.con.stroke();this.con.fill()}_generateHairCoordinates2(t,i,e,s,h,r,a,_,o){this._initHairArrays(t);let n=rand(-10,10);for(let c=0;c<=s;c++)t.roots[c]={x:i.x+c*h,y:i.y},t.tips[c]={x:i.x+r+c*a+rand(-30,0),y:this.top_of_head.y+rand(10,20)+e},c<s/2?(t.cp1[c]={x:t.roots[c].x+n-_.x,y:this.top_of_head.y+_.y},t.cp2[c]={x:t.roots[c].x+n-o.x,y:this.top_of_head.y+100+o.y}):(t.cp1[c]={x:t.roots[c].x+n+_.x,y:this.top_of_head.y+_.y},t.cp2[c]={x:t.roots[c].x+n+o.x,y:this.top_of_head.y+100+o.y})}_generateHairCoordinates(t,i,e,s,h){this._initHairArrays(t);for(let r=0;r<=s;r++)t.roots[r]={x:i.x+r*h,y:i.y},t.tips[r]={x:i.x+r*h+h/2+rand(-60,10),y:i.y+rand(10,20)+e},t.cp1[r]={x:t.roots[r].x+rand(-10,10),y:this.top_of_head.y},t.cp2[r]={x:t.roots[r].x+rand(-10,10),y:this.top_of_head.y+100}}_generateSideHairCoordinates(t,i,e,s,h,r){this._initHairArrays(t);for(let a=0;a<=s;a++)t.roots[a]={x:i.x+a*h+this.coordinates.hair.side.start.x*r,y:i.y},t.tips[a]={x:i.x+a*h+h/2+rand(-60,10)+this.coordinates.hair.side.start.x*r,y:i.y+rand(10,20)+e},t.cp1[a]={x:t.roots[a].x+this.coordinates.hair.side.cp1.x*r+rand(-10,10),y:this.top_of_head.y+this.coordinates.hair.side.cp1.y},t.cp2[a]={x:t.roots[a].x+this.coordinates.hair.side.cp2.x*r+rand(-10,10),y:this.top_of_head.y+100+this.coordinates.hair.side.cp2.y}}drawSideburns(t){let i=Math.floor(Math.abs(this.temple_left.x-this.forehead_left.x)/t.left.bunch),e=Math.floor(Math.abs(this.temple_left.x-this.forehead_left.x)/t.right.bunch);for(let s=0;s<4;s++)this._generateSideburnsLeftCoordinates(t.left.length,t.left.bunch,i),this._drawSideburnsLeft(t.left.bunch),this._generateSideburnsRightCoordinates(t.right.length,t.right.bunch,e),this._drawSideburnsRight(t.right.bunch),this.con.stroke(),this.con.fill()}drawSideHairStandard(t,i,e,s){let h=Math.floor(Math.abs(this.temple_left.x-this.forehead_left.x+this.coordinates.hair.side.left.width)/t.left.bunch),r=Math.floor(Math.abs(this.temple_left.x-this.forehead_left.x+this.coordinates.hair.side.right.width)/t.right.bunch);for(let a=0;a<1;a++)this._generateSideHairCoordinates(i,e,t.left.length,t.left.bunch,h,LEFT),this._drawSideHairStandardLeft2(t.left.bunch,i),this._generateSideHairCoordinates(i,s,t.right.length,t.right.bunch,r,RIGHT),this._drawSideHairStandardRight(t.right.bunch,i),this.con.stroke(),this.con.fill()}drawBackHairStandard(t,i){let e=Math.floor((this.temple_right.x-this.temple_left.x)/t);for(let s=0;s<=1;s++){this._generateHairCoordinates2(this.back_hair_arrays,this.temple_left,i,t,e,this.coordinates.hair.back.tips,this.coordinates.hair.back.tip_span,this.coordinates.hair.back.cp1,this.coordinates.hair.back.cp2),this._drawStandardHair(this.back_hair_arrays,t,this.hair_color)}}drawFrontHairStandard(t,i){let e=Math.floor((this.temple_right.x-this.temple_left.x)/t);for(let s=0;s<=1;s++){this._generateHairCoordinates2(this.front_hair_arrays,this.temple_left,i,t,e,this.coordinates.hair.front.tips,this.coordinates.hair.front.tip_span,this.coordinates.hair.front.cp1,this.coordinates.hair.front.cp2),this._drawStandardHair(this.front_hair_arrays,t,this.hair_color,!0)}}_drawStandardHair(t,i,e,s=!1,h=this.hair_stroke_color,r=1){s&&(this.con.save(),this.con.scale(1,1.05),this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y),this._drawStandardHairSub(i,t,!0),this.con.restore(),this._config("#000","#000",.3),this.con.fill()),this._config(e,h,r),this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y),this._drawStandardHairSub(i,t),this.con.globalAlpha=1}_drawStandardHairSub(t,i,e=!1){for(let s=0;s<t;s++)this.drawCurve2(this.top_of_head,i.tips[s],i.cp1[s],i.cp2[s]),s+1<t?this.drawCurve2(i.tips[s+1],this.top_of_head,i.cp2[s+1],i.cp1[s+1]):this.drawCurve2(i.tips[i.tips.length-1],this.top_of_head,i.cp2[i.tips.length-1],i.cp1[i.tips.length-1]),!1===e&&(this.con.stroke(),this.con.fill())}drawFrontPrincessCut(t,i){this._initFrontHairArrays();let e=0,s=Math.floor((this.temple_right.x-this.temple_left.x)/t);for(let h=0;h<=1;h++){for(let h=0;h<=t;h++){let r=rand(-6,6);h<t/2?e+=2:h===Math.floor(t/2)||(e-=2),0===h?(this.front_hair_roots[h]={x:this.temple_left.x+h*s,y:this.temple_right.y},this.front_hair_tips[h]={x:this.temple_left.x+h*this.coordinates.hair.front.tip_span+this.coordinates.hair.front.tips+rand(-10,10),y:this.top_of_head.y+i+e}):h===t?(this.front_hair_roots[h]={x:this.temple_right.x,y:this.temple_right.y},this.front_hair_tips[h]={x:this.temple_left.x+h*this.coordinates.hair.front.tip_span+this.coordinates.hair.front.tips+rand(-10,10),y:this.top_of_head.y+i+e}):(this.front_hair_roots[h]={x:this.temple_left.x+h*s,y:this.temple_right.y+rand(0,20)},this.front_hair_tips[h]={x:this.temple_left.x+h*this.coordinates.hair.front.tip_span+this.coordinates.hair.front.tips+rand(-10,10),y:this.top_of_head.y+i+e}),this.front_hair_cp1[h]={x:this.temple_left.x+h*s+r,y:this.top_of_head.y},this.front_hair_cp2[h]={x:this.temple_left.x+h*s+r,y:this.top_of_head.y+100}}this.con.save(),this.con.translate(3,0),this.con.scale(1,1.05),this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y);for(let i=0;i<t;i++)this.drawCurve2(this.top_of_head,this.front_hair_tips[i],this.front_hair_cp1[i],this.front_hair_cp2[i]),i+1<t?(this.con.lineTo(this.front_hair_tips[i+1].x-10,this.front_hair_tips[i+1].y),this.drawCurve2(this.front_hair_tips[i+1],this.top_of_head,this.front_hair_cp2[i+1],this.front_hair_cp1[i+1])):(this.con.lineTo(this.front_hair_tips[this.front_hair_tips.length-1].x-10,this.front_hair_tips[this.front_hair_tips.length-1].y),this.drawCurve2(this.front_hair_tips[this.front_hair_tips.length-1],this.top_of_head,this.front_hair_cp2[this.front_hair_tips.length-1],this.front_hair_cp1[this.front_hair_tips.length-1]));this.con.restore(),this._config("#000","#000",.4),this.con.fill(),this._config(this.hair_color,"#000"),this.con.beginPath(),this.con.moveTo(this.top_of_head.x,this.top_of_head.y);for(let i=0;i<t;i++)this.drawCurve2(this.top_of_head,this.front_hair_tips[i],this.front_hair_cp1[i],this.front_hair_cp2[i]),i+1<t?(this.con.lineTo(this.front_hair_tips[i+1].x-10,this.front_hair_tips[i+1].y),this.drawCurve2(this.front_hair_tips[i+1],this.top_of_head,this.front_hair_cp2[i+1],this.front_hair_cp1[i+1])):(this.con.lineTo(this.front_hair_tips[this.front_hair_tips.length-1].x-10,this.front_hair_tips[this.front_hair_tips.length-1].y),this.drawCurve2(this.front_hair_tips[this.front_hair_tips.length-1],this.top_of_head,this.front_hair_cp2[this.front_hair_tips.length-1],this.front_hair_cp1[this.front_hair_tips.length-1])),this.con.stroke();this.con.fill()}this.con.globalAlpha=1}generateSideburnsCoordinateRight(t){return Math.floor(t*(this.forehead_right.y-this.cheek_end[0].y)/(this.forehead_right.x-this.cheek_end[0].x))}generateSideburnsCoordinateLeft(t){return Math.floor(t*(this.forehead_left.y-this.cheek_end[1].y)/(this.forehead_left.x-this.cheek_end[1].x))}drawSkinHead(){this._config(this.hair_color,this.hair_color,1,1),this.con.beginPath(),this.drawCurve2(this.temple_right,this.temple_left,this.head_cp1,this.head_cp2,!0),this.lineTo(this.forehead_left),this.drawCurve(this.forehead_left,this.forehead_right,this.top_of_head),this.lineTo(this.temple_right),this.con.fill()}drawWhiteEyes(){for(let t=0;t<2;t++)this._config("#fff","#000"),this.con.beginPath(),this.drawCurve2(this.eye_end[t],this.eye_head[t],this.lower_eyeline_cp2[t],this.upper_eyeline_cp1[t],!0),this.drawCurve(this.eye_head[t],this.eyelid_bottom[t],this.eyelid_bottom_cp1[t]),this.drawCurve(this.eyelid_bottom[t],this.eye_end[t],this.eyelid_bottom_cp3[t]),this.con.fill()}drawLowerEyelid(){this._config(this.skin_color,"#ff0"),this.con.beginPath(),this.moveTo(this.upper_eyeline_end[1]),this.lineTo(this.eye_end[1]),this.drawCurve(this.eye_end[1],this.eyelid_bottom[1],this.eyelid_bottom_cp3[1]),this.drawCurve(this.eyelid_bottom[1],this.eye_head[1],this.eyelid_bottom_cp1[1]),this.lineTo(this.eye_head[0]),this.drawCurve(this.eye_head[0],this.eyelid_bottom[0],this.eyelid_bottom_cp1[0]),this.drawCurve(this.eyelid_bottom[0],this.eye_end[0],this.eyelid_bottom_cp3[0]),this.lineTo(this.upper_eyeline_end[0]),this.lineTo(this.temple_right),this.drawCurve2(this.temple_right,this.chin_end,this.cheek_cp2[0],this.cheek_cp1[0]),this.drawCurve2(this.chin_end,this.chin_start,this.chin_cp2,this.chin_cp1),this.drawCurve2(this.chin_start,this.temple_left,this.cheek_cp1[1],this.cheek_cp2[1]),this.lineTo(this.upper_eyeline_end[1]),this.con.fill()}drawEyelashes(t=3){Math.floor(Math.abs(this.eyelash_end[0].x-this.eye_head[0].x)/10),Math.floor(Math.abs(this.eyelash_end[0].x-this.eyelash_cp[0].x));for(let t=0;t<2;t++)this._config(this.hair_color,"#f00"),this.con.beginPath(),this.drawCurve2(this.eyelash_start[t],this.eyelash_end[t],this.eyelash_cp1[t],this.eyelash_cp2[t],!0),this.drawCurve(this.eyelash_end[t],this.upper_eyeline_end2[t],this.eyelash_cp[t]),this.con.closePath(),this.con.fill()}drawEyeblow(){for(let t=0;t<2;t++)this._config(this.hair_color,"#555"),this.con.beginPath(),this.drawCurve2(this.eyeblow_start[t],this.eyeblow_end[t],this.eyeblow_upper_cp1[t],this.eyeblow_upper_cp2[t],!0),this.drawCurve2(this.eyeblow_end[t],this.eyeblow_start[t],this.eyeblow_lower_cp2[t],this.eyeblow_lower_cp1[t]),this.con.fill(),this.con.stroke()}drawEyeline2(){for(let t=0;t<2;t++)this._config("#888","#888"),this.con.beginPath(),this.drawCurve2(this.upper_eyeline_start2[t],this.upper_eyeline_end2[t],this.eyeline2_cp1[t],this.eyeline2_cp2[t],!0),this.drawCurve2(this.upper_eyeline_end2[t],this.upper_eyeline_start2[t],this.eyeline2_cp4[t],this.eyeline2_cp3[t],!1),this.con.stroke(),this.con.fill()}drawEyelid(){this._config(this.skin_color,"#000"),this.con.beginPath(),this.drawCurve2(this.upper_eyeline_end[1],this.eye_head[1],this.upper_eyeline_cp2[1],this.upper_eyeline_cp1[1],!0),this.lineTo(this.eye_head[0]),this.drawCurve2(this.eye_head[0],this.upper_eyeline_end[0],this.upper_eyeline_cp1[0],this.upper_eyeline_cp2[0]),this.lineTo(this.temple_right),this.drawCurve2(this.cheek_end[0],this.cheek_end[1],this.head_cp1,this.head_cp2),this.lineTo(this.upper_eyeline_end[1]),this.con.fill()}drawEyes(){this._drawIris(),this._drawEyeline()}_drawIris(){let t,i=rand(-1,1),e=this.coordinates.eye.scale;for(let s=0;s<2;s++)t=0===s?1:-1,this._config(this.iris_color,"#000",.9,4),this.con.save(),this.con.translate(0,-(this.center.y*e-this.center.y)),this.con.scale(1,e),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+this.coordinates.eye.move.x,this.center.y+this.coordinates.eye.position.y+this.coordinates.eye.move.y,this.coordinates.eye.size,2*Math.PI,!1),this.con.restore(),this.con.fill(),this.con.stroke(),this.con.save(),this.con.translate(0,-(this.center.y*e-this.center.y)),this.con.scale(1,e),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+this.coordinates.eye.move.x,this.center.y+this.coordinates.eye.position.y+this.coordinates.eye.move.y,10+(this.coordinates.eye.pupil.size>this.coordinates.eye.size?this.coordinates.eye.size:this.coordinates.eye.pupil.size),2*Math.PI,!1),this.con.restore(),this._config("#fff","#fff",.2),this._setBlur("#fff",0,0,10),this.con.fill(),this._resetBlur(),this.con.save(),this.con.translate(0,-(this.center.y*e-this.center.y)),this.con.scale(1,e),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+this.coordinates.eye.move.x,this.center.y+this.coordinates.eye.position.y+14+this.coordinates.eye.move.y,20,2*Math.PI,!1),this.con.restore(),this._config("#fff","#fff",.4),this._setBlur("#fff",0,0,10),this.con.fill(),this._resetBlur(),this._config(this.pupil_color,"#000",1),this.con.save(),this.con.translate(0,-(this.center.y*e-this.center.y)),this.con.scale(1,e),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+1.5*this.coordinates.eye.move.x,this.center.y+this.coordinates.eye.position.y+this.coordinates.eye.move.y,7+(this.coordinates.eye.pupil.size>this.coordinates.eye.size?this.coordinates.eye.size:this.coordinates.eye.pupil.size),2*Math.PI,!1),this.con.restore(),this.con.fill(),this._config("#fff","#fff"),this.con.save(),this.con.translate(0,-(1.5*this.center.y-this.center.y)),this.con.scale(1,1.5),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+1.5*this.coordinates.eye.move.x+10+i,this.center.y-10,5,2*Math.PI,!1),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+1.5*this.coordinates.eye.move.x+2+i,this.center.y-5,2,2*Math.PI,!1),this.con.restore(),this.con.fill(),this._config("#fff","#fff",1),this.con.save(),this.con.translate(0,-(1.5*this.center.y-this.center.y)),this.con.scale(1,1.5),this.con.beginPath(),this.con.arc(this.eye_head[s].x+this.coordinates.eye.position.x*t+1.5*this.coordinates.eye.move.x-24+i,this.center.y-2,6,2*Math.PI,!1),this.con.restore(),this._setBlur("#fff",0,0,10),this.con.fill(),this.con.globalAlpha=1,this._resetBlur()}_drawEyeline(){this.drawEyeShadow();for(let t=0;t<2;t++)this._config("#000","#000"),this.con.beginPath(),this.drawCurve2(this.eye_head[t],this.upper_eyeline_end[t],this.upper_eyeline_cp1[t],this.upper_eyeline_cp2[t],!0),this.con.lineTo(this.eye_end[t].x,this.eye_end[t].y),this.drawCurve2(this.eye_end[t],this.eye_head[t],this.lower_eyeline_cp2[t],this.lower_eyeline_cp1[t]),this.con.stroke(),this.con.fill()}drawEyeShadow(){for(let t=0;t<2;t++)this.con.beginPath(),this.drawCurve2(this.eye_head[t],this.upper_eyeline_end[t],this.upper_eyeline_cp1[t],this.upper_eyeline_cp2[t],!0),this.con.lineTo(this.eye_shadow_end[t].x,this.eye_shadow_end[t].y),this.drawCurve2(this.eye_shadow_end[t],this.eye_shadow_start[t],this.eye_shadow_cp2[t],this.eye_shadow_cp1[t]),this._config("#000","#f00",.3),this.con.fill(),this.con.globalAlpha=1}drawOutsideBackHair(t,i){let e=Math.abs(this.temple_left.x-this.outside_back_hair_left.x)/t;for(let s=0;s<1;s++){this._initOutsideBackHairArrays();for(let s=0;s<=t;s++)this.outside_back_hair_roots[s]={x:this.outside_back_hair_left.x+s*e,y:this.outside_back_hair_left.y},this.outside_back_hair_tips[s]={x:this.outside_back_hair_left.x+s*e+rand(-20,0),y:this.outside_back_hair_left.y+rand(0,20)+i},this.outside_back_hair_cp1[s]={x:this.outside_back_hair_left.x+s*e/2+rand(-5,5),y:this.outside_back_hair_roots[s].y+this.sp(this.outside_back_hair_roots[s].y,this.outside_back_hair_tips[s].y,1/3)},this.outside_back_hair_cp2[s]={x:this.outside_back_hair_left.x+s*e/2+rand(-1,1),y:this.outside_back_hair_roots[s].y+this.sp(this.outside_back_hair_roots[s].y,this.outside_back_hair_tips[s].y,2/3)};this._config(this.hair_color,"#000"),this.con.beginPath(),this.moveTo(this.outside_back_hair_roots[0]);for(let i=0;i<t;i++)this.drawCurve2(this.outside_back_hair_roots[i],this.outside_back_hair_tips[i],this.outside_back_hair_cp1[i],this.outside_back_hair_cp2[i]),i+1<t?this.drawCurve2(this.outside_back_hair_tips[i+1],this.outside_back_hair_roots[i+1],this.outside_back_hair_cp2[i],this.outside_back_hair_cp1[i+1]):this.drawCurve2(this.outside_back_hair_tips[this.outside_back_hair_tips.length-1],this.temple_left,this.outside_back_hair_cp2[this.outside_back_hair_tips.length-1],this.outside_back_hair_cp1[this.outside_back_hair_tips.length-1]);this._initOutsideBackHairArrays();for(let s=0;s<=t;s++)this.outside_back_hair_roots[s]={x:this.temple_right.x+s*e,y:this.temple_right.y},this.outside_back_hair_tips[s]={x:this.temple_right.x+s*e+rand(-20,0),y:this.temple_right.y+rand(10,20)+i},this.outside_back_hair_cp1[s]={x:this.temple_right.x+s*e/2+rand(0,10),y:this.outside_back_hair_roots[s].y+this.sp(this.outside_back_hair_roots[s].y,this.outside_back_hair_tips[s].y,1/3)},this.outside_back_hair_cp2[s]={x:this.temple_right.x+s*e/2+rand(-10,10),y:this.outside_back_hair_roots[s].y+this.sp(this.outside_back_hair_roots[s].y,this.outside_back_hair_tips[s].y,2/3)};this.lineTo(this.outside_back_hair_roots[0]);for(let i=0;i<t;i++)this.drawCurve2(this.outside_back_hair_roots[i],this.outside_back_hair_tips[i],this.outside_back_hair_cp1[i],this.outside_back_hair_cp2[i]),i+1<t?this.drawCurve2(this.outside_back_hair_tips[i+1],this.outside_back_hair_roots[i+1],this.outside_back_hair_cp2[i],this.outside_back_hair_cp1[i+1]):this.drawCurve2(this.outside_back_hair_tips[this.outside_back_hair_tips.length-1],this.outside_back_hair_right,this.outside_back_hair_cp2[this.outside_back_hair_tips.length-1],this.outside_back_hair_cp1[this.outside_back_hair_tips.length-1]);this.drawCurve2(this.outside_back_hair_right,this.outside_back_hair_left,this.outside_back_head_cp1,this.outside_back_head_cp2),this._config(this.hair_color,"#000"),this.con.stroke(),this.con.fill()}}drawBackHair(t,i){this._initBackHairArrays();let e=(this.temple_right.x-this.temple_left.x)/t;for(let s=0;s<=2;s++){let s=0;for(let h=0;h<=t;h++){let r=rand(-6,6);h<t/2?s+=5:h===Math.floor(t/2)||(s-=5),0===h?(this.back_hair_roots[h]={x:this.temple_left.x+h*e,y:this.temple_left.y},this.back_hair_tips[h]={x:this.temple_left.x+h*e+rand(-60,1),y:this.top_of_head.y+i+s}):h===t?(this.back_hair_roots[h]={x:this.temple_left.x,y:this.temple_left.y},this.back_hair_tips[h]={x:this.temple_right.x+rand(-60,2),y:this.top_of_head.y+i+s}):(this.back_hair_roots[h]={x:this.temple_left.x+h*e,y:this.temple_left.y+rand(-10,20)},this.back_hair_tips[h]={x:this.temple_left.x+h*e+rand(-10,10),y:this.top_of_head.y+i+s}),this.back_hair_cp1[h]={x:this.temple_left.x+h*e+r,y:this.back_hair_roots[h].y+this.sp(this.back_hair_roots[h].y,this.back_hair_tips[h].y,.25)},this.back_hair_cp2[h]={x:this.temple_left.x+h*e+r,y:this.back_hair_roots[h].y+this.sp(this.back_hair_roots[h].y,this.back_hair_tips[h].y,.5)}}this._config(this.hair_color,this.hair_stroke_color,.4),this.con.beginPath(),this.moveTo(this.back_hair_roots[0]);for(let i=0;i<t;i++)this.drawCurve2(this.back_hair_roots[i],this.back_hair_tips[i],this.back_hair_cp1[i],this.back_hair_cp2[i]),i+1<t?(this.con.lineTo(this.back_hair_tips[i+1].x-10,this.back_hair_tips[i+1].y),this.drawCurve2(this.back_hair_tips[i+1],this.back_hair_roots[i+1],this.back_hair_cp2[i+1],this.back_hair_cp1[i+1])):(this.con.lineTo(this.back_hair_tips[this.back_hair_tips.length-1].x+10,this.back_hair_tips[this.back_hair_tips.length-1].y),this.drawCurve2(this.back_hair_tips[this.back_hair_tips.length-1],this.temple_right,this.back_hair_cp2[this.back_hair_tips.length-1],this.back_hair_cp1[this.back_hair_tips.length-1])),this.con.stroke();this.con.fill(),this.con.fillStyle="#000",this.con.fill()}this.con.globalAlpha=1}drawBackHair2(t,i){this._initBackHairArrays();let e=(this.temple_right.x-this.temple_left.x)/t;for(let s=0;s<=2;s++){let s=0;for(let h=0;h<=t;h++){let r=rand(-6,6);h<t/2?s+=5:h===Math.floor(t/2)||(s-=5),0===h?(this.back_hair_roots[h]={x:this.temple_left.x+h*e,y:this.temple_left.y},this.back_hair_tips[h]={x:this.temple_left.x+h*e+e/2+rand(-60,1),y:this.top_of_head.y+i+s}):h===t?(this.back_hair_roots[h]={x:this.temple_left.x,y:this.temple_left.y},this.back_hair_tips[h]={x:this.temple_right.x+e/2+rand(-60,2),y:this.top_of_head.y+i+s}):(this.back_hair_roots[h]={x:this.temple_left.x+h*e,y:this.temple_left.y+rand(-10,20)},this.back_hair_tips[h]={x:this.temple_left.x+h*e+e/2+rand(-60,10),y:this.top_of_head.y+i+s}),this.back_hair_cp1[h]={x:this.temple_left.x+h*e+r,y:this.back_hair_roots[h].y+this.sp(this.back_hair_roots[h].y,this.back_hair_tips[h].y,.25)},this.back_hair_cp2[h]={x:this.temple_left.x+h*e+r,y:this.back_hair_roots[h].y+this.sp(this.back_hair_roots[h].y,this.back_hair_tips[h].y,.5)}}this._config(this.hair_color,"#000",.4),this.con.beginPath(),this.moveTo(this.back_hair_roots[0]);for(let i=0;i<t;i++)this.drawCurve2(this.back_hair_roots[i],this.back_hair_tips[i],this.back_hair_cp1[i],this.back_hair_cp2[i]),i+1<t?this.drawCurve2(this.back_hair_tips[i+1],this.back_hair_roots[i+1],this.back_hair_cp2[i+1],this.back_hair_cp1[i+1]):this.drawCurve2(this.back_hair_tips[this.back_hair_tips.length-1],this.temple_right,this.back_hair_cp2[this.back_hair_tips.length-1],this.back_hair_cp1[this.back_hair_tips.length-1]),this.con.stroke();this.con.fill(),this.con.fillStyle="#000",this.con.fill()}this.con.globalAlpha=1}drawNeck(){this._config(this.skin_color,"#000"),this.con.beginPath(),this.drawCurve2(this.neck_start[0],this.neck_end[0],this.neck_cp1[0],this.neck_cp2[0],!0),this.lineTo(this.neck_end[1]),this.drawCurve2(this.neck_end[1],this.neck_start[1],this.neck_cp2[1],this.neck_cp1[1]),this.con.fill(),this._config("#000","#000",.1,1),this.con.fill(),this.con.globalAlpha=1,this.con.stroke()}drawNeckShadow(){this._config("#000","#000",1,1),this.con.beginPath(),this.moveTo(this.neck_start[0]),this.lineTo(this.neck_start2[0]),this.drawCurve2(this.neck_start2[0],this.neck_start2[1],this.neck_shadow_cp1,this.neck_shadow_cp2),this.lineTo(this.neck_start[1]),this.con.globalAlpha=.2,this.con.fill(),this.con.globalAlpha=1}drawEar(){for(let t=0;t<2;t++)this._config(this.skin_color,"#000"),this.con.beginPath(),this.drawCurve2(this.ear_start[t],this.earlobe_start[t],this.ear_cp1[t],this.ear_cp2[t],!0),this.drawCurve(this.earlobe_start[t],this.ear_end[t],this.earlobe_cp1[t]),this.con.stroke(),this.con.fill(),this.con.globalAlpha=.2,this.con.beginPath(),this.drawCurve2(this.inner_ear_start[t],this.inner_ear_end[t],this.inner_ear_cp1[t],this.inner_ear_cp2[t],!0),this.con.stroke(),this.con.fillStyle="#000",this.con.beginPath(),this.drawCurve2(this.inner_ear_start[t],this.inner_ear_end[t],this.inner_ear_cp1[t],this.inner_ear_cp2[t],!0),this.lineTo(this.ear_end[t]),this.con.fill(),this.con.globalAlpha=1}drawOutline(){this._config(this.skin_color,"#000",1,3),this.con.beginPath(),this.drawCurve2(this.chin_start,this.chin_end,this.chin_cp1,this.chin_cp2,!0),this.drawCurve2(this.chin_end,this.temple_right,this.cheek_cp1[0],this.cheek_cp2[0],!1),this.drawCurve2(this.temple_right,this.temple_left,this.head_cp1,this.head_cp2),this.drawCurve2(this.temple_left,this.chin_start,this.cheek_cp2[1],this.cheek_cp1[1],!1),this.con.stroke(),this.con.fill()}drawNose(){if(this.coordinates.nose.flag&&(this._config("#000","#222",.8),this.con.beginPath(),this.moveTo(this.nose_top),this.lineTo(this.nose_bottom),this.drawCurve2(this.nose_bottom,this.nose_top,this.nose_cp1,this.nose_cp2),this.con.stroke(),this._config("#000","#000",.3),this.con.fill(),this.con.globalAlpha=1),this.coordinates.nose2.flag)for(let t=0;t<2;t++)this._config("#000","#000",1),this.con.beginPath(),this.drawCurve(this.nose2_start[t],this.nose2_end[t],this.nose2_cp[t],!0),this.con.stroke(),this.con.fill(),this.con.globalAlpha=1}drawMouth(){this._config("#ef857d","#000",1,1),this.con.beginPath(),this.drawUpperLipLine(),this.drawLowerLipLine(),this.con.fill(),this.con.stroke(),this._config("#000","#000",.2,1),this.con.fill()}drawUpperLipLine(){this.drawCurve2(this.mouth_start,this.mouth_end,this.upper_lip_cp1,this.upper_lip_cp2,!0)}drawLowerLipLine(){this.drawCurve2(this.mouth_end,this.mouth_start,this.lower_lip_cp2,this.lower_lip_cp1)}drawLowerLip(){this._config(this.skin_color,"#000",1,1),this.con.beginPath(),this.moveTo(this.mouth_end),this.drawLowerLipLine(),this.lineTo(this.chin_start),this.drawCurve2(this.chin_start,this.chin_end,this.chin_cp1,this.chin_cp2),this.lineTo(this.mouth_end),this.con.fill(),this.fillR(this.chin_end,"green"),this.fillR(this.chin_start,"orange"),this.fillR(this.mouth_end,"orange"),this.fillR(this.mouth_start,"#000")}drawDebug(){this._config("#111","#111"),this.con.font="16px 'ＭＳ　ゴシック'",this.con.fillText("クライアントマウス(X: "+ox+",  Y: "+oy+")",50,50),this.con.fillText("中心マウス(X: "+(ox-this.center.x)+",  Y: "+(oy-this.center.y)+")",50,100)}drawCenter(){this._config("#f00","#f00"),this.con.beginPath(),this.con.moveTo(-10+this.center.x,this.center.y),this.con.lineTo(10+this.center.x,this.center.y),this.con.stroke(),this.con.beginPath(),this.con.moveTo(this.center.x,-10+this.center.y),this.con.lineTo(this.center.x,10+this.center.y),this.con.stroke()}}
+'use strict';
+
+// グローバル変数
+
+const LEFT = -1;
+const RIGHT = 1;
+
+// マウス用の座標
+let px;
+let py;
+let ox;
+let oy;
+
+
+class DrawFace
+{
+	constructor(canvas_id, coordinates)
+	{
+		// キャンバス初期化
+		this.initCanvas(canvas_id, 640, 640)
+
+		// マウスイベント監視開始
+		window.addEventListener('mousemove', this.mouseMove, false);
+
+		// 顔の座標オブジェクトをそのままプロパティに代入
+		this.coordinates = coordinates;
+
+		// 全ての座標を計算
+		this.initAllCoordinates();
+	}// コンストラクタ閉じ括弧
+
+	initCanvas(canvas_id, canvas_width, canvas_height)
+	{
+		this.can = document.getElementById(canvas_id);
+		this.con = this.can.getContext('2d');
+		this.can.width = canvas_width;
+		this.can.height = canvas_height;
+	}
+
+	lineTo(coordinate)
+	{
+		this.con.lineTo(coordinate.x, coordinate.y);
+	}
+	moveTo(coordinate)
+	{
+		this.con.moveTo(coordinate.x, coordinate.y);
+	}
+
+
+	// 配列初期化メソッド
+	_initBackHairArrays()
+	{
+		this.back_hair_roots = [];
+		this.back_hair_tips = [];
+		this.back_hair_cp1 = [];
+		this.back_hair_cp2 = [];
+	}
+	_initOutsideHairArrays()
+	{
+		this.outside_hair_roots = [];
+		this.outside_hair_tips = [];
+		this.outside_hair_cp1 = [];
+		this.outside_hair_cp2 = [];
+	}
+	_initOutsideBackHairArrays()
+	{
+		this.outside_back_hair_roots = [];
+		this.outside_back_hair_tips = [];
+		this.outside_back_hair_cp1 = [];
+		this.outside_back_hair_cp2 = [];
+	}
+
+	// 全座標初期化メソッド
+	initAllCoordinates()
+	{
+		// ポジティブorネガティブ
+		this.pn = 0;
+
+		
+		this.center = { // 中心座標
+			x: this.can.width/2, 
+			y: this.can.height/2 + 40 
+		};
+		this.top_of_head = { // 頭の頂点
+			x: this.center.x, 
+			y: this.center.y -240
+		};
+		this.skin_color = "rgb("
+			+this.coordinates.skin.color.r+", "
+			+this.coordinates.skin.color.g+", "
+			+this.coordinates.skin.color.b+")";
+
+		this.pupil_color = "rgb("
+			+this.coordinates.eye.pupil.color.r+", "
+			+this.coordinates.eye.pupil.color.g+", "
+			+this.coordinates.eye.pupil.color.b+")";
+
+		this.iris_color = "rgb("
+			+this.coordinates.eye.iris.color.r+", "
+			+this.coordinates.eye.iris.color.g+", "
+			+this.coordinates.eye.iris.color.b+")";
+
+		this.hair_color = "rgb("
+			+this.coordinates.hair.color.r+", "
+			+this.coordinates.hair.color.g+", "
+			+this.coordinates.hair.color.b+")";
+		if ( 
+			this.coordinates.hair.color.r < 50 &&
+			this.coordinates.hair.color.g < 50 &&
+			this.coordinates.hair.color.b < 50 )
+		{
+			this.hair_stroke_color = "#ddd";
+		}
+		else
+		{
+			this.hair_stroke_color = "#000";
+		}
+
+		
+
+		this.eye_head = [ // 目頭
+			{ 
+				x: this.center.x + 35 + this.coordinates.eye.eye_head.width, 
+				y: this.center.y + this.coordinates.eye.eye_head.height
+			},
+			{ 
+				x: this.center.x - 35 - this.coordinates.eye.eye_head.width, 
+				y: this.center.y + this.coordinates.eye.eye_head.height
+			},
+		];
+
+		this.upper_eyeline_end = [ // アッパーアイライン
+			{ 
+				x: this.eye_head[0].x + 100 
+					+this.coordinates.eye.upper_eyeline_end.x, 
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
+			},
+			{ 
+				x: this.eye_head[1].x - 100 
+					-this.coordinates.eye.upper_eyeline_end.x, 
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
+			},
+		];
+		/* アッパーアイラインCP1 */
+		this.upper_eyeline_cp1 = [
+			{ 
+				x: this.eye_head[0].x 
+					+this.sp(
+						this.eye_head[0].x , 
+						this.upper_eyeline_end[0].x, 1/3
+					) 
+					+this.coordinates.eye.upper_eyeline_cp1.x, 
+				y: this.center.y -30 
+					+this.coordinates.eye.upper_eyeline_cp1.y 
+					+this.coordinates.eye.upper_eyeline_cp.y
+			},
+			{ 
+				x: this.eye_head[1].x 
+					-this.sp(
+						this.eye_head[1].x , 
+						this.upper_eyeline_end[1].x
+						,1/3) 
+					-this.coordinates.eye.upper_eyeline_cp1.x, 
+				y: this.center.y -30 
+					+this.coordinates.eye.upper_eyeline_cp1.y 
+					+this.coordinates.eye.upper_eyeline_cp.y
+			},
+		];
+		/* アッパーアイラインCP2 */
+		this.upper_eyeline_cp2 = [
+			{ 
+				x: this.eye_head[0].x 
+					+this.sp(this.eye_head[0].x, this.upper_eyeline_end[0].x, 2/3) 
+					+this.coordinates.eye.upper_eyeline_cp2.x, 
+				y: this.center.y -30 
+					+this.coordinates.eye.upper_eyeline_cp2.y 
+					+this.coordinates.eye.upper_eyeline_cp.y
+			},
+			{ 
+				x: this.eye_head[1].x 
+					-this.sp(this.eye_head[1].x, this.upper_eyeline_end[1].x, 2/3) 
+					-this.coordinates.eye.upper_eyeline_cp2.x, 
+				y: this.center.y-30 
+					+this.coordinates.eye.upper_eyeline_cp2.y 
+					+this.coordinates.eye.upper_eyeline_cp.y
+			},
+		];
+		/* ロウワーアイラインCP1 */
+		this.lower_eyeline_cp1 = [
+			{ 
+				x: this.eye_head[0].x 
+					+this.sp(this.eye_head[0].x, this.upper_eyeline_end[0].x, 1/3) 
+					+this.coordinates.eye.lower_eyeline_cp1.x, 
+				y: this.center.y -30
+					-this.coordinates.eye.lower_eyeline_cp1.y, 
+			},
+			{ 
+				x: this.eye_head[1].x 
+					-this.sp(this.eye_head[1].x, this.upper_eyeline_end[1].x, 1/3) 
+					-this.coordinates.eye.lower_eyeline_cp1.x, 
+				y: this.center.y -30
+					-this.coordinates.eye.lower_eyeline_cp1.y, 
+			},
+		];
+		/* ロウワーアイラインCP2 */
+		this.lower_eyeline_cp2 = [
+			{ 
+				x: this.upper_eyeline_end[0].x +10 
+					+this.coordinates.eye.lower_eyeline_cp2.x, 
+				y: this.center.y -25
+					-this.coordinates.eye.lower_eyeline_cp2.y, 
+			},
+			{ 
+				x: this.upper_eyeline_end[1].x -10
+					-this.coordinates.eye.lower_eyeline_cp2.x, 
+				y: this.center.y -25
+					-this.coordinates.eye.lower_eyeline_cp2.y, 
+			},
+		];
+		/* アイライン(目頭) */
+		this.upper_eyeline_start = [
+			{ x: this.eye_head[0].x, y: this.eye_head[0].y},
+			{ x: this.eye_head[1].x, y: this.eye_head[1].y},
+		];
+		/* 目尻 */
+		this.eye_end = [
+			{ 
+				x: this.upper_eyeline_end[0].x - 20 
+					+this.coordinates.eye.eye_end.x,
+				y: this.center.y + 20
+					+this.coordinates.eye.eye_end.y,
+			},
+			{ 
+				x: this.upper_eyeline_end[1].x + 20 
+					-this.coordinates.eye.eye_end.x,
+				y: this.center.y + 20
+					+this.coordinates.eye.eye_end.y,
+			},
+		];
+
+		this.upper_eyeline_start2 = [
+			{
+				x: this.eye_head[0].x, 
+				y: this.eye_head[0].y - 10
+			},
+			{
+				x: this.eye_head[1].x, 
+				y: this.eye_head[1].y - 10
+			},
+		];
+		this.upper_eyeline_end2 = [
+			{ 
+				x: this.upper_eyeline_end[0].x, 
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
+			},
+			{ 
+				x: this.upper_eyeline_end[1].x, 
+				y: this.center.y + this.coordinates.eye.upper_eyeline_end.y,
+			},
+		];
+		/* アイライン2CP1 */
+		this.eyeline2_cp1 = [
+			{ 
+				x: this.upper_eyeline_cp1[0].x
+					+this.coordinates.eyeline_double.both_cp1.x,
+				y: this.upper_eyeline_cp1[0].y -5
+					-this.coordinates.eyeline_double.both_cp1.y,
+			},
+			{ 
+				x: this.upper_eyeline_cp1[1].x
+					-this.coordinates.eyeline_double.both_cp1.x,
+				y: this.upper_eyeline_cp1[1].y -5
+					-this.coordinates.eyeline_double.both_cp1.y,
+			},
+		];
+		/* アイライン2CP2 */
+		this.eyeline2_cp2 = [
+			{ 
+				x: this.upper_eyeline_cp2[0].x 
+					+this.coordinates.eyeline_double.both_cp2.x,
+				y: this.upper_eyeline_cp2[0].y -5
+					-this.coordinates.eyeline_double.both_cp2.y,
+			},
+			{ 
+				x: this.upper_eyeline_cp2[1].x 
+					-this.coordinates.eyeline_double.both_cp2.x,
+				y: this.upper_eyeline_cp2[1].y -5
+					-this.coordinates.eyeline_double.both_cp2.y,
+			},
+		];
+		/* アイライン2CP3 */
+		this.eyeline2_cp3 = [
+			{ 
+				x: this.upper_eyeline_cp1[0].x
+					+this.coordinates.eyeline_double.both_cp1.x,
+				y: this.eyeline2_cp1[0].y -2
+			},
+			{ 
+				x: this.upper_eyeline_cp1[1].x 
+					-this.coordinates.eyeline_double.both_cp1.x,
+				y: this.eyeline2_cp1[1].y -2
+			},
+		];
+		/* アイライン2CP4 */
+		this.eyeline2_cp4 = [
+			{ 
+				x: this.upper_eyeline_cp2[0].x 
+					+this.coordinates.eyeline_double.both_cp2.x,
+				y: this.eyeline2_cp2[0].y -2
+			},
+			{ 
+				x: this.upper_eyeline_cp2[1].x 
+					-this.coordinates.eyeline_double.both_cp2.x,
+				y: this.eyeline2_cp2[1].y -2
+			},
+		];
+
+		/* まつげ */
+		this.eyelash_start = [
+			{
+				x : this.eye_end[0].x, 
+				y: this.eye_end[0].y
+			},
+			{
+				x : this.eye_end[1].x, 
+				y: this.eye_end[1].y
+			},
+		]
+		this.eyelash_end = [
+			{
+				x : this.upper_eyeline_end[0].x + 10, 
+				y: this.upper_eyeline_end[0].y
+			},
+			{
+				x : this.upper_eyeline_end[1].x - 10, 
+				y: this.upper_eyeline_end[1].y
+			},
+		]
+		this.eyelash_cp1 = [
+			{
+				x: this.eyelash_start[0].x 
+					+this.sp(this.eyelash_start[0].x, this.eyelash_end[0].x, 1/2), 
+				y: this.eyelash_end[0].y 
+					+this.sp(this.eyelash_start[0].y, this.eyelash_end[0].y, 1/2) -5
+			},
+			{
+				x: this.eyelash_start[1].x 
+					-this.sp(this.eyelash_start[1].x, this.eyelash_end[1].x, 1/2), 
+				y: this.eyelash_end[1].y 
+					+this.sp(this.eyelash_start[1].y, this.eyelash_end[1].y, 1/2) -5
+			},
+		]
+		this.eyelash_cp2 = [
+			{
+				x: this.eyelash_start[0].x 
+					+this.sp(this.eyelash_start[0].x, this.eyelash_end[0].x, 1/2), 
+				y: this.eyelash_end[0].y 
+					+this.sp(this.eyelash_start[0].y, this.eyelash_end[0].y, 1/2) -5
+			},
+			{
+				x: this.eyelash_start[1].x 
+					-this.sp(this.eyelash_start[1].x, this.eyelash_end[1].x, 1/2), 
+				y: this.eyelash_end[1].y 
+					+this.sp(this.eyelash_start[1].y, this.eyelash_end[1].y, 1/2) -5
+			},
+		]
+		this.eyelash_cp = [
+			{
+				x: this.upper_eyeline_end[0].x -10 , 
+				y: this.eyelash_end[0].y
+			},
+			{
+				x: this.upper_eyeline_end[1].x +10, 
+				y: this.eyelash_end[1].y
+			},
+		];
+
+		this.eyelid_cp1 = [
+			{
+				x: this.upper_eyeline_start[0].x, 
+				y: this.upper_eyeline_start[0].y - 60
+			},
+			{
+				x: this.upper_eyeline_start[1].x, 
+				y: this.upper_eyeline_start[1].y - 60
+			},
+		];
+		this.eyelid_cp2 = [
+			{
+				x: this.upper_eyeline_end[0].x, 
+				y: this.upper_eyeline_end[0].y - 60
+			},
+			{
+				x: this.upper_eyeline_end[1].x, 
+				y: this.upper_eyeline_end[1].y - 60
+			},
+		];
+
+		this.lower_eyelid_start = [
+			{
+				x: this.eye_head[0].x + 10, 
+				y: this.eye_end[0].y
+			},
+			{
+				x: this.eye_head[1].x - 10, 
+				y: this.eye_end[1].y
+			},
+		];
+		this.lower_eyelid_cp1 = [
+			{
+				x: this.lower_eyelid_start[0].x 
+					+this.sp(this.lower_eyelid_start[0].x , this.eye_end[0].x, 1/3), 
+				y: this.eye_end[0].y + 30
+			},
+			{
+				x: this.lower_eyelid_start[1].x 
+					-this.sp(this.lower_eyelid_start[1].x , this.eye_end[1].x, 1/3), 
+				y: this.eye_end[1].y + 30
+			},
+		];
+		this.lower_eyelid_cp2 = [
+			{
+				x: this.lower_eyelid_start[0].x 
+					+this.sp(this.lower_eyelid_start[0].x , this.eye_end[0].x, 2/3), 
+				y: this.eye_end[0].y + 30},
+			{
+				x: this.lower_eyelid_start[1].x 
+					-this.sp(this.lower_eyelid_start[1].x , this.eye_end[1].x, 2/3), 
+				y: this.eye_end[1].y + 30},
+		];
+		this.lower_eyelid_cp3 = [
+			{
+				x: this.eye_head[0].x , 
+				y: this.eye_head[0].y + 80
+			},
+			{
+				x: this.eye_head[1].x , 
+				y: this.eye_head[1].y + 80
+			},
+		];
+		this.lower_eyelid_cp4 = [
+			{
+				x: this.eye_end[0].x , 
+				y: this.eye_end[0].y + 60
+			},
+			{
+				x: this.eye_end[1].x , 
+				y: this.eye_end[1].y + 60
+			},
+		];
+
+		/*************************************************************
+		 * 鼻
+		*************************************************************/
+		this.nose_top = {
+			x: this.center.x, 
+			y: this.center.y +90 + this.coordinates.nose.position.y
+		};
+		this.nose_bottom = {
+			x: this.center.x + this.coordinates.nose.bottom.x, 
+			y: this.nose_top.y + 12 + this.coordinates.nose.bottom.y
+		};
+		this.nose_cp1 = {
+			x: this.nose_top.x + 5  + this.coordinates.nose.cp1.x, 
+			y: this.nose_top.y  + this.coordinates.nose.cp1.y
+				+this.sp(this.nose_top.y , this.nose_bottom.y, 1/2)
+		};
+		this.nose_cp2 = {
+			x: this.nose_top.x + this.coordinates.nose.cp2.x, 
+			y: this.nose_top.y +this.sp(this.nose_top.y , this.nose_bottom.y, 2/3)
+ 				+this.coordinates.nose.cp2.y
+		};
+
+		this.nose2_start = [
+			{
+				x: this.nose_bottom.x + this.coordinates.nose2.start.x + 4,
+				y: this.nose_bottom.y + this.coordinates.nose2.start.y,
+			},
+			{
+				x: this.nose_bottom.x - this.coordinates.nose2.start.x - 4,
+				y: this.nose_bottom.y + this.coordinates.nose2.start.y,
+			},
+		];
+		this.nose2_end = [
+			{
+				x: this.nose2_start[0].x + 4,
+				y: this.nose2_start[0].y - 5,
+			},
+			{
+				x: this.nose2_start[1].x - 4,
+				y: this.nose2_start[1].y - 5,
+			},
+		];
+		this.nose2_cp = [
+			{
+				x: this.nose2_start[0].x ,
+				y: this.nose2_end[0].y,
+			},
+			{
+				x: this.nose2_start[1].x ,
+				y: this.nose2_end[1].y,
+			},
+		];
+
+
+		this.eyelid_bottom = [
+			{
+				x: this.eye_head[0].x + 40, 
+				y: this.center.y +28 +5 + this.coordinates.eyelid.lower.y
+			}, 
+			{
+				x: this.eye_head[1].x - 40, 
+				y: this.center.y +28 +5 + this.coordinates.eyelid.lower.y
+			}, 
+		];
+		this.eyelid_bottom_cp1 = [
+			{
+				x: this.eye_head[0].x, 
+				y: this.eyelid_bottom[0].y
+			}, 
+			{
+				x: this.eye_head[1].x, 
+				y: this.eyelid_bottom[1].y
+			}, 
+		];
+		this.eyelid_bottom_cp3 = [
+			{
+				x: this.eye_end[0].x 
+					-this.sp(this.eye_end[0].x, this.eyelid_bottom[0].x, 1/2), 
+				y: this.eyelid_bottom[0].y
+			}, 
+			{
+				x: this.eye_end[1].x 
+					+this.sp(this.eyelid_bottom[1].x,this.eye_end[1].x,  1/2), 
+				y: this.eyelid_bottom[1].y
+			}, 
+		];
+		this.eyelid_bottom_cp4 = [
+			{
+				x: this.eye_head[0].x, 
+				y: this.eyelid_bottom[0].y
+			}, 
+			{
+				x: this.eye_head[1].x, 
+				y: this.eyelid_bottom[1].y
+			}, 
+		];
+		this.mouth_start = {
+			x: this.center.x - this.coordinates.mouth.width, 
+			y: this.center.y + 130 + this.coordinates.mouth.height
+		};
+		this.mouth_end = {
+			x: this.center.x + this.coordinates.mouth.width, 
+			y: this.center.y + 130 + this.coordinates.mouth.height
+		};
+		this.mouth_cp1 = {
+			x: this.mouth_start.x + this.sp(this.mouth_start.x , this.mouth_end.x, 1/3), 
+			y: this.mouth_start.y + this.coordinates.mouth.cp.y};
+		this.mouth_cp2 = {
+			x: this.mouth_start.x + this.sp(this.mouth_start.x , this.mouth_end.x, 2/3), 
+			y: this.mouth_start.y + this.coordinates.mouth.cp.y};
+
+		this.chin_start = {
+			x: this.center.x - 30 - this.coordinates.chin.width, 
+			y: this.mouth_start.y + 50 + this.coordinates.chin.height + this.coordinates.mouth.cp.y/2
+		};
+		this.chin_end = {
+			x: this.center.x + 30 + this.coordinates.chin.width, 
+			y: this.mouth_start.y + 50 + this.coordinates.chin.height + this.coordinates.mouth.cp.y/2
+		};
+		this.chin_cp1 = {
+			x:this.chin_start.x + this.sp(this.chin_start.x, this.chin_end.x, 1/3), 
+			y: this.chin_start.y + 10
+		};
+		this.chin_cp2 = {
+			x:this.chin_start.x + this.sp(this.chin_start.x, this.chin_end.x, 2/3), 
+			y: this.chin_start.y + 10};
+		this.nape = {
+			x: this.center.x,
+			y: this.chin_start.y,
+		};
+		this.twin_terminal_right = {
+			x: this.top_of_head.x + 140 + this.coordinates.hair.twin_tail.terminal.x,
+			y: this.top_of_head.y + this.sp(this.top_of_head.y, this.nape.y, 1/2) + this.coordinates.hair.twin_tail.terminal.y,
+		};
+		this.twin_terminal_left = {
+			x: this.top_of_head.x - 140 - this.coordinates.hair.twin_tail.terminal.x,
+			y: this.top_of_head.y + this.sp(this.top_of_head.y, this.nape.y, 1/2) + this.coordinates.hair.twin_tail.terminal.y,
+		};
+		this.cheek_start = [
+			{
+				x: this.chin_end.x 
+					+this.coordinates.chin.width 
+					+this.coordinates.cheek.width, 
+				y: this.chin_end.y
+			},
+			{
+				x: this.chin_start.x 
+					-this.coordinates.chin.width 
+					-this.coordinates.cheek.width, 
+				y: this.chin_start.y
+			},
+		];
+		this.cheek_end = [
+			{
+				x: this.upper_eyeline_end[0].x + 20 
+					+this.coordinates.eye.span_to_eye_x, 
+				y: this.upper_eyeline_end[0].y
+			},
+			{
+				x: this.upper_eyeline_end[1].x - 20 
+					-this.coordinates.eye.span_to_eye_x, 
+				y: this.upper_eyeline_end[1].y
+			},
+		];
+		this.temple_left =	{
+			x: this.cheek_end[1].x, 
+			y: this.cheek_end[1].y 
+		};
+		this.temple_right = {
+			x: this.cheek_end[0].x, 
+			y: this.cheek_end[0].y 
+		};
+		this.cheek_cp1 = [
+			{
+				x: this.cheek_start[0].x 
+					+this.sp(this.cheek_start[0].x, this.cheek_end[0].x, 1/3) 
+					+this.coordinates.cheek.cp1.x, 
+				y: this.cheek_start[0].y 
+					-this.sp(this.cheek_start[0].y, this.cheek_end[0].y, 1/8) 
+					+this.coordinates.cheek.cp1.y
+			},
+			{
+				x: this.cheek_start[1].x 
+					-this.sp(this.cheek_start[1].x, this.cheek_end[1].x, 1/3) 
+					-this.coordinates.cheek.cp1.x, 
+				y: this.cheek_start[1].y 
+					-this.sp(this.cheek_start[1].y, this.cheek_end[1].y, 1/8) 
+					+this.coordinates.cheek.cp1.y
+			},
+		];
+		this.cheek_cp2 = [
+			{
+				x: this.cheek_start[0].x 
+					+this.sp(this.cheek_start[0].x, this.cheek_end[0].x, 4/5) 
+					+this.coordinates.cheek.cp2.x, 
+				y: this.cheek_start[0].y 
+					-this.sp(this.cheek_start[0].y, this.cheek_end[0].y, 2/8) 
+					+this.coordinates.cheek.cp2.y
+			},
+			{
+				x: this.cheek_start[1].x 
+					-this.sp(this.cheek_start[1].x, this.cheek_end[1].x, 4/5) 
+					-this.coordinates.cheek.cp2.x, 
+				y: this.cheek_start[1].y 
+					-this.sp(this.cheek_start[1].y, this.cheek_end[1].y, 2/8) 
+					+this.coordinates.cheek.cp2.y
+			},
+		];
+		this.cheek_shadow_cp1 = [
+			{
+				x: this.cheek_cp1[0].x -5 - this.coordinates.cheek.shadow.cp1.x ,
+				y: this.cheek_cp1[0].y + this.coordinates.cheek.shadow.cp1.y ,
+			},
+			{
+				x: this.cheek_cp1[1].x +5 + this.coordinates.cheek.shadow.cp1.x ,
+				y: this.cheek_cp1[1].y + this.coordinates.cheek.shadow.cp1.y ,
+			},
+		];
+		this.cheek_shadow_cp2 = [
+			{
+				x: this.cheek_cp2[0].x -5 - this.coordinates.cheek.shadow.cp2.x ,
+				y: this.cheek_cp2[0].y + this.coordinates.cheek.shadow.cp2.y ,
+			},
+			{
+				x: this.cheek_cp2[1].x +5 + this.coordinates.cheek.shadow.cp2.x ,
+				y: this.cheek_cp2[1].y + this.coordinates.cheek.shadow.cp2.y ,
+			},
+		];
+
+		this.head_cp1 = {
+			x: this.cheek_end[0].x + 60, 
+			y:this.center.y -320
+		};
+		this.head_cp2 = {
+			x: this.cheek_end[1].x - 60, 
+			y:this.center.y -320
+		};
+
+		this.ear_start = [
+			{
+				x: this.temple_right.x -20, 
+				y: this.temple_right.y - 20
+			},
+			{
+				x: this.temple_left.x + 20, 
+				y: this.temple_left.y - 20
+			},
+		];
+		this.ear_end = [
+			{
+				x: this.eye_end[0].x, 
+				y: this.eye_end[0].y + 50
+			},
+			{
+				x: this.eye_end[1].x, 
+				y: this.eye_end[1].y + 50
+			},
+		];
+		this.earlobe_start = [
+			{
+				x: this.ear_start[0].x + 30, 
+				y: this.ear_start[0].y 
+					+this.sp(this.ear_start[0].y, this.ear_end[0].y, 2/3) 
+			},
+			{
+				x: this.ear_start[1].x - 30, 
+				y: this.ear_start[1].y 
+					+this.sp(this.ear_start[1].y, this.ear_end[1].y, 2/3) 
+			},
+		];
+		this.inner_ear_start = [
+			{
+				x: this.ear_start[0].x -10, 
+				y: this.ear_start[0].y + 10
+			},
+			{
+				x: this.ear_start[1].x +10, 
+				y: this.ear_start[1].y + 10
+			},
+		];
+		this.inner_ear_end = [
+			{
+				x: this.earlobe_start[0].x -10, 
+				y: this.earlobe_start[0].y - 10 
+			},
+			{
+				x: this.earlobe_start[1].x +10, 
+				y: this.earlobe_start[1].y - 10 
+			},
+		];
+		this.ear_cp1 = [
+			{
+				x: this.earlobe_start[0].x 
+					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 1/3), 
+				y: this.ear_start[0].y - 20
+			},
+			{
+				x: this.earlobe_start[1].x 
+					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 1/3), 
+				y: this.ear_start[1].y - 20
+			},
+		];
+		this.ear_cp2 = [
+			{
+				x: this.earlobe_start[0].x 
+					+this.sp(this.ear_start[0].x ,this.earlobe_start[0].x, 3/4), 
+				y: this.ear_start[0].y 
+					+this.sp(this.ear_start[0].y ,this.earlobe_start[0].y, 1/2)
+			},
+			{
+				x: this.earlobe_start[1].x 
+					-this.sp(this.ear_start[1].x ,this.earlobe_start[1].x, 3/4), 
+				y: this.ear_start[1].y 
+					+this.sp(this.ear_start[1].y ,this.earlobe_start[1].y, 1/2)
+			},
+		];
+		this.inner_ear_cp1 = [
+			{
+				x: this.inner_ear_end[0].x 
+					+this.sp(this.inner_ear_start[0].x ,this.inner_ear_end[0].x, 1/3), 
+				y: this.inner_ear_start[0].y - 20
+			},
+			{
+				x: this.inner_ear_end[1].x 
+					-this.sp(this.inner_ear_start[1].x ,this.inner_ear_end[1].x, 1/3), 
+				y: this.inner_ear_start[1].y - 20
+			},
+		];
+		this.inner_ear_cp2 = [
+			{
+				x: this.inner_ear_end[0].x 
+					+this.sp(this.inner_ear_start[0].x ,this.inner_ear_end[0].x, 1), 
+				y: this.inner_ear_start[0].y 
+					+this.sp(this.inner_ear_start[0].y ,this.inner_ear_end[0].y, 1/2)
+			},
+			{
+				x: this.inner_ear_end[1].x 
+					-this.sp(this.inner_ear_start[1].x ,this.inner_ear_end[1].x, 1), 
+				y: this.inner_ear_start[1].y 
+					+this.sp(this.inner_ear_start[1].y ,this.inner_ear_end[1].y, 1/2)
+			},
+		];
+		this.earlobe_cp1 = [
+			{
+				x: this.earlobe_start[0].x -10, 
+				y: this.ear_end[0].y},
+			{
+				x: this.earlobe_start[1].x +10, 
+				y: this.ear_end[1].y
+			},
+		];
+		this.earlobe_cp2 = [];
+
+		this.neck_start = [
+			{
+				x: this.center.x + 70, 
+				y: this.chin_start.y -60
+			},
+			{
+				x: this.center.x - 70, 
+				y: this.chin_start.y -60
+			},
+		];
+		this.neck_end = [
+			{
+				x: this.neck_start[0].x + 150, 
+				y: this.neck_start[0].y + 180
+			},
+			{
+				x: this.neck_start[1].x - 150, 
+				y: this.neck_start[1].y + 180
+			},
+		];
+
+
+		this.neck_start2 = [
+			{
+				x: this.neck_start[0].x, 
+				y: this.neck_start[0].y + 60
+			},
+			{
+				x: this.neck_start[1].x, 
+				y: this.neck_start[1].y + 60
+			},
+		];
+		this.neck_end2 = [
+			{
+				x: this.neck_end[0].x, 
+				y: this.neck_end[0].y + 50
+			},
+			{
+				x: this.neck_end[1].x, 
+				y: this.neck_end[1].y + 50
+			},
+		];
+
+		this.neck_terminal1 = [
+			{
+				x: this.neck_start[0].x, 
+				y: this.neck_start[0].y - 150
+			},
+			{
+				x: this.neck_start[1].x, 
+				y: this.neck_start[1].y - 150
+			},
+		];
+		this.neck_terminal2 = [
+			{
+				x: this.neck_end[0].x, 
+				y: this.neck_terminal1[0].y 
+			},
+			{
+				x: this.neck_end[1].x, 
+				y: this.neck_terminal1[1].y 
+			},
+		];
+		this.neck_cp1 = [
+			{
+				x: this.neck_start[0].x -5, 
+				y: this.neck_start[0].y +130
+			},
+			{
+				x: this.neck_start[1].x +5, 
+				y: this.neck_start[1].y +130
+			},
+		];
+		this.neck_cp2 = [
+			{
+				x: this.neck_start[0].x -30 , 
+				y: this.neck_start[0].y +160
+			},
+			{
+				x: this.neck_start[1].x +30 , 
+				y: this.neck_start[1].y +160
+			},
+		];
+		this.neck_shadow_cp1 = {
+			x: this.neck_start[1].x 
+				+this.sp(this.neck_start[1].x, this.neck_end[1].x, 2/3) , 
+			y: this.neck_start2[1].y +50
+		};
+		this.neck_shadow_cp2 = {
+			x: this.neck_start[1].x 
+				+this.sp(this.neck_start[1].x, this.neck_end[1].x, 1/3) , 
+			y: this.neck_start2[1].y +50
+		};
+
+		this.upper_lip_cp1 = {
+			x: this.mouth_start.x 
+				-this.coordinates.lip.upper.cp.width
+				+this.sp(this.mouth_start.x, this.mouth_end.x, 1/3),
+			y: this.mouth_start.y +10
+				-this.coordinates.lip.upper.cp.height
+			,
+		};
+		this.upper_lip_cp2 = {
+			x: this.mouth_start.x 
+				+this.coordinates.lip.upper.cp.width
+				+ this.sp(this.mouth_start.x, this.mouth_end.x, 2/3),
+			y: this.mouth_start.y +10
+				-this.coordinates.lip.upper.cp.height
+			,
+		};
+		this.lower_lip_cp1 = {
+			x: this.mouth_start.x 
+				-this.coordinates.lip.lower.cp.width
+			+ this.sp(this.mouth_start.x, this.mouth_end.x, 1/3),
+			y: this.mouth_start.y +10 + this.coordinates.mouth.cp.y
+				+this.coordinates.lip.lower.cp.height
+			,
+		};
+		this.lower_lip_cp2 = {
+			x: this.mouth_start.x 
+				+this.coordinates.lip.lower.cp.width
+			+ this.sp(this.mouth_start.x, this.mouth_end.x, 2/3),
+			y: this.mouth_start.y +10 + this.coordinates.mouth.cp.y
+				+this.coordinates.lip.lower.cp.height
+			,
+		};
+
+		this.forehead_right = {
+			x: this.cheek_end[0].x 
+				-this.sp(this.cheek_end[0].y, this.cheek_start[0].y, 1/6), 
+			y: this.cheek_end[0].y - 140
+		};
+		this.forehead_left = {
+			x: this.cheek_end[1].x 
+				+this.sp(this.cheek_end[1].y, this.cheek_start[1].y, 1/6), 
+			y: this.cheek_end[1].y - 140
+		};
+
+		this.eyeblow_start = [
+			{
+				x: this.eye_head[0].x -10 + this.coordinates.eyeblow.head.x, 
+				y: this.eye_head[0].y -40 + this.coordinates.eyeblow.head.y,
+			},
+			{
+				x: this.eye_head[1].x +10 - this.coordinates.eyeblow.head.x, 
+				y: this.eye_head[1].y -40 + this.coordinates.eyeblow.head.y,
+			},
+		];
+		this.eyeblow_end = [
+			{
+				x: this.upper_eyeline_end[0].x + 5 + this.coordinates.eyeblow.end.x, 
+				y: this.upper_eyeline_end[0].y -50 + this.coordinates.eyeblow.end.y
+			},
+			{
+				x: this.upper_eyeline_end[1].x - 5 - this.coordinates.eyeblow.end.x, 
+				y: this.upper_eyeline_end[1].y -50 + this.coordinates.eyeblow.end.y
+			},
+		];
+		this.eyeblow_upper_cp1 = [
+			{
+				x: this.eyeblow_start[0].x 
+					+this.sp(this.eyeblow_end[0].x , this.eyeblow_start[0].x,1/3), 
+				y: this.eyeblow_start[0].y -10
+			},
+			{
+				x: this.eyeblow_start[1].x 
+					-this.sp(this.eyeblow_end[1].x , this.eyeblow_start[1].x, 1/3), 
+				y: this.eyeblow_start[1].y -10
+			},
+		];
+		this.eyeblow_upper_cp2 = [
+			{
+				x: this.eyeblow_start[0].x 	
+					+this.sp(this.eyeblow_end[0].x , this.eyeblow_start[0].x, 2/3), 
+				y: this.eyeblow_start[0].y -20
+			},
+			{
+				x: this.eyeblow_start[1].x 
+					-this.sp(this.eyeblow_end[1].x , this.eyeblow_start[1].x, 2/3), 
+				y: this.eyeblow_start[1].y -20
+			},
+		];
+		// y座標を+10くらいにすれば太眉になる。-20くらいで細眉
+		this.eyeblow_lower_cp1 = [
+			{
+				x: this.eyeblow_start[0].x 
+					+this.sp(this.eyeblow_end[0].x ,this.eyeblow_start[0].x, 1/3), 
+				y: this.eyeblow_start[0].y +this.coordinates.eyeblow.cp.y
+			},
+			{
+				x: this.eyeblow_start[1].x 
+					-this.sp(this.eyeblow_end[1].x ,this.eyeblow_start[1].x, 1/3), 
+				y: this.eyeblow_start[1].y +this.coordinates.eyeblow.cp.y
+			},
+		];
+		this.eyeblow_lower_cp2 = [
+			{
+				x: this.eyeblow_start[0].x 
+					+this.sp(this.eyeblow_end[0].x , this.eyeblow_start[0].x, 2/3), 
+				y: this.eyeblow_start[0].y -20
+			},
+			{
+				x: this.eyeblow_start[1].x 
+					-this.sp(this.eyeblow_end[1].x , this.eyeblow_start[1].x, 2/3), 
+				y: this.eyeblow_start[1].y -20
+			},
+		];
+
+		this.front_hair_roots = [];
+		this.front_hair_tips = [];
+		this.front_hair_cp1 = [];
+		this.front_hair_cp2 = [];
+
+		this.back_hair_roots = [];
+		this.back_hair_tips = [];
+		this.back_hair_cp1 = [];
+		this.back_hair_cp2 = [];
+
+
+		this.side_hair_arrays = {
+			roots: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+		};
+		this.front_hair_arrays = {
+			roots: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+		};
+		this.back_hair_arrays = {
+			roots: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+		};
+		this.outside_back_hair_arrays = {
+			roots: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+		};
+		this.outside_hair_arrays = {
+			roots: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+		};
+		this.twin_tail_arrays = {
+			roots: [],
+			terminals: [],
+			tips: [],
+			cp1: [],
+			cp2: [],
+			cp3: [],
+			cp3sub: [],
+			cp4: [],
+			cp4sub: [],
+		};
+
+		this.side_hair_roots = [];
+		this.side_hair_tips = [];
+		this.side_hair_cp1 = [];
+		this.side_hair_cp2 = [];
+
+		this.outside_hair_roots = [];
+		this.outside_hair_tips = [];
+		this.outside_hair_cp1 = [];
+		this.outside_hair_cp2 = [];
+
+		this.outside_hair_upper_cp1 = {
+			x: this.head_cp1.x -10,
+			y: this.head_cp1.y -20,
+		};
+		this.outside_hair_upper_cp2 = {
+			x: this.head_cp2.x +10,
+			y: this.head_cp2.y -20,
+		};
+
+		this.temple = [
+			{
+				x: this.cheek_end[1].x, 
+				y: this.cheek_end[1].y 
+			},
+			{
+				x: this.cheek_end[0].x, 
+				y: this.cheek_end[0].y 
+			},
+		];
+
+		this.outside_back_hair_roots = [];
+		this.outside_back_hair_tips = [];
+		this.outside_back_hair_cp1 = [];
+		this.outside_back_hair_cp2 = [];
+
+		this.outside_back_hair_left = {
+			x: this.center.x - 170,
+			y: this.center.y,
+		};
+		this.outside_back_hair_right = {
+			x: this.center.x + 170,
+			y: this.center.y,
+		};
+		this.outside_back_head_cp1 = {
+			x: this.head_cp1.x -10,
+			y: this.head_cp1.y -5,
+		};
+		this.outside_back_head_cp2 = {
+			x: this.head_cp2.x +10,
+			y: this.head_cp2.y -5,
+		};
+		this.eye_shadow_start = [
+			{
+				x: this.eye_head[0].x, 
+				y: this.eye_head[0].y + 10
+			},
+			{
+				x: this.eye_head[1].x, 
+				y: this.eye_head[1].y + 10
+			},
+		];
+		this.eye_shadow_end = [
+			{
+				x: this.upper_eyeline_end[0].x -10, 
+				y: this.eye_head[0].y + 10
+			},
+			{
+				x: this.upper_eyeline_end[1].x +10, 
+				y: this.eye_head[1].y + 10
+			},
+		];
+		this.eye_shadow_cp1 = [
+			{
+				x: this.upper_eyeline_cp1[0].x, 
+				y: this.upper_eyeline_cp1[0].y + 10
+			},
+			{
+				x: this.upper_eyeline_cp1[1].x, 
+				y: this.upper_eyeline_cp1[1].y + 10
+			},
+		];
+		this.eye_shadow_cp2 = [
+			{
+				x: this.upper_eyeline_cp2[0].x, 
+				y: this.upper_eyeline_cp2[0].y + 10
+			},
+			{
+				x: this.upper_eyeline_cp2[1].x, 
+				y: this.upper_eyeline_cp2[1].y + 10
+			},
+		];
+
+		this.outside_hair_left = {
+			x: this.temple_left.x -this.coordinates.hair.outside.volume,
+			y: this.temple_left.y,
+		};
+		this.outside_hair_right = {
+			x: this.temple_right.x +this.coordinates.hair.outside.volume,
+			y: this.temple_right.y,
+		};
+	}
+
+
+
+
+	// マウスイベント。イベント情報はグローバル変数に代入。
+	mouseMove(e)
+	{
+		// オフセットはターゲットエレメントの左上を0,0としてそこからのマウスの座標を取得。
+		px = e.pageX;
+		py = e.pageY;
+		ox = e.offsetX;
+		oy = e.offsetY;
+	}
+
+	static clear(canvas_id)
+	{
+		let can = document.getElementById(canvas_id);
+		let con = can.getContext('2d');
+		con.clearRect(0, 0, can.width, can.height);
+	}
+
+
+	_config(fillStyle, strokeStyle = "#000", globalAlpha = 1, linewidth = 1 )
+	{
+		this.con.fillStyle = fillStyle;
+		this.con.strokeStyle = strokeStyle;
+		this.con.globalAlpha = globalAlpha;
+		this.con.lineWidth = linewidth;
+	}
+
+
+	fillR( arr, color = "#000" )
+	{
+		this.con.fillStyle = color;
+		this.con.fillRect(arr.x, arr.y, 4, 4);
+	}
+
+	drawCurve(start, end, cp, stats = false)
+	{
+		if (stats)
+		{
+			this.con.moveTo(start.x, start.y);
+		}
+		this.con.quadraticCurveTo(cp.x, cp.y, end.x, end.y)
+	}
+	drawCurve2(start, end, cp1, cp2, stats = false)
+	{
+		if (stats)
+		{
+			this.con.moveTo(start.x, start.y);
+		}
+		this.con.bezierCurveTo(
+			cp1.x, cp1.y,
+			cp2.x, cp2.y,
+			end.x, end.y);
+	}
+
+	sp( start, end, value)
+	{
+		return Math.floor(Math.abs(end - start) * value);
+	}
+
+
+	_initFrontHairArrays()
+	{
+		this.front_hair_roots = [];
+		this.front_hair_tips = [];
+		this.front_hair_cp1 = [];
+		this.front_hair_cp2 = [];
+	}
+
+
+	/*
+	 * 髪の配列オブジェクトを初期化する汎用メソッド
+	 *
+	 * @param array arrays // roots tips cp1 cp2プロパティを含んでいる
+	 */
+	_initHairArrays(arrays)
+	{
+		arrays.roots = [];
+		arrays.tips = [];
+		arrays.cp1 = [];
+		arrays.cp2 = [];
+	}
+
+	update()
+	{
+		this.initAllCoordinates();// 全ての座標を再計算
+	}
+
+
+	draw()
+	{
+		this.con.clearRect(0, 0, this.can.width, this.can.height);
+		//this.drawDebug();
+		if ( this.coordinates.hair.outside_back.flag )
+		{
+			this.drawOutsideBackHair(
+				this.coordinates.hair.outside_back.bunch, 
+				this.coordinates.hair.outside_back.length
+			);
+		}
+		if ( this.coordinates.hair.back.flag )
+		{
+			this._selectBackHair();
+		}
+		this.drawTwinTails();
+		this.drawNeck();
+		this.drawNeckShadow();
+		this.drawEar();
+		this.drawOutline();
+		this.drawWhiteEyes();
+		this.drawEyes();
+		this.drawEyelid();
+		this.drawEyeline2();
+		//this.drawEyelashes();
+		this.drawLowerEyelid();
+		this.drawCheekBlur();
+		this.drawMouth();
+		this.drawEyeblow();
+		this.drawNose();
+		this.drawCheekShadow();
+		this.drawSkinHead();
+		if ( this.coordinates.hair.sideburns.flag )
+		{
+			this.drawSideburns(this.coordinates.hair.sideburns);
+		}
+		if ( this.coordinates.hair.front.flag )
+		{
+			this._selectFrontHair();
+		}
+		if ( this.coordinates.hair.side.flag )
+		{
+			this._selectSideHair();
+		}
+	}
+
+	drawCheekBlur()
+	{
+		if (this.coordinates.cheek.blur.flag)
+		{
+			let scale = 2.0
+			let pn = 1;
+			for (let i=0; i<2; i++)
+			{
+				if (i===1) {
+					pn = -1;
+				}
+				this.con.save();
+				this.con.translate(-(this.center.x * scale - this.center.x) -60 * pn, 0);
+				this.con.scale(scale, 1);
+				this._setBlur('orange', 0, 0, 30);
+				this._config('pink', 'pink', 0.2, 1);
+				this.con.beginPath();
+				this.con.arc(
+					this.eye_head[i].x // 目頭のX座標
+					+this.coordinates.eye.position.x * pn, // 可変できる目のX座標
+					this.center.y + 60,
+					20,  
+					Math.PI * 2, false);
+				this.con.fill();
+				this.con.restore();
+				this._resetBlur();
+			}
+		}
+	}
+
+
+	/*
+	 * @param string shadowColor
+	 * @param int offsetX
+	 * @param int offsetY
+	 * @param int blur
+	 *
+	 * @return void
+	 */
+	_setBlur(shadowColor, offsetX, offsetY, blur)
+	{
+		this.con.shadowColor = shadowColor;
+		this.con.shadowOffsetX = offsetX;
+		this.con.shadowOffsetY = offsetY;
+		this.con.shadowBlur = blur;
+	}
+	_resetBlur()
+	{
+		this.con.shadowOffsetX = 0;
+		this.con.shadowOffsetY = 0;
+		this.con.shadowBlur = 0;
+	}
+
+
+	_selectBackHair()
+	{
+		switch (this.coordinates.hair.back.type)
+		{
+			case 2:
+				this.drawBackHairStandard(
+					this.coordinates.hair.back.bunch, 
+					this.coordinates.hair.back.length
+				);
+				break;
+			case 3:
+				this.drawBackHair(
+					this.coordinates.hair.back.bunch, 
+					this.coordinates.hair.back.length
+				);
+				break;
+			case 4:
+				this.drawBackHair2(
+					this.coordinates.hair.back.bunch, 
+					this.coordinates.hair.back.length
+				);
+				break;
+			default:
+				break;
+		}
+	}
+	_selectFrontHair()
+	{
+		switch (this.coordinates.hair.front.type)
+		{
+			case 2:
+				this.drawFrontHairStandard(
+					this.coordinates.hair.front.bunch, 
+					this.coordinates.hair.front.length
+				);
+				break;
+			case 5:
+				this.drawFrontPrincessCut(
+					this.coordinates.hair.front.bunch, 
+					this.coordinates.hair.front.length
+				);
+				break;
+			default:
+				break;
+		}
+	}
+	_selectSideHair()
+	{
+		switch (this.coordinates.hair.side.type)
+		{
+			case 0:
+				this.drawSideHairStandard(
+					this.coordinates.hair.side, 
+					this.side_hair_arrays, 
+					this.temple_left, 
+					this.forehead_right
+				);
+				break;
+			default:
+				break;
+		}
+	}
+
+
+	// 2店間の座標から傾きを求めy座標を求める
+	// 引数はx座標・y座標を持つ連想配列
+	generateCoordinateY(start_coordinate, end_coordinate, x)
+	{
+		let vx = Math.abs(end_coordinate.x - start_coordinate.x);//xの増加量
+		let vy = Math.abs(end_coordinate.y - start_coordinate.y);//yの増加量
+		let y = x * vy / vx;
+		return y;
+	}
+
+
+
+	generateCoordinateX(start_coordinate, end_coordinate, y)
+	{
+		let vx = Math.abs(end_coordinate.x - start_coordinate.x);//xの増加量
+		let vy = Math.abs(end_coordinate.y - start_coordinate.y);//yの増加量
+		let x = (Math.floor((y / (vy / vx))*100))/100;
+		if (start_coordinate.x > end_coordinate.x)
+		{
+			return -x;
+		}
+		return x;
+	}
+
+
+
+	_initializeSideHairArray()
+	{
+		this.side_hair_roots = [];
+		this.side_hair_tips = [];
+		this.side_hair_cp1 = [];
+		this.side_hair_cp2 = [];
+	}
+
+
+	
+	_generateSideburnsLeftCoordinates(hair_length, hair_bunch, span)
+	{
+			this._initializeSideHairArray();
+
+			/* 左サイド髪の座標生成 */
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				this.side_hair_roots[i] = {
+					x: this.temple_left.x + i*span, 
+					y: this.temple_left.y + this.generateSideburnsCoordinateLeft(i*span)
+				};
+				this.side_hair_tips[i] = {
+					x: this.temple_left.x + i*span + rand(-30, 10), 
+					y: this.temple_left.y + rand(0, 20) + hair_length
+				};
+				this.side_hair_cp1[i] = {
+					x: this.temple_left.x + i*span/2 + rand(-5, 5), 
+					y: this.side_hair_roots[i].y 
+						+this.sp(this.side_hair_roots[i].y, this.side_hair_tips[i].y, 1/3)
+				};
+				this.side_hair_cp2[i] = {
+					x: this.temple_left.x + i*span/2 + rand(-1, 1), 
+					y: this.side_hair_roots[i].y 
+						+this.sp(this.side_hair_roots[i].y, this.side_hair_tips[i].y, 2/3) 
+				};
+			}
+	}
+
+
+	/**********************************************************************
+	 * ツインテールを描画
+	 * ツインテールはtop_of_headから縦一文字のラインから均等にルートを設定し
+	 * そこからまず中継地点で一つにまとめ、
+	 * さらにそこから毛先を任意に散らす。
+	**********************************************************************/
+	drawTwinTails()
+	{
+		if ( this.coordinates.hair.twin_tail.flag )
+		{
+			// 右
+			this._generateTwinTailCoordinates();
+			this.drawTwinTailFromRootsToTerminals();
+			this.drawTwinTailFromTerminalsToTips();
+
+			// 左
+			this._generateTwinTailCoordinates(LEFT);
+			this.drawTwinTailFromRootsToTerminals();
+			this.drawTwinTailFromTerminalsToTips();
+		}
+	}
+	_generateTwinTailCoordinates(direction = RIGHT)// ツインテールの座標生成
+	{
+		this._generateTwinTailRoots();// ツインテールのルートの座標生成
+		this._generateTwinTailTerminals(direction);// ツインテールのルートの座標生成
+		this._generateTwinTailTips(direction);
+		this._generateTwinTailTipCp(direction);
+	}
+	drawTwinTailFromTerminalsToTips()
+	{
+		this._config(this.hair_color, this.hair_stroke_color, 1, 1);
+		//this.moveTo(this.twin_tail_arrays.terminals[0]);
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			if( i+1<=this.coordinates.hair.twin_tail.bunch)
+			{
+				this.con.beginPath();
+				this.drawCurve2(
+					this.twin_tail_arrays.terminals[i], 
+					this.twin_tail_arrays.tips[i],
+					this.twin_tail_arrays.cp3sub[i],
+					this.twin_tail_arrays.cp4sub[i], true);
+				this.drawCurve2(
+					this.twin_tail_arrays.tips[i],
+					this.twin_tail_arrays.terminals[i+1], 
+					this.twin_tail_arrays.cp4[i],
+					this.twin_tail_arrays.cp3[i]);
+				this.con.fill();
+				this.con.stroke();
+				this.con.closePath();
+			}
+		}
+	}
+	drawTwinTailFromRootsToTerminals()
+	{
+		this.con.beginPath();
+		this._config(this.hair_color, this.hair_stroke_color, 1, 1);
+		this.moveTo(this.twin_tail_arrays.roots[0]);
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			if( i+1<=this.coordinates.hair.twin_tail.bunch)
+			{
+				this.drawCurve2(
+					this.twin_tail_arrays.roots[i], 
+					this.twin_tail_arrays.terminals[i],
+					this.twin_tail_arrays.cp1[i],
+					this.twin_tail_arrays.cp2[i]);
+				this.lineTo(this.twin_tail_arrays.terminals[i+1]);
+				this.drawCurve2(
+					this.twin_tail_arrays.terminals[i+1],
+					this.twin_tail_arrays.roots[i+1], 
+					this.twin_tail_arrays.cp2[i+1],
+					this.twin_tail_arrays.cp1[i+1]);
+					this.con.fill();
+					this.con.stroke();
+			}
+		}
+	}
+	_generateTwinTailTips(direction = RIGHT)
+	{
+		let span = this.coordinates.hair.twin_tail.tip_span;
+		let terminal;
+		if (direction === RIGHT)
+		{
+			terminal = this.twin_terminal_right;
+		}
+		else
+		{
+			terminal = this.twin_terminal_left;
+		}
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			this.twin_tail_arrays.tips[i] = {
+				x: terminal.x + i*span*direction + 40*direction + rand(-10, 10),
+				y: terminal.y 
+					+this.coordinates.hair.twin_tail.length + 100
+					+rand(0, 5), 
+			};
+		}
+		this.twin_tail_arrays.tips.reverse();
+	}
+
+	_generateTwinTailTipCp(direction = RIGHT)
+	{
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			this.twin_tail_arrays.cp3[i] = {
+				x: this.twin_tail_arrays.terminals[i].x 
+					+direction * this.coordinates.hair.twin_tail.cp3.x 
+					//+rand(-30, 30)
+					+direction * this.sp(
+						this.twin_tail_arrays.terminals[i].x, 
+						this.twin_tail_arrays.tips[i].x, 3/3),
+				y: this.twin_tail_arrays.terminals[i].y 
+					+this.coordinates.hair.twin_tail.cp3.y,
+			};
+			this.twin_tail_arrays.cp3sub[i] = {
+				x: this.twin_tail_arrays.cp3[i].x 
+					+direction * this.coordinates.hair.twin_tail.cp3.x 
+					+direction * this.coordinates.hair.twin_tail.width,
+				y: this.twin_tail_arrays.cp3[i].y 
+					+this.coordinates.hair.twin_tail.cp3.y,
+			};
+			this.twin_tail_arrays.cp4[i] = {
+				x: this.twin_tail_arrays.tips[i].x
+					//+rand(-30, 30)
+					+direction * this.coordinates.hair.twin_tail.cp4.x,
+				y: this.twin_tail_arrays.terminals[i].y
+					+this.coordinates.hair.twin_tail.cp4.y
+					+this.sp(
+						this.twin_tail_arrays.terminals[i].y, 
+						this.twin_tail_arrays.tips[i].y, 1/2),
+			};
+			this.twin_tail_arrays.cp4sub[i] = {
+				x: this.twin_tail_arrays.cp4[i].x
+					+direction * this.coordinates.hair.twin_tail.width
+					+direction * this.coordinates.hair.twin_tail.cp4.x,
+				y: this.twin_tail_arrays.cp4[i].y
+					+this.coordinates.hair.twin_tail.cp4.y
+			};
+		}
+	}
+	_generateTwinTailTerminals(direction = RIGHT)// 引数で左右を指定
+	{
+		let terminal;
+		let terminal_start;
+		let terminal_end;
+		if (direction === RIGHT)
+		{
+			terminal = this.twin_terminal_right;
+			terminal_start = {
+				x: terminal.x 
+					+this._getTwinTerminalX(this._getTwinTerminalLean(direction), -10),
+				y: terminal.y - 10,
+			};
+			terminal_end = {
+				x: terminal.x 
+					+this._getTwinTerminalX(this._getTwinTerminalLean(direction), 10),
+				y: terminal.y + 10,
+			};
+		}
+		else
+		{
+			terminal = this.twin_terminal_left;
+			terminal_start = {
+				x: terminal.x 
+					-this._getTwinTerminalX(this._getTwinTerminalLean(direction), -10),
+				y: terminal.y - 10,
+			};
+			terminal_end = {
+				x: terminal.x 
+					-this._getTwinTerminalX(this._getTwinTerminalLean(direction), 10),
+				y: terminal.y + 10,
+			};
+		}
+		let base = 40;
+		let span = base / this.coordinates.hair.twin_tail.bunch;
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			this.twin_tail_arrays.terminals[i] = {
+				x: terminal_start.x 
+					+direction * this._getTwinTerminalX(this._getTwinTerminalLean(direction), span*i),
+				y: terminal_start.y + span*i,
+			};
+			this.twin_tail_arrays.cp1[i] = {
+				x: this.twin_tail_arrays.roots[i].x 
+					+direction * this.sp(
+						this.twin_tail_arrays.roots[i].x, 
+						this.twin_tail_arrays.terminals[i].x, 1/2),
+				y: this.twin_tail_arrays.roots[i].y, 
+			};
+			if ( i<(this.coordinates.hair.twin_tail.bunch/2))
+			{
+				this.twin_tail_arrays.cp2[i] = {
+					x: this.twin_tail_arrays.terminals[i].x,
+					y: this.twin_tail_arrays.roots[i].y
+						+this.sp(
+							this.twin_tail_arrays.roots[i].y, 
+							this.twin_tail_arrays.terminals[i].y, 1/2),
+				};
+			}
+			else
+			{
+				this.twin_tail_arrays.cp2[i] = {
+					x: this.twin_tail_arrays.terminals[i].x,
+					y: this.twin_tail_arrays.roots[i].y
+						-this.sp(
+							this.twin_tail_arrays.roots[i].y, 
+							this.twin_tail_arrays.terminals[i].y, 1/2),
+				};
+			}
+			//this.fillR(this.twin_tail_arrays.terminals[i], "red");
+		}
+	}
+
+
+	// 引数で左右を指定
+	_getTwinTerminalLean(direction = RIGHT)
+	{
+		let a = this.top_of_head;
+		let b;
+		if (direction === RIGHT)
+		{
+			b = this.twin_terminal_right;
+		}
+		else
+		{
+			b = this.twin_terminal_left;
+		}
+		let p = {
+			y: this.top_of_head.y,
+		}
+		let ac = Math.sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y));
+		
+		let angleC = this.getAngleFrom3coordinates(
+			this.top_of_head, 
+			direction === RIGHT ? this.twin_terminal_right : this.twin_terminal_left , 
+			this.nape
+		);
+		let angleA = this.getAngleFrom3coordinates(
+			direction === RIGHT ? this.twin_terminal_right : this.twin_terminal_left , 
+			this.top_of_head, 
+			this.nape
+		);
+		let angle_acp = (180 - angleC)/2;
+		let angle_pac = 90 - angleA;
+		let angle_apc = 180 - angle_acp - angle_pac;
+		let ap = Math.sin(this.getRad(angle_acp)) * ac / Math.sin(this.getRad(angle_apc));
+		if (direction === RIGHT)
+		{
+			p.x = a.x + ap; // 左右対称にするために右は+して左はマイナス
+		}
+		else
+		{
+			p.x = a.x - ap;
+		}
+		let lean = (p.y - b.y) / (p.x - b.x);
+		return lean * direction;
+	}
+
+	_getTwinTerminalY(lean, x)
+	{
+		// y = ax;
+		// x = y/a;
+		return x * lean;
+	}
+	_getTwinTerminalX(lean, y)
+	{
+		// y = ax;
+		// x = y/a;
+		return y / lean;
+	}
+
+	// 3点から角度を取得
+	getAngleFrom3coordinates(v1, v2, v3)
+	{ 
+		// ベクトルa(a1, a2), ベクトルb(b1, b2)とする
+		// ベクトルaとbの内積は
+		// a1 * b1 + a2 * b2 = ||ベクトルa|| ||ベクトルb||cosθ
+		// ||ベクトルa|| は絶対値に似てるがベクトルの大きさを表す
+
+		let ba = {
+			x: v1.x - v2.x,// 座標から成分を求める
+			y: v1.y - v2.y,
+		};
+		let bc = {
+			x: v3.x - v2.x,
+			y: v3.y - v2.y,
+		};
+
+		let babc = ba.x * bc.x + ba.y * bc.y;// 内積
+		let ban = (ba.x * ba.x) + (ba.y * ba.y);// 公式の通り2乗する
+		let bcn = (bc.x * bc.x) + (bc.y * bc.y);// 公式の通り2乗する
+		let radian = Math.acos(babc / (Math.sqrt/*平方根*/(ban * bcn)));
+		let angle = radian * 180 / Math.PI;  // 結果（ラジアンから角度に変換）
+
+		return angle;
+	}
+
+	getRad(angle)
+	{
+		return angle * (Math.PI / 180);
+	}
+	
+	
+	_generateTwinTailRoots()// 左右共通
+	{
+		let span = (this.nape.y - this.top_of_head.y) / this.coordinates.hair.twin_tail.bunch;
+		for (let i=0; i<=this.coordinates.hair.twin_tail.bunch; i++)
+		{
+			this.twin_tail_arrays.roots[i] = {
+				x: this.center.x,
+				y: this.top_of_head.y + i*span,
+			};
+		}
+	}
+
+	_drawSideburnsLeft(hair_bunch)
+	{
+		/* 左サイド髪の描画 */
+		this.con.beginPath();
+		this.con.moveTo(this.side_hair_roots[0].x, this.side_hair_roots[0].y);
+		this._config(this.hair_color, this.hair_stroke_color);
+
+		for (let i=0; i<hair_bunch; i++)
+		{
+			this.drawCurve2(
+				this.side_hair_roots[i], 
+				this.side_hair_tips[i], 
+				this.side_hair_cp1[i], 
+				this.side_hair_cp2[i] 
+			);
+
+			if( i+1<hair_bunch)
+			{
+				this.drawCurve2(
+					this.side_hair_tips[i+1], 
+					this.side_hair_roots[i+1], 
+					this.side_hair_cp2[i], 
+					this.side_hair_cp1[i+1]
+				);
+			}
+			else
+			{
+				this.drawCurve2(
+					this.side_hair_tips[this.side_hair_tips.length -1], 
+					this.forehead_left, 
+					this.side_hair_cp2[this.side_hair_tips.length -1], 
+					this.side_hair_cp1[this.side_hair_tips.length -1]);
+			}
+			this.con.stroke();
+		}
+		this.con.fill();
+	}
+
+
+	_drawSideburnsRight(hair_bunch)
+	{
+		/* 右サイド髪の描画 */
+		this.con.beginPath();
+		this.con.moveTo(this.side_hair_roots[0].x, this.side_hair_roots[0].y);
+		for (let i=0; i<hair_bunch; i++)
+		{
+			this.drawCurve2(
+				this.side_hair_roots[i], 
+				this.side_hair_tips[i], 
+				this.side_hair_cp1[i], 
+				this.side_hair_cp2[i] 
+			);
+			this._config(this.hair_color, "#000");
+
+			if( i+1<hair_bunch)
+			{
+				this.drawCurve2(
+					this.side_hair_tips[i+1], 
+					this.side_hair_roots[i+1], 
+					this.side_hair_cp2[i], 
+					this.side_hair_cp1[i+1]
+				);
+			}
+			else
+			{
+				this.drawCurve2(
+					this.side_hair_tips[this.side_hair_tips.length -1], // 毛先から
+					this.cheek_end[0], // 頬の端まで
+					this.side_hair_cp2[this.side_hair_tips.length -1], // 毛先のCP
+					this.side_hair_cp1[this.side_hair_tips.length -1]); // 毛先のCP
+			}
+		}
+	}
+
+
+
+	_generateSideburnsRightCoordinates(hair_length, hair_bunch, span)
+	{
+		this._initializeSideHairArray();
+		/* 右サイド髪の座標生成 */
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			this.side_hair_roots[i] = {
+				x: this.forehead_right.x + i*span, 
+				y: this.forehead_right.y 
+					+this.generateSideburnsCoordinateRight(i*span)};
+			this.side_hair_tips[i] = {
+				x: this.forehead_right.x + i*span + rand(-30, 10), 
+				y: this.cheek_end[0].y + rand(10, 20) + hair_length
+			};
+			this.side_hair_cp1[i] = {
+				x: this.forehead_right.x + i*span/2 + rand(0, 10), 
+				y: this.side_hair_roots[i].y 
+					+this.sp(this.side_hair_roots[i].y, this.side_hair_tips[i].y, 1/3)
+			};
+			this.side_hair_cp2[i] = {
+				x: this.forehead_right.x + i*span/2 + rand(-10, 10), 
+				y: this.side_hair_roots[i].y 
+					+this.sp(this.side_hair_roots[i].y, this.side_hair_tips[i].y, 2/3) 
+			};
+		}
+	}
+
+
+
+	// 左サイドの座標生成
+	_generateSideHairStandardLeftCoordinates(hair_length, hair_bunch, span)
+	{
+			this._initializeSideHairArray();
+
+			/* 左サイド髪の座標生成 */
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				this.side_hair_roots[i] = {
+					x: this.temple_left.x + i*span, 
+					y: this.temple_left.y 
+						+this.generateSideburnsCoordinateLeft(i*span)
+				};
+				this.side_hair_tips[i] = {
+					x: this.temple_left.x + i*span + span/2 + rand(-30, 0), 
+					y: this.temple_left.y + rand(0, 20) + hair_length
+				};
+				this.side_hair_cp1[i] = {
+					x: this.side_hair_tips[i].x + rand(-1, 1), 
+					y: this.top_of_head.y 
+				};
+				this.side_hair_cp2[i] = {
+					x: this.side_hair_tips[i].x + rand(-1, 1), 
+					y: this.top_of_head.y + 100
+				};
+			}
+	}
+	_generateSideHairStandardRightCoordinates(hair_length, hair_bunch, span)
+	{
+		this._initializeSideHairArray();
+		/* 右サイド髪の座標生成 */
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			this.side_hair_roots[i] = {
+				x: this.forehead_right.x + i*span,
+				y: this.forehead_right.y 
+					+this.generateSideburnsCoordinateRight(i*span)
+			};
+			this.side_hair_tips[i] = {
+				x: this.forehead_right.x + i*span +span/2 + rand(-30, 10), 
+				//y: this.cheek_end[0].y + rand(10, 20) + hair_length
+				y: this.temple_right.y + rand(0, 20) + hair_length
+			};
+			this.side_hair_cp1[i] = {
+				x: this.side_hair_roots[i].x + rand(-10, 10), 
+				y: this.top_of_head.y};
+			this.side_hair_cp2[i] = {
+				x: this.side_hair_roots[i].x + rand(-10, 10), 
+				y: this.top_of_head.y + 100 
+			};
+		}
+	}
+	_drawSideHairStandardLeft2(hair_bunch, arrays)
+	{
+		/* 左サイド髪の描画 */
+		this.con.beginPath();
+		this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+		this._config(this.hair_color, this.hair_stroke_color);
+
+		for (let i=0; i<hair_bunch; i++)
+		{
+			this.drawCurve2(
+				this.top_of_head, 
+				arrays.tips[i], 
+				arrays.cp1[i], 
+				arrays.cp2[i] 
+			);
+
+			if( i+1<hair_bunch)
+			{
+				this.drawCurve2(
+					arrays.tips[i+1], 
+					this.top_of_head, 
+					arrays.cp2[i], 
+					arrays.cp1[i+1]
+				);
+			}
+			else
+			{
+				this.drawCurve2(
+					arrays.tips[arrays.tips.length -1], 
+					this.top_of_head, 
+					arrays.cp2[arrays.tips.length -1], 
+					arrays.cp1[arrays.tips.length -1]);
+			}
+			this.con.stroke();
+		}
+		this.con.fill();
+	}
+
+	_drawSideHairStandardRight(hair_bunch, arrays)
+	{
+		/* 右サイド髪の描画 */
+		this.con.beginPath();
+		this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+		this._config(this.hair_color, this.hair_stroke_color);
+
+		for (let i=0; i<hair_bunch; i++)
+		{
+			this.drawCurve2(
+				this.top_of_head, 
+				arrays.tips[i], 
+				arrays.cp1[i], 
+				arrays.cp2[i] 
+			);
+
+			if( i+1<hair_bunch)
+			{
+				this.drawCurve2(
+					arrays.tips[i+1], 
+					this.top_of_head, 
+					arrays.cp2[i], 
+					arrays.cp1[i+1]
+				);
+			}
+			else
+			{
+				this.drawCurve2(
+					arrays.tips[arrays.tips.length -1], 
+					this.top_of_head, 
+					arrays.cp2[arrays.tips.length -1], 
+					arrays.cp1[arrays.tips.length -1]);
+			}
+			this.con.stroke();
+		}
+		this.con.fill();
+	}
+
+
+	/*
+	 * 座標生成メソッド2
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 * @param int start_x // 任意の毛先の開始座標
+	 * @param int tip_span // 毛先の間隔
+	 * @param array cp1
+	 * @param array cp2
+	 */
+	_generateHairCoordinates2(arrays, start_coordinate, hair_length, hair_bunch, span, start_x, tip_span, cp1, cp2)
+	{
+		// 1. 配列をリセット
+		this._initHairArrays(arrays);
+
+		let hair_rand = rand(-10, 10);
+
+		// 2. 髪の束の数ループ
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			// 3. 根元の座標
+			// 根元はtop_of_headにすることが殆どなのでこの座標は直接は使わない
+			arrays.roots[i] = {
+				x: start_coordinate.x + i*span,
+				y: start_coordinate.y};
+
+			// 4. 毛先の座標
+			arrays.tips[i] = {
+				// x: 基準となる毛先の開始座標 + 任意の毛先の開始座標 + i * 任意のスパン + 髪の揺れ
+				x: start_coordinate.x + start_x + i*tip_span + rand(-30, 0), 
+				//y: start_coordinate.y + rand(10, 20) + hair_length};
+				y: this.top_of_head.y + rand(10, 20) + hair_length
+			};
+
+			if (i< hair_bunch/2)
+			{
+				arrays.cp1[i] = {
+					x: arrays.roots[i].x + hair_rand - cp1.x,
+					y: this.top_of_head.y + cp1.y
+				};
+				arrays.cp2[i] = {
+					x: arrays.roots[i].x + hair_rand - cp2.x,
+					y: this.top_of_head.y + 100 + cp2.y
+				};
+			}
+			else
+			{
+				arrays.cp1[i] = {
+					x: arrays.roots[i].x + hair_rand + cp1.x,
+					y: this.top_of_head.y + cp1.y
+				};
+				arrays.cp2[i] = {
+					x: arrays.roots[i].x + hair_rand + cp2.x,
+					y: this.top_of_head.y + 100 + cp2.y
+				};
+			}
+		}
+	}
+
+
+
+	/*
+	 * 座標生成メソッド1
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 */
+	_generateHairCoordinates(arrays, start_coordinate, hair_length, hair_bunch, span)
+	{
+		// 1. 配列をリセット
+		this._initHairArrays(arrays);
+
+		// 2. 髪の束の数ループ
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			// 3. 根元の座標
+			// 根元はtop_of_headにすることが殆どなのでこの座標は直接は使わない
+			arrays.roots[i] = {
+				x: start_coordinate.x + i*span,
+				y: start_coordinate.y
+			};
+
+			// 4. 毛先の座標
+			// 基準となる固定の座標にiの回数分任意のスパンを足していく
+			arrays.tips[i] = {
+				x: start_coordinate.x + i*span +span/2 + rand(-60, 10), 
+				y: start_coordinate.y + rand(10, 20) + hair_length
+			};
+
+			// 5. CP1の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp1[i] = {
+				x: arrays.roots[i].x + rand(-10, 10),
+				y: this.top_of_head.y
+			};
+
+			// 6. CP2の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp2[i] = {
+				x: arrays.roots[i].x + rand(-10, 10),
+				y: this.top_of_head.y + 100 
+			};
+		}
+	}
+
+	/*
+	 * 座標生成メソッド1
+	 *
+	 * @param array arrays // roots, arrays, cp1, cp2をまとめた多次元配列中身は空で宣言だけはしてある
+	 * @param array start_coordinate // 開始座標を格納した配列
+	 * @param int hair_length // 長さ
+	 * @param int hair_bunch // 束数
+	 * @param int span // 根元のスパンっぽい
+	 */
+	_generateSideHairCoordinates(arrays, start_coordinate, hair_length, hair_bunch, span, direction)
+	{
+		// 1. 配列をリセット
+		this._initHairArrays(arrays);
+
+		// 2. 髪の束の数ループ
+		for (let i=0; i<=hair_bunch; i++)
+		{
+			// 3. 根元の座標
+			// 根元はtop_of_headにすることが殆どなのでこの座標は直接は使わない
+			arrays.roots[i] = {
+				x: start_coordinate.x + i*span + this.coordinates.hair.side.start.x * direction,
+				y: start_coordinate.y
+			};
+
+			// 4. 毛先の座標
+			// 基準となる固定の座標にiの回数分任意のスパンを足していく
+			arrays.tips[i] = {
+				x: start_coordinate.x + i*span +span/2 + rand(-60, 10) + this.coordinates.hair.side.start.x * direction, 
+				y: start_coordinate.y + rand(10, 20) + hair_length
+			};
+
+			// 5. CP1の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp1[i] = {
+				x: arrays.roots[i].x + this.coordinates.hair.side.cp1.x * direction + rand(-10, 10),
+				y: this.top_of_head.y + this.coordinates.hair.side.cp1.y
+			};
+
+			// 6. CP2の座標定義
+			// 根元の配列を基準にしている
+			// y座標は固定
+			arrays.cp2[i] = {
+				x: arrays.roots[i].x + this.coordinates.hair.side.cp2.x * direction + rand(-10, 10),
+				y: this.top_of_head.y + 100 + this.coordinates.hair.side.cp2.y 
+			};
+		}
+	}
+	
+	drawSideburns(coordinates)
+	{
+		let left_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x)/coordinates.left.bunch);
+		let right_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x)/coordinates.right.bunch);
+
+		/* サイクル */
+		for (let j=0; j<4; j++)
+		{
+			this._generateSideburnsLeftCoordinates(
+				coordinates.left.length, 
+				coordinates.left.bunch, left_span
+			);
+			this._drawSideburnsLeft(coordinates.left.bunch);
+			this._generateSideburnsRightCoordinates(
+				coordinates.right.length, 
+				coordinates.right.bunch, right_span
+			);
+			this._drawSideburnsRight(coordinates.right.bunch);
+			this.con.stroke();
+			this.con.fill();
+		}
+	}
+
+
+
+
+	/*
+	 * 横髪描画メソッド
+	 *
+	 * @param array side_coordinates // 横髪の座標の配列オブジェクト
+	 * @param array arrays // 横髪の配列オブジェクト
+	 * @param array start_left_coordinate // 左の開始座標
+	 * @param array start_right_coordinate // 右の開始座標
+	 *
+	 */
+	drawSideHairStandard(side_coordinates, arrays, start_left_coordinate, start_right_coordinate)
+	{
+		let left_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x + this.coordinates.hair.side.left.width)/side_coordinates.left.bunch);
+		let right_span = Math.floor(Math.abs(this.temple_left.x - this.forehead_left.x + this.coordinates.hair.side.right.width)/side_coordinates.right.bunch);
+
+		/* サイクル */
+		for (let j=0; j<1; j++)
+		{
+			this._generateSideHairCoordinates(
+				arrays, 
+				start_left_coordinate, 
+				side_coordinates.left.length, 
+				side_coordinates.left.bunch, left_span,
+				LEFT
+			);
+
+			this._drawSideHairStandardLeft2(side_coordinates.left.bunch, arrays);
+
+			this._generateSideHairCoordinates(
+				arrays, 
+				start_right_coordinate, 
+				side_coordinates.right.length, 
+				side_coordinates.right.bunch, 
+				right_span,
+				RIGHT
+			);
+
+			this._drawSideHairStandardRight(side_coordinates.right.bunch, arrays);
+
+			this.con.stroke();
+			this.con.fill();
+		}
+	}
+
+
+
+	drawBackHairStandard(hair_bunch, hair_length)
+	{
+		let span = Math.floor((this.temple_right.x - this.temple_left.x)/hair_bunch);
+
+		for (let j=0; j<=1; j++)
+		{
+			let span2 = j*span/3;// jが複数ある場合少しずつずらすための変数
+
+			this._generateHairCoordinates2(
+				this.back_hair_arrays, 
+				this.temple_left, 
+				hair_length, 
+				hair_bunch, 
+				span, 
+				this.coordinates.hair.back.tips, 
+				this.coordinates.hair.back.tip_span,
+				this.coordinates.hair.back.cp1,
+				this.coordinates.hair.back.cp2);
+
+			this._drawStandardHair(this.back_hair_arrays, hair_bunch, this.hair_color);
+		}
+	}
+	drawFrontHairStandard(hair_bunch, hair_length)
+	{
+		let span = Math.floor((this.temple_right.x - this.temple_left.x)/hair_bunch);
+
+		for (let j=0; j<=1; j++)
+		{
+			let span2 = j*span/3;// jが複数ある場合少しずつずらすための変数
+
+			this._generateHairCoordinates2(
+				this.front_hair_arrays, 
+				this.temple_left, 
+				hair_length, 
+				hair_bunch, 
+				span, 
+				this.coordinates.hair.front.tips, 
+				this.coordinates.hair.front.tip_span,
+				this.coordinates.hair.front.cp1,
+				this.coordinates.hair.front.cp2);
+
+			this._drawStandardHair(this.front_hair_arrays, hair_bunch, this.hair_color, true);
+		}
+	}
+
+	_drawStandardHair(hair_arrays, hair_bunch, hair_color, shadow = false, strokeStyle = this.hair_stroke_color, globalAlpha = 1)
+	{
+		if (shadow)
+		{
+			this.con.save();
+			//this.con.translate(3, 10);
+			this.con.scale(1, 1.05);
+			this.con.beginPath();
+			this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+			this._drawStandardHairSub(hair_bunch, hair_arrays, true);
+			this.con.restore();
+			this._config("#000", "#000", 0.3);
+			this.con.fill();
+		}
+
+		this._config(hair_color, strokeStyle, globalAlpha);
+		this.con.beginPath();
+		this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+		this._drawStandardHairSub(hair_bunch, hair_arrays);
+		this.con.globalAlpha = 1;
+	}
+
+	_drawStandardHairSub(hair_bunch, hair_arrays, shadow = false)
+	{
+		for (let i=0; i<hair_bunch; i++)
+		{
+			this.drawCurve2(
+				this.top_of_head, 
+				hair_arrays.tips[i], 
+				hair_arrays.cp1[i], 
+				hair_arrays.cp2[i]);
+
+			if( i+1<hair_bunch)
+			{
+				this.drawCurve2(
+					hair_arrays.tips[i+1], 
+					this.top_of_head,
+					hair_arrays.cp2[i+1], 
+					hair_arrays.cp1[i+1]);
+			}
+			else
+			{
+				this.drawCurve2(
+					hair_arrays.tips[hair_arrays.tips.length -1], 
+					this.top_of_head,
+					hair_arrays.cp2[hair_arrays.tips.length -1], 
+					hair_arrays.cp1[hair_arrays.tips.length -1]);
+			}
+			if (shadow === false)
+			{
+				this.con.stroke();
+				this.con.fill();
+			}
+		}
+	}
+
+
+
+	drawFrontPrincessCut(hair_bunch, hair_length)
+	{
+		// 配列初期化
+		this._initFrontHairArrays();
+
+		let hair_length_plus = 0;
+
+		/* 前髪の間隔 */
+		let span = Math.floor((this.temple_right.x - this.temple_left.x)/hair_bunch);
+
+		for (let j=0; j<=1; j++)
+		{
+			/* 座標生成 */
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				// 配列初期化
+
+				let hair_rand = rand(-6, 6);
+
+				if (i < hair_bunch/2)
+				{
+					hair_length_plus += 2;
+				}
+				else if ( i===Math.floor(hair_bunch/2))
+				{
+				}
+				else
+				{
+					hair_length_plus -= 2;
+				}
+
+				if (i === 0 )// 最初
+				{
+					this.front_hair_roots[i] = {// 根本の座標
+						x: this.temple_left.x + i*span,
+						y: this.temple_right.y};
+
+					// 毛先の座標生成
+					this.front_hair_tips[i] = {
+						x: this.temple_left.x 
+							+i*this.coordinates.hair.front.tip_span 
+							+this.coordinates.hair.front.tips + rand(-10, 10), // 毛先のx座標は根本の座標から前後に揺らす
+						//y: this.forehead_right.y 
+						y: this.top_of_head.y 
+							+hair_length + hair_length_plus
+					};
+				}
+				else if (i===hair_bunch)// 最後
+				{
+					this.front_hair_roots[i] = {// 根本の座標
+						// ループが進むにつれて指定したスパンごとにx座標が増える
+						x: this.temple_right.x,
+						y: this.temple_right.y};
+
+					// 毛先の座標生成
+					this.front_hair_tips[i] = {
+						//x: this.temple_right.x + rand(-5, 5), // 毛先のx座標は根本の座標から前後に揺らす
+						x: this.temple_left.x 
+							+i*this.coordinates.hair.front.tip_span 
+							// 毛先のx座標は根本の座標から前後に揺らす
+							+this.coordinates.hair.front.tips + rand(-10, 10), 
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+				else// 間
+				{
+					this.front_hair_roots[i] = {
+						x: this.temple_left.x + i*span, 
+						y: this.temple_right.y + rand(0,20)
+					};// 毛先の高さは少し乱数を足す
+
+					// 毛先の座標生成
+					this.front_hair_tips[i] = {
+						//x: this.temple_left.x + i*span -10 + rand(-10, 10), // 毛先のx座標は根本の座標から前後に揺らす
+						x: this.temple_left.x 
+							+i*this.coordinates.hair.front.tip_span 
+							+this.coordinates.hair.front.tips + rand(-10, 10), 
+						// 毛先のx座標は根本の座標から前後に揺らす
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+
+				// 制御点1
+				this.front_hair_cp1[i] = {
+					x: this.temple_left.x +i*span + hair_rand,// 制御点のx座標は根本から乱数で揺らす
+					y: this.top_of_head.y
+				};
+				// 制御点2
+				this.front_hair_cp2[i] = {
+					x: this.temple_left.x + i*span + hair_rand, 
+					//y: this.top_of_head.y + this.sp(this.top_of_head.y, this.front_hair_tips[i].y, 2/4) 
+					y: this.top_of_head.y + 100 
+				};
+
+			}
+
+			/* 影 */
+			this.con.save();
+			this.con.translate(3, 0);
+			this.con.scale(1, 1.05);
+
+			/* パスを開始 */
+			this.con.beginPath();
+			/* 開始座標を指定 */
+			this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				// 上から下に下ろす
+				this.drawCurve2(
+					this.top_of_head, 
+					this.front_hair_tips[i], 
+					this.front_hair_cp1[i], 
+					this.front_hair_cp2[i]
+				);
+
+				if( i+1<hair_bunch)// 最大値-1の間
+				{
+					this.con.lineTo(
+						this.front_hair_tips[i+1].x -10, 
+						this.front_hair_tips[i+1].y
+					);// 毛先1から毛先2までラインを引く
+					this.drawCurve2(
+						this.front_hair_tips[i+1], 
+						this.top_of_head, 
+						this.front_hair_cp2[i+1], 
+						this.front_hair_cp1[i+1]);
+				}
+				else
+				{
+					this.con.lineTo(
+						this.front_hair_tips[this.front_hair_tips.length -1].x -10, 
+						this.front_hair_tips[this.front_hair_tips.length -1].y
+					);
+					this.drawCurve2(
+						this.front_hair_tips[this.front_hair_tips.length -1], 
+						this.top_of_head, 
+						this.front_hair_cp2[this.front_hair_tips.length -1], 
+						this.front_hair_cp1[this.front_hair_tips.length -1]);
+				}
+			}
+			this.con.restore();
+			/* config */
+			this._config("#000", "#000", 0.4);
+
+			this.con.fill();// 影を描画
+
+			this._config(this.hair_color, "#000");
+
+			this.con.beginPath();
+			this.con.moveTo(this.top_of_head.x, this.top_of_head.y);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				// 上から下に下ろす
+				this.drawCurve2(
+					this.top_of_head, 
+					this.front_hair_tips[i], 
+					this.front_hair_cp1[i], 
+					this.front_hair_cp2[i]
+				);
+
+				if( i+1<hair_bunch)// 最大値-1の間
+				{
+					this.con.lineTo(
+						this.front_hair_tips[i+1].x -10, 
+						this.front_hair_tips[i+1].y
+					);// 毛先1から毛先2までラインを引く
+					this.drawCurve2(
+						this.front_hair_tips[i+1], 
+						this.top_of_head, 
+						this.front_hair_cp2[i+1], 
+						this.front_hair_cp1[i+1]);
+				}
+				else
+				{
+					this.con.lineTo(
+						this.front_hair_tips[this.front_hair_tips.length -1].x -10, 
+						this.front_hair_tips[this.front_hair_tips.length -1].y
+					);
+					this.drawCurve2(
+						this.front_hair_tips[this.front_hair_tips.length -1], 
+						this.top_of_head, 
+						this.front_hair_cp2[this.front_hair_tips.length -1], 
+						this.front_hair_cp1[this.front_hair_tips.length -1]
+					);
+				}
+				this.con.stroke();
+			}
+			this.con.fill();
+		}
+		this.con.globalAlpha = 1;
+	}
+
+
+
+	generateSideburnsCoordinateRight(x)
+	{
+		return Math.floor(x * (this.forehead_right.y - this.cheek_end[0].y) / (this.forehead_right.x - this.cheek_end[0].x)); 
+	}
+	generateSideburnsCoordinateLeft(x)
+	{
+		return Math.floor(x * (this.forehead_left.y - this.cheek_end[1].y) / (this.forehead_left.x - this.cheek_end[1].x));
+	}
+
+
+	drawSkinHead()
+	{
+		this._config(this.hair_color, this.hair_color, 1, 1);
+		this.con.beginPath();
+		this.drawCurve2(
+			this.temple_right, 
+			this.temple_left, 
+			this.head_cp1, 
+			this.head_cp2, true 
+		);
+		this.lineTo(this.forehead_left);
+		this.drawCurve(
+			this.forehead_left, 
+			this.forehead_right, 
+			this.top_of_head 
+		);
+		this.lineTo(this.temple_right);
+		this.con.fill();
+	}
+
+
+
+
+	drawWhiteEyes()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this._config("#fff", "#000");
+			this.con.beginPath();
+			this.drawCurve2(
+				this.eye_end[i], 
+				this.eye_head[i], 
+				this.lower_eyeline_cp2[i], 
+				this.upper_eyeline_cp1[i]
+			,true);
+			this.drawCurve(
+				this.eye_head[i], 
+				this.eyelid_bottom[i], 
+				this.eyelid_bottom_cp1[i] 
+			);
+			this.drawCurve(
+				this.eyelid_bottom[i], 
+				this.eye_end[i], 
+				this.eyelid_bottom_cp3[i] 
+			);
+			this.con.fill();
+		}
+	}
+
+	drawLowerEyelid()
+	{
+		this._config(this.skin_color, "#ff0");
+		this.con.beginPath();
+		this.moveTo(this.upper_eyeline_end[1]);
+		this.lineTo(this.eye_end[1]);
+		this.drawCurve(
+			this.eye_end[1], 
+			this.eyelid_bottom[1], 
+			this.eyelid_bottom_cp3[1] 
+		);
+		this.drawCurve(
+			this.eyelid_bottom[1], 
+			this.eye_head[1], 
+			this.eyelid_bottom_cp1[1] 
+		);
+		this.lineTo(this.eye_head[0]);
+		this.drawCurve(
+			this.eye_head[0], 
+			this.eyelid_bottom[0], 
+			this.eyelid_bottom_cp1[0] 
+		);
+		this.drawCurve(
+			this.eyelid_bottom[0], 
+			this.eye_end[0], 
+			this.eyelid_bottom_cp3[0] 
+		);
+		this.lineTo(this.upper_eyeline_end[0]);
+		this.lineTo(this.temple_right);
+		this.drawCurve2(
+			this.temple_right, 
+			this.chin_end, 
+			this.cheek_cp2[0], 
+			this.cheek_cp1[0] 
+		);
+		this.drawCurve2(
+			this.chin_end, 
+			this.chin_start, 
+			this.chin_cp2, 
+			this.chin_cp1
+		);
+		this.drawCurve2(
+			this.chin_start, 
+			this.temple_left, 
+			this.cheek_cp1[1], 
+			this.cheek_cp2[1] 
+		);
+		this.lineTo(this.upper_eyeline_end[1]);
+		this.con.fill();
+	}
+
+	drawEyelashes(number = 3)
+	{
+		let split = 10;
+		let span = Math.floor(Math.abs(this.eyelash_end[0].x - this.eye_head[0].x, )/ split);
+		let cp_span = Math.floor(Math.abs(this.eyelash_end[0].x - this.eyelash_cp[0].x ));
+
+		for (let i=0; i<2; i++)
+		{
+			this._config(this.hair_color, "#f00");
+			this.con.beginPath();
+			this.drawCurve2(
+				this.eyelash_start[i], 
+				this.eyelash_end[i], 
+				this.eyelash_cp1[i], 
+				this.eyelash_cp2[i], true
+			);
+			this.drawCurve(
+				this.eyelash_end[i], 
+				this.upper_eyeline_end2[i], 
+				this.eyelash_cp[i]
+			);
+			this.con.closePath();
+			this.con.fill();
+		}
+	}
+
+
+	drawEyeblow()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this._config(this.hair_color, "#555");
+			this.con.beginPath();
+			this.drawCurve2(
+				this.eyeblow_start[i], 
+				this.eyeblow_end[i], 
+				this.eyeblow_upper_cp1[i], 
+				this.eyeblow_upper_cp2[i], true 
+			);
+			this.drawCurve2(
+				this.eyeblow_end[i], 
+				this.eyeblow_start[i], 
+				this.eyeblow_lower_cp2[i], 
+				this.eyeblow_lower_cp1[i] 
+			);
+			this.con.fill();
+			this.con.stroke();
+		}
+	}
+
+
+
+
+	/* 二重 */
+	drawEyeline2()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this._config("#888", "#888");
+			this.con.beginPath();
+			this.drawCurve2(
+				this.upper_eyeline_start2[i], 
+				this.upper_eyeline_end2[i], 
+				this.eyeline2_cp1[i], 
+				this.eyeline2_cp2[i], true
+			);
+			this.drawCurve2(
+				this.upper_eyeline_end2[i], 
+				this.upper_eyeline_start2[i], 
+				this.eyeline2_cp4[i], 
+				this.eyeline2_cp3[i], false
+			);
+			this.con.stroke();
+			this.con.fill();
+		}
+	}
+
+	drawEyelid()
+	{
+		this._config(this.skin_color, "#000");
+		this.con.beginPath();
+		this.drawCurve2(
+			this.upper_eyeline_end[1], 
+			this.eye_head[1], 
+			this.upper_eyeline_cp2[1], 
+			this.upper_eyeline_cp1[1], true
+		);
+		this.lineTo(this.eye_head[0]);
+		this.drawCurve2(
+			this.eye_head[0], 
+			this.upper_eyeline_end[0], 
+			this.upper_eyeline_cp1[0], 
+			this.upper_eyeline_cp2[0]
+		);
+		this.lineTo(this.temple_right);
+		this.drawCurve2(
+			this.cheek_end[0], 
+			this.cheek_end[1], 
+			this.head_cp1, 
+			this.head_cp2 
+		);
+		this.lineTo(this.upper_eyeline_end[1]);
+		this.con.fill();
+	}
+
+
+
+
+
+	drawEyes()
+	{
+		this._drawIris();
+		this._drawEyeline();
+	}
+	_drawIris()
+	{
+		let eye_position_rand = rand(-1,1);
+
+		let eye_scale = this.coordinates.eye.scale;
+		let eye_highlight_scale = 1.5;
+		let pn;
+		
+		for (let i=0; i<2; i++)
+		{
+			if (i ===0)
+			{
+				pn = 1;
+			}
+			else
+			{
+				pn = -1;
+			}
+
+			/* 虹彩 */
+			this._config(this.iris_color, "#000", 0.9, 4);
+
+			/* 瞳の円1 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y * eye_scale - this.center.y));
+			this.con.scale(1, eye_scale);
+			this.con.beginPath();
+			this.con.arc(
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x, 
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
+				this.coordinates.eye.size,  
+				Math.PI * 2, false);
+			this.con.restore();
+			this.con.fill();
+			this.con.stroke();
+
+			/* 瞳孔の縁 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y*eye_scale - this.center.y));
+			this.con.scale(1, eye_scale);
+			this.con.beginPath();
+			this.con.arc(
+				this.eye_head[i].x +this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x,
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
+				10 + (this.coordinates.eye.pupil.size > this.coordinates.eye.size ? this.coordinates.eye.size : this.coordinates.eye.pupil.size),
+				Math.PI * 2, false);
+			this.con.restore();
+			this._config("#fff", "#fff", 0.2);
+			this._setBlur("#fff", 0, 0, 10);
+			this.con.fill();
+			this._resetBlur();
+
+			/* 虹彩の中の光 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y*eye_scale - this.center.y));
+			this.con.scale(1, eye_scale);
+			this.con.beginPath();
+			this.con.arc(
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x,
+				this.center.y + this.coordinates.eye.position.y +14 + this.coordinates.eye.move.y, 
+				20,  
+				Math.PI * 2, false);
+			this.con.restore();
+			this._config("#fff", "#fff", 0.4);
+			this._setBlur("#fff", 0, 0, 10);
+			this.con.fill();
+			this._resetBlur();
+
+			this._config(this.pupil_color, "#000", 1);
+
+			/* 瞳孔 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y*eye_scale - this.center.y));
+			this.con.scale(1, eye_scale);
+			this.con.beginPath();
+			this.con.arc(
+				this.eye_head[i].x + this.coordinates.eye.position.x * pn + this.coordinates.eye.move.x * 1.5,
+				this.center.y + this.coordinates.eye.position.y + this.coordinates.eye.move.y, 
+				7 + (this.coordinates.eye.pupil.size > this.coordinates.eye.size ? this.coordinates.eye.size : this.coordinates.eye.pupil.size),  
+				Math.PI * 2, false);
+			this.con.restore();
+			this.con.fill();
+
+			this._config("#fff", "#fff");
+			/* 瞳の反射 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y*eye_highlight_scale - this.center.y));
+			this.con.scale(1, eye_highlight_scale);
+			this.con.beginPath();
+
+			this.con.arc(
+				this.eye_head[i].x 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 +10 +eye_position_rand , 
+				this.center.y -10, 
+				5,  
+				Math.PI * 2, false);
+
+			this.con.arc(
+				this.eye_head[i].x 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x*1.5 +2 + eye_position_rand, 
+				this.center.y -5, 
+				2, 
+				Math.PI * 2, false);
+			this.con.restore();
+			this.con.fill();
+
+
+			this._config("#fff", "#fff", 1);
+			/* 瞳の反射 */
+			this.con.save();
+			this.con.translate(0, -(this.center.y*eye_highlight_scale - this.center.y));
+			this.con.scale(1, eye_highlight_scale);
+			this.con.beginPath();
+
+			this.con.arc(
+				this.eye_head[i].x 
+				+this.coordinates.eye.position.x*pn + this.coordinates.eye.move.x * 1.5 -24 + eye_position_rand , 
+				this.center.y -2, 
+				6,  
+				Math.PI * 2, false);
+
+			this.con.restore();
+			this._setBlur("#fff", 0, 0, 10);
+			this.con.fill();
+			this.con.globalAlpha = 1;
+			this._resetBlur();
+		}
+	}
+	_drawEyeline()
+	{
+		// 左右の座標は既に用意してある
+		// 配列で管理しているのでループのインデックス番号を合わせて回す
+		this.drawEyeShadow();
+		for (let i=0; i<2; i++)
+		{
+			this._config("#000", "#000");
+			this.con.beginPath();
+			this.drawCurve2(
+				this.eye_head[i], 
+				this.upper_eyeline_end[i], 
+				this.upper_eyeline_cp1[i], 
+				this.upper_eyeline_cp2[i], true
+			);
+			this.con.lineTo(this.eye_end[i].x,this.eye_end[i].y);
+			this.drawCurve2(
+				this.eye_end[i], 
+				this.eye_head[i], 
+				this.lower_eyeline_cp2[i], 
+				this.lower_eyeline_cp1[i]
+			);
+			this.con.stroke();
+			this.con.fill();
+		}
+	}
+
+
+
+
+
+
+
+
+	drawEyeShadow()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this.con.beginPath();
+			this.drawCurve2(
+				this.eye_head[i], 
+				this.upper_eyeline_end[i], 
+				this.upper_eyeline_cp1[i], 
+				this.upper_eyeline_cp2[i], true
+			);
+			this.con.lineTo(this.eye_shadow_end[i].x, this.eye_shadow_end[i].y);
+			this.drawCurve2(
+				this.eye_shadow_end[i], 
+				this.eye_shadow_start[i], 
+				this.eye_shadow_cp2[i], 
+				this.eye_shadow_cp1[i]
+			);
+			this._config("#000", "#f00", 0.3);
+			this.con.fill();
+			this.con.globalAlpha = 1;
+		}
+	}
+
+
+
+
+	/*
+	 * 後ろ髪のサイド
+	 */
+	drawOutsideBackHair(hair_bunch, hair_length)
+	{
+		/* 髪の束の間隔 */
+		let span = Math.abs(this.temple_left.x - this.outside_back_hair_left.x)/hair_bunch;
+
+		// この関数のメインループ
+		for (let j=0; j<1; j++)
+		{
+			this._initOutsideBackHairArrays();
+
+
+			// 左サイド髪の座標生成
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				this.outside_back_hair_roots[i] = {
+					x: this.outside_back_hair_left.x + i*span,
+					y: this.outside_back_hair_left.y 
+				};
+				this.outside_back_hair_tips[i] = {
+					x: this.outside_back_hair_left.x + i*span + rand(-20, 0),
+					y: this.outside_back_hair_left.y + rand(0, 20) + hair_length
+				};
+				this.outside_back_hair_cp1[i] = {
+					x: this.outside_back_hair_left.x + i*span/2 + rand(-5, 5), 
+					y: this.outside_back_hair_roots[i].y 
+						+this.sp(this.outside_back_hair_roots[i].y, this.outside_back_hair_tips[i].y, 1/3)
+				};
+				this.outside_back_hair_cp2[i] = {
+					x: this.outside_back_hair_left.x + i*span/2 + rand(-1, 1), 
+					y: this.outside_back_hair_roots[i].y 
+						+this.sp(this.outside_back_hair_roots[i].y, 
+							this.outside_back_hair_tips[i].y, 2/3) 
+				};
+			}
+
+			this._config(this.hair_color, "#000");
+
+			this.con.beginPath();
+			this.moveTo(this.outside_back_hair_roots[0]);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				// まず根本から毛先まで下ろす
+				this.drawCurve2(
+					this.outside_back_hair_roots[i], 
+					this.outside_back_hair_tips[i], 
+					this.outside_back_hair_cp1[i], 
+					this.outside_back_hair_cp2[i] 
+				);
+
+				// 配列の最後の一つ前まで
+				if( i+1<hair_bunch)
+				{
+					// 毛先から根本に向かってカーブを引く
+					this.drawCurve2(
+						this.outside_back_hair_tips[i+1], 
+						this.outside_back_hair_roots[i+1], 
+						this.outside_back_hair_cp2[i], 
+						this.outside_back_hair_cp1[i+1]
+					);
+				}
+				// 配列の最後
+				else
+				{
+					// 配列の最後は
+					this.drawCurve2(
+						this.outside_back_hair_tips[this.outside_back_hair_tips.length -1], 
+						this.temple_left, 
+						this.outside_back_hair_cp2[this.outside_back_hair_tips.length -1], 
+						this.outside_back_hair_cp1[this.outside_back_hair_tips.length -1]
+					);
+				}
+			}
+
+			this._initOutsideBackHairArrays();
+
+
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				this.outside_back_hair_roots[i] = {
+					x: this.temple_right.x + i*span, 
+					y: this.temple_right.y 
+				};
+				this.outside_back_hair_tips[i] = {
+					x: this.temple_right.x + i*span + rand(-20, 0), 
+					y: this.temple_right.y + rand(10, 20) + hair_length
+				};
+				this.outside_back_hair_cp1[i] = {
+					x: this.temple_right.x + i*span/2 + rand(0, 10), 
+					y: this.outside_back_hair_roots[i].y 
+						+this.sp(
+							this.outside_back_hair_roots[i].y, 
+							this.outside_back_hair_tips[i].y, 1/3)
+				};
+				this.outside_back_hair_cp2[i] = {
+					x: this.temple_right.x + i*span/2 + rand(-10, 10), 
+					y: this.outside_back_hair_roots[i].y 
+						+this.sp(this.outside_back_hair_roots[i].y, 
+							this.outside_back_hair_tips[i].y, 2/3) 
+				};
+			}
+
+			this.lineTo(this.outside_back_hair_roots[0]);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				this.drawCurve2(
+					this.outside_back_hair_roots[i], 
+					this.outside_back_hair_tips[i], 
+					this.outside_back_hair_cp1[i], 
+					this.outside_back_hair_cp2[i] 
+				);
+
+
+
+				if( i+1<hair_bunch)
+				{
+					this.drawCurve2(
+						this.outside_back_hair_tips[i+1], 
+						this.outside_back_hair_roots[i+1], 
+						this.outside_back_hair_cp2[i], 
+						this.outside_back_hair_cp1[i+1]);
+				}
+				else
+				{
+					this.drawCurve2(
+						this.outside_back_hair_tips[this.outside_back_hair_tips.length -1],
+						this.outside_back_hair_right, // 右の後ろ髪の外側
+						this.outside_back_hair_cp2[this.outside_back_hair_tips.length -1],
+						this.outside_back_hair_cp1[this.outside_back_hair_tips.length -1]
+					);
+				}
+			}
+			this.drawCurve2(
+				this.outside_back_hair_right, // 毛先から
+				this.outside_back_hair_left, // 右の後ろ髪の外側
+				this.outside_back_head_cp1, // 毛先のCP
+				this.outside_back_head_cp2); // 毛先のCP
+
+			this._config(this.hair_color, "#000");
+			this.con.stroke();
+			this.con.fill();
+		}// forループ終わり
+	}// drawOutsideBackHair
+
+
+	drawBackHair(hair_bunch, hair_length) 
+	{
+		this._initBackHairArrays();
+
+		/* 前髪の間隔 */
+		let span = (this.temple_right.x - this.temple_left.x)/hair_bunch;
+
+		for (let j=0; j<=2; j++)
+		{
+			let hair_length_plus = 0;
+
+			/* 座標生成 */
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				let hair_rand = rand(-6, 6);
+
+
+				// 毛先に傾きをつける処理
+				if (i <hair_bunch/2)
+				{
+					// 毛束の半分以下は少しづつ増やし
+					hair_length_plus += 5;
+				}
+				else if ( i===Math.floor(hair_bunch/2))
+				{
+					// 真ん中は何もしない
+				}
+				else
+				{
+					// 毛束の半分以上は少しずつ減らす
+					hair_length_plus -= 5;
+				}
+
+
+				// 根本の座標
+				if (i === 0 )// 最初
+				{
+					this.back_hair_roots[i] = {// 根本の座標
+						// ループが進むにつれて指定したスパンごとにx座標が増える
+						x: this.temple_left.x + i*span,
+						y: this.temple_left.y};
+
+					// 毛先の座標生成
+					this.back_hair_tips[i] = {
+						x: this.temple_left.x + i*span + rand(-60, 1), // 毛先のx座標は根本の座標から前後に揺らす
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+				else if (i===hair_bunch)// 最後
+				{
+					this.back_hair_roots[i] = {// 根本の座標
+						// ループが進むにつれて指定したスパンごとにx座標が増える
+						x: this.temple_left.x,
+						y: this.temple_left.y
+					};
+
+					// 毛先の座標生成
+					this.back_hair_tips[i] = {
+						x: this.temple_right.x + rand(-60, 2), 
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+
+				}
+				else// 間
+				{
+					this.back_hair_roots[i] = {
+						x: this.temple_left.x + i*span, 
+						y: this.temple_left.y + rand(-10,20)
+					};
+
+					this.back_hair_tips[i] = {
+						x: this.temple_left.x + i*span + rand(-10, 10), 
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+
+				this.back_hair_cp1[i] = {
+					x: this.temple_left.x + i*span + hair_rand,
+					y: this.back_hair_roots[i].y 
+						+this.sp(this.back_hair_roots[i].y, this.back_hair_tips[i].y, 1/4)
+				};
+				this.back_hair_cp2[i] = {
+					x: this.temple_left.x + i*span + hair_rand, 
+					y: this.back_hair_roots[i].y 
+						+this.sp(this.back_hair_roots[i].y, this.back_hair_tips[i].y, 2/4) 
+				};
+			}
+
+
+			this._config(this.hair_color, this.hair_stroke_color, 0.4);
+
+			this.con.beginPath();
+			this.moveTo(this.back_hair_roots[0]);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				// 上から下に下ろす
+				this.drawCurve2(
+					this.back_hair_roots[i], 
+					this.back_hair_tips[i], 
+					this.back_hair_cp1[i], 
+					this.back_hair_cp2[i]
+				);
+
+				if( i+1<hair_bunch)// 最大値-1の間
+				{
+					this.con.lineTo(
+						this.back_hair_tips[i+1].x -10, 
+						this.back_hair_tips[i+1].y
+					);
+
+					this.drawCurve2(
+						this.back_hair_tips[i+1], 
+						this.back_hair_roots[i+1], 
+						this.back_hair_cp2[i+1], 
+						this.back_hair_cp1[i+1]
+					);
+				}
+				else
+				{
+					this.con.lineTo(
+						this.back_hair_tips[this.back_hair_tips.length -1].x +10, 
+						this.back_hair_tips[this.back_hair_tips.length -1].y);
+					this.drawCurve2(
+						this.back_hair_tips[this.back_hair_tips.length -1], 
+						this.temple_right, 
+						this.back_hair_cp2[this.back_hair_tips.length -1], 
+						this.back_hair_cp1[this.back_hair_tips.length -1]);
+				}
+				this.con.stroke();
+			}
+			this.con.fill();
+			this.con.fillStyle = "#000";
+			this.con.fill();
+		}
+		this.con.globalAlpha = 1;
+	}// 閉じ括弧
+
+
+	/*
+	 * 後ろ髪ナチュラル
+	 *
+	 * @param int hair_bunch
+	 * @param int hair_length
+	 */
+	drawBackHair2(hair_bunch, hair_length) 
+	{
+		this._initBackHairArrays();
+
+		/* 前髪の間隔 */
+		let span = (this.temple_right.x - this.temple_left.x)/hair_bunch;
+
+		for (let j=0; j<=2; j++)
+		{
+			let hair_length_plus = 0;
+
+			/* 座標生成 */
+			for (let i=0; i<=hair_bunch; i++)
+			{
+				let hair_rand = rand(-6, 6);
+
+
+				// 毛先に傾きをつける処理
+				if (i <hair_bunch/2)
+				{
+					// 毛束の半分以下は少しづつ増やし
+					hair_length_plus += 5;
+				}
+				else if ( i===Math.floor(hair_bunch/2))
+				{
+					// 真ん中は何もしない
+				}
+				else
+				{
+					// 毛束の半分以上は少しずつ減らす
+					hair_length_plus -= 5;
+				}
+
+
+				// 根本の座標
+				if (i === 0 )// 最初
+				{
+					this.back_hair_roots[i] = {
+						x: this.temple_left.x + i*span,
+						y: this.temple_left.y
+					};
+
+					// 毛先の座標生成
+					this.back_hair_tips[i] = {
+						x: this.temple_left.x + i*span +span/2 + rand(-60, 1),
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+				else if (i===hair_bunch)// 最後
+				{
+					this.back_hair_roots[i] = {
+						x: this.temple_left.x,
+						y: this.temple_left.y
+					};
+
+					this.back_hair_tips[i] = {
+						x: this.temple_right.x +span/2 + rand(-60, 2),
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+				else// 間
+				{
+					this.back_hair_roots[i] = {
+						x: this.temple_left.x + i*span, 
+						y: this.temple_left.y + rand(-10,20)
+					};
+
+					this.back_hair_tips[i] = {
+						x: this.temple_left.x + i*span +span/2  + rand(-60, 10),
+						y: this.top_of_head.y + hair_length + hair_length_plus
+					};
+				}
+
+				this.back_hair_cp1[i] = {
+					x: this.temple_left.x + i*span + hair_rand,
+					y: this.back_hair_roots[i].y 
+						+this.sp(this.back_hair_roots[i].y, this.back_hair_tips[i].y, 1/4)
+				};
+				this.back_hair_cp2[i] = {
+					x: this.temple_left.x + i*span + hair_rand, 
+					y: this.back_hair_roots[i].y 
+						+this.sp(this.back_hair_roots[i].y, this.back_hair_tips[i].y, 2/4) 
+				};
+			}
+
+
+			this._config(this.hair_color, "#000", 0.4);
+
+			this.con.beginPath();
+			this.moveTo(this.back_hair_roots[0]);
+
+			for (let i=0; i<hair_bunch; i++)
+			{
+				// 上から下に下ろす
+				this.drawCurve2(
+					this.back_hair_roots[i], 
+					this.back_hair_tips[i], 
+					this.back_hair_cp1[i], 
+					this.back_hair_cp2[i]
+				);
+
+				if( i+1<hair_bunch)// 最大値-1の間
+				{
+					this.drawCurve2(
+						this.back_hair_tips[i+1], 
+						this.back_hair_roots[i+1], 
+						this.back_hair_cp2[i+1], 
+						this.back_hair_cp1[i+1]);
+				}
+				else
+				{
+					this.drawCurve2(
+						this.back_hair_tips[this.back_hair_tips.length -1], 
+						this.temple_right, 
+						this.back_hair_cp2[this.back_hair_tips.length -1], 
+						this.back_hair_cp1[this.back_hair_tips.length -1]);
+				}
+				this.con.stroke();
+			}
+			this.con.fill();
+			this.con.fillStyle = "#000";
+			this.con.fill();
+
+		}
+		this.con.globalAlpha = 1;
+	}// 閉じ括弧
+
+
+
+	drawNeck()
+	{
+		this._config(this.skin_color, "#000");
+		this.con.beginPath();
+		this.drawCurve2(
+			this.neck_start[0], 
+			this.neck_end[0], 
+			this.neck_cp1[0],
+			this.neck_cp2[0], true
+		);
+		this.lineTo(this.neck_end[1]);
+		this.drawCurve2(
+			this.neck_end[1], 
+			this.neck_start[1], 
+			this.neck_cp2[1],
+			this.neck_cp1[1]
+		);
+		this.con.fill();
+		this._config("#000", "#000", 0.1, 1);
+		this.con.fill();
+		this.con.globalAlpha = 1;
+		this.con.stroke();
+	}
+
+
+
+	drawNeckShadow()
+	{
+		this._config("#000", "#000", 1, 1);
+		this.con.beginPath();
+		this.moveTo(this.neck_start[0]);
+		this.lineTo(this.neck_start2[0]);
+		this.drawCurve2(
+			this.neck_start2[0], 
+			this.neck_start2[1], 
+			this.neck_shadow_cp1, 
+			this.neck_shadow_cp2
+		);
+		this.lineTo(this.neck_start[1]);
+		this.con.globalAlpha = 0.2;
+		this.con.fill();
+		this.con.globalAlpha = 1;
+	}
+
+
+
+
+	drawEar()
+	{
+		for (let i=0; i<2; i++)
+		{
+			this._config(this.skin_color, "#000");
+			this.con.beginPath();
+
+			this.drawCurve2(
+				this.ear_start[i], 
+				this.earlobe_start[i], 
+				this.ear_cp1[i], 
+				this.ear_cp2[i], true );
+			this.drawCurve(
+				this.earlobe_start[i], 
+				this.ear_end[i], 
+				this.earlobe_cp1[i] );
+			this.con.stroke();
+			this.con.fill();
+
+			this.con.globalAlpha = 0.2;
+			this.con.beginPath();
+
+			// 内耳の線
+			this.drawCurve2(
+				this.inner_ear_start[i], 
+				this.inner_ear_end[i], 
+				this.inner_ear_cp1[i], 
+				this.inner_ear_cp2[i], true );
+			this.con.stroke();
+			this.con.fillStyle = "#000";
+			this.con.beginPath();
+
+			// 内耳の影
+			this.drawCurve2(
+				this.inner_ear_start[i], 
+				this.inner_ear_end[i], 
+				this.inner_ear_cp1[i], 
+				this.inner_ear_cp2[i], true );
+			this.lineTo(this.ear_end[i]);
+			this.con.fill();
+			this.con.globalAlpha = 1;
+		}
+	}// drawEar()
+
+
+
+	/*
+	 * 頬の影
+	 */
+	drawCheekShadow()
+	{
+		this._drawCheekShadowRight();
+		this._drawCheekShadowLeft();
+	}
+	_drawCheekShadowRight()
+	{
+		this._drawRightCheekLine(true);
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.temple_right, 
+			this.chin_end, 
+			this.cheek_shadow_cp2[0], 
+			this.cheek_shadow_cp1[0], false 
+		);
+		this._config("#000", "red", 0.2);
+		this.con.fill();
+	}
+	_drawCheekShadowLeft()
+	{
+		this._drawLeftCheekLine(true);
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.temple_left, 
+			this.chin_start, 
+			this.cheek_shadow_cp2[1], 
+			this.cheek_shadow_cp1[1], false 
+		);
+		this._config("#000", "red", 0.2);
+		this.con.fill();
+	}
+
+	/*
+	 * 右側の顎のライン
+	 *
+	 * @param boolean bool
+	 * trueならbeginPathを適用し
+	 * falseなら既にパスが開始されているとみなす
+	 */
+	_drawRightCheekLine(bool = false)
+	{
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.chin_end, 
+			this.temple_right, 
+			this.cheek_cp1[0], 
+			this.cheek_cp2[0], bool 
+		);
+	}
+	_drawLeftCheekLine(bool = false)
+	{
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.chin_start, 
+			this.temple_left, 
+			this.cheek_cp1[1], 
+			this.cheek_cp2[1], bool 
+		);
+	}
+
+	drawOutline()
+	{
+		this._config(this.skin_color, "#000", 1, 3);
+		this.con.beginPath();
+
+		// 顎の先（あごの左からあごの右）
+		this.drawCurve2(
+			this.chin_start, 
+			this.chin_end, 
+			this.chin_cp1, 
+			this.chin_cp2, true 
+		);
+
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.chin_end, 
+			this.temple_right, 
+			this.cheek_cp1[0], 
+			this.cheek_cp2[0], false 
+		);
+
+		// 右のこめかみから頭を経由して左のこめかみまで
+		this.drawCurve2(
+			this.temple_right, 
+			this.temple_left, 
+			this.head_cp1, 
+			this.head_cp2 
+		);
+
+		// 左のこめかみから頬まで
+		this.drawCurve2(
+			this.temple_left, 
+			this.chin_start, 
+			this.cheek_cp2[1], 
+			this.cheek_cp1[1], false 
+		);
+		this.con.stroke();
+		this.con.fill();
+
+	}
+
+
+
+
+	drawNose()
+	{
+		if (this.coordinates.nose.flag)
+		{
+			this._config("#000", "#222", 0.8);
+			this.con.beginPath();
+			this.moveTo(this.nose_top);
+			this.lineTo(this.nose_bottom);
+			this.drawCurve2(
+				this.nose_bottom, 
+				this.nose_top, 
+				this.nose_cp1, 
+				this.nose_cp2
+			);
+			this.con.stroke();
+			this._config("#000", "#000", 0.3);
+			this.con.fill();
+			this.con.globalAlpha = 1;
+		}
+
+		if (this.coordinates.nose2.flag)
+		{
+			for (let i=0; i<2; i++)
+			{
+				this._config("#000", "#000", 1);
+				this.con.beginPath();
+				this.drawCurve(
+					this.nose2_start[i],
+					this.nose2_end[i],
+					this.nose2_cp[i],
+					true
+				);
+				this.con.stroke();
+				this.con.fill();
+				this.con.globalAlpha = 1;
+			}
+		}
+	}
+
+
+
+	drawMouth()
+	{
+		this._config("#ef857d", "#000", 1, 1);
+		this.con.beginPath();
+		this.drawUpperLipLine();
+		this.drawLowerLipLine();
+		this.con.fill();
+		this.con.stroke();
+		this._config("#000", "#000", 0.2, 1);
+		this.con.fill();
+		//this.drawLowerLip();
+	}
+
+	drawUpperLipLine()
+	{
+		this.drawCurve2(
+			this.mouth_start, 
+			this.mouth_end, 
+			this.upper_lip_cp1, 
+			this.upper_lip_cp2, true
+		);
+	}
+	drawLowerLipLine()
+	{
+		this.drawCurve2(
+			this.mouth_end, 
+			this.mouth_start, 
+			this.lower_lip_cp2, 
+			this.lower_lip_cp1
+		);
+	}
+	drawLowerLip()
+	{
+		this._config(this.skin_color, "#000", 1, 1);
+		this.con.beginPath();
+		this.moveTo(this.mouth_end);
+		this.drawLowerLipLine();
+
+		this.lineTo(this.chin_start);
+
+		// あごの左からあごの右
+		this.drawCurve2(
+			this.chin_start, 
+			this.chin_end, 
+			this.chin_cp1, 
+			this.chin_cp2
+		);
+
+		this.lineTo(this.mouth_end);
+		this.con.fill();
+		this.fillR(this.chin_end, "green");
+		this.fillR(this.chin_start, "orange");
+		this.fillR(this.mouth_end, "orange");
+		this.fillR(this.mouth_start, "#000");
+	}
+
+
+	drawDebug()
+	{
+		this._config("#111", "#111");
+		this.con.font="16px 'ＭＳ　ゴシック'";
+
+		this.con.fillText("クライアントマウス(X: "+ox + ",  Y: " + oy + ")", 
+			50, 50 );
+		this.con.fillText("中心マウス(X: "
+			+(ox - this.center.x) + ",  Y: " + (oy - this.center.y) + ")", 
+			50, 50 *2 );
+	}
+	drawCenter ()
+	{
+		this._config("#f00", "#f00");
+
+		/* 横描画 */
+		this.con.beginPath();
+		this.con.moveTo(-10 + this.center.x, this.center.y);
+		this.con.lineTo( 10 + this.center.x, this.center.y);
+		this.con.stroke();
+
+		/* 縦描画 */
+		this.con.beginPath();
+		this.con.moveTo(this.center.x, -10 + this.center.y);
+		this.con.lineTo(this.center.x,  10 + this.center.y);
+		this.con.stroke();
+	}
+
+}// クラス閉じ括弧
