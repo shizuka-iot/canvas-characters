@@ -298,6 +298,31 @@
 					</div>
 				</fieldset>
 
+				<fieldset>
+					<legend>陰</legend>
+					<div class="parts">
+						<div class="shadow">
+							<input type="range" class="slider" id="cheek.shadow.cp1.x" value="0" min="-255" max="255">
+							<label for="cheek.shadow.cp1.x">頬の陰の広がり1</label>
+						</div>
+
+						<div class="shadow">
+							<input type="range" class="slider" id="cheek.shadow.cp1.y" value="0" min="-255" max="255">
+							<label for="cheek.shadow.cp1.y">頬の陰 高さ1</label>
+						</div>
+
+						<div class="shadow">
+							<input type="range" class="slider" id="cheek.shadow.cp2.x" value="0" min="0" max="255">
+							<label for="cheek.shadow.cp2.x">頬の陰の広がり2</label>
+						</div>
+
+						<div class="shadow">
+							<input type="range" class="slider" id="cheek.shadow.cp2.y" value="0" min="-255" max="255">
+							<label for="cheek.shadow.cp2.y">頬の陰 高さ2</label>
+						</div>
+
+					</div>
+				</fieldset>
 
 
 				<fieldset>
