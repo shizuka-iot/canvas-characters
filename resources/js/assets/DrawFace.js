@@ -1282,10 +1282,10 @@ class DrawFace
 		//this.drawEyelashes();
 		this.drawLowerEyelid();
 		this.drawCheekBlur();
+		this.drawCheekShadow();
 		this.drawMouth();
 		this.drawEyeblow();
 		this.drawNose();
-		this.drawCheekShadow();
 		this.drawSkinHead();
 		if ( this.coordinates.hair.sideburns.flag )
 		{
@@ -1327,6 +1327,7 @@ class DrawFace
 				this.con.fill();
 				this.con.restore();
 				this._resetBlur();
+				this.con.globalAlpha = 1;
 			}
 		}
 	}
@@ -3506,6 +3507,7 @@ class DrawFace
 	}
 	_drawCheekShadowRight()
 	{
+		this.con.beginPath();
 		this._drawRightCheekLine(true);
 		// あごの右からこめかみ
 		this.drawCurve2(
@@ -3514,11 +3516,13 @@ class DrawFace
 			this.cheek_shadow_cp2[0], 
 			this.cheek_shadow_cp1[0], false 
 		);
-		this._config("#000", "red", 0.2);
+		this._config("#000", "red", 0.1);
 		this.con.fill();
+		this.con.globalAlpha = 1;
 	}
 	_drawCheekShadowLeft()
 	{
+		this.con.beginPath();
 		this._drawLeftCheekLine(true);
 		// あごの右からこめかみ
 		this.drawCurve2(
@@ -3527,8 +3531,9 @@ class DrawFace
 			this.cheek_shadow_cp2[1], 
 			this.cheek_shadow_cp1[1], false 
 		);
-		this._config("#000", "red", 0.2);
+		this._config("#000", "red", 0.1);
 		this.con.fill();
+		this.con.globalAlpha = 1;
 	}
 
 	/*
