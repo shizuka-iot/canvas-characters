@@ -657,6 +657,26 @@ class DrawFace
 					+this.coordinates.cheek.cp2.y
 			},
 		];
+		this.cheek_shadow_cp1 = [
+			{
+				x: this.cheek_cp1[0].x -5 - this.coordinates.cheek.shadow.cp1.x ,
+				y: this.cheek_cp1[0].y + this.coordinates.cheek.shadow.cp1.y ,
+			},
+			{
+				x: this.cheek_cp1[1].x +5 + this.coordinates.cheek.shadow.cp1.x ,
+				y: this.cheek_cp1[1].y + this.coordinates.cheek.shadow.cp1.y ,
+			},
+		];
+		this.cheek_shadow_cp2 = [
+			{
+				x: this.cheek_cp2[0].x -5 - this.coordinates.cheek.shadow.cp2.x ,
+				y: this.cheek_cp2[0].y + this.coordinates.cheek.shadow.cp2.y ,
+			},
+			{
+				x: this.cheek_cp2[1].x +5 + this.coordinates.cheek.shadow.cp2.x ,
+				y: this.cheek_cp2[1].y + this.coordinates.cheek.shadow.cp2.y ,
+			},
+		];
 
 		this.head_cp1 = {
 			x: this.cheek_end[0].x + 60, 
@@ -1265,6 +1285,7 @@ class DrawFace
 		this.drawMouth();
 		this.drawEyeblow();
 		this.drawNose();
+		this.drawCheekShadow();
 		this.drawSkinHead();
 		if ( this.coordinates.hair.sideburns.flag )
 		{
@@ -3475,13 +3496,75 @@ class DrawFace
 
 
 
+	/*
+	 * 頬の影
+	 */
+	drawCheekShadow()
+	{
+		this._drawCheekShadowRight();
+		this._drawCheekShadowLeft();
+	}
+	_drawCheekShadowRight()
+	{
+		this._drawRightCheekLine(true);
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.temple_right, 
+			this.chin_end, 
+			this.cheek_shadow_cp2[0], 
+			this.cheek_shadow_cp1[0], false 
+		);
+		this._config("#000", "red", 0.2);
+		this.con.fill();
+	}
+	_drawCheekShadowLeft()
+	{
+		this._drawLeftCheekLine(true);
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.temple_left, 
+			this.chin_start, 
+			this.cheek_shadow_cp2[1], 
+			this.cheek_shadow_cp1[1], false 
+		);
+		this._config("#000", "red", 0.2);
+		this.con.fill();
+	}
+
+	/*
+	 * 右側の顎のライン
+	 *
+	 * @param boolean bool
+	 * trueならbeginPathを適用し
+	 * falseなら既にパスが開始されているとみなす
+	 */
+	_drawRightCheekLine(bool = false)
+	{
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.chin_end, 
+			this.temple_right, 
+			this.cheek_cp1[0], 
+			this.cheek_cp2[0], bool 
+		);
+	}
+	_drawLeftCheekLine(bool = false)
+	{
+		// あごの右からこめかみ
+		this.drawCurve2(
+			this.chin_start, 
+			this.temple_left, 
+			this.cheek_cp1[1], 
+			this.cheek_cp2[1], bool 
+		);
+	}
 
 	drawOutline()
 	{
 		this._config(this.skin_color, "#000", 1, 3);
 		this.con.beginPath();
 
-		// あごの左からあごの右
+		// 顎の先（あごの左からあごの右）
 		this.drawCurve2(
 			this.chin_start, 
 			this.chin_end, 
@@ -3514,7 +3597,9 @@ class DrawFace
 		);
 		this.con.stroke();
 		this.con.fill();
+
 	}
+
 
 
 
