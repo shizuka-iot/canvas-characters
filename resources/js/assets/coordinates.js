@@ -290,6 +290,10 @@ let coordinates = {
 		width: 0,
 		cp1: {x: 0, y:0},
 		cp2: {x: 0, y:0},
+		shadow: {
+			cp1: {x: 0, y: 0},
+			cp2: {x: 0, y: 0},
+		},
 	},
 	chin: {
 		width: 0,
