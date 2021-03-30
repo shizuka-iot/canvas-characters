@@ -1,1 +1,555 @@
-body{margin:0}header{font-family:'Yusei Magic',sans-serif}footer{padding:3rem 0;background-color:#ff82b2;color:#fff;margin-top:auto;width:100%}header h1{font-size:1.5rem}header p{font-size:1rem}footer p{margin-top:1rem}.footer_contents{width:80%;max-width:400px;flex-wrap:wrap}.introduction{padding:1rem;margin-top:2rem}.introduction h1{font-family:'M PLUS Rounded 1c',sans-serif;font-weight:400;font-size:1.5rem;color:#222;border-bottom:4px solid pink}.introduction ul{font-size:1rem;font-weight:700;color:#444;padding:0;margin:.5rem 0;font-family:'M PLUS Rounded 1c',sans-serif}.introduction p{align-self:flex-end}.header_logo_wrapper{margin:0 1rem}.fa-twitter{color:#fff}.fs-10{font-size:10px}.fw-normal{font-weight:400}.tweet-alert{display:none}.require{background-color:red;color:#fff;font-size:12px;box-sizing:border-box;padding:.1rem .5rem;margin-right:.5rem}.error-message{color:red}#contact_form{width:100%;max-width:800px}#contact_form input{width:80%}#contact_form label{font-weight:700}.contact_form_item{margin:.5rem 0}.contact_form_button{margin-top:.5rem;margin-bottom:2rem}.confirm_input_item{background-color:#ddd;box-sizing:border-box;border:1px solid #222;padding:.1rem .5rem;display:inline-block;width:300px;transform:translateX(-8px)}.confirm_input_items_wrapper label{display:inline-block;width:240px;background-color:#afa;box-sizing:border-box;border:1px solid #222;padding:.1rem}.contact_form_button button{font-size:1.4rem}#contact_form button{font-size:1.4rem}.contact_fix_button{margin-top:2rem;margin-bottom:1rem}.confirm_button{margin-top:.5rem;margin-bottom:1rem}.tweet-character-wrapper .fa-twitter{margin-right:.1rem}.tweet-character-wrapper{position:absolute;left:0;top:0;z-index:3;margin:1rem}.tweet-character{padding:.3rem 1rem;background-color:#1da1f2;color:#fff;font-size:12px;font-weight:700;box-shadow:rgba(0,0,0,.08) 0 8px 28px;border-radius:5px;transition:all .3s 0s ease}.tweet-character:hover{background-color:#1b95e0;cursor:pointer}.twitter_icon_wrapper{width:100%}.twitter_link{color:#00a1e9;font-size:1.2rem}#save_btn_wrapper{position:absolute;right:0;top:0;z-index:2}.create_free_contents_wrapper{display:flex;flex-direction:column}.hide{display:none}.show{display:flex}.character_talk{margin-bottom:1.5rem}.character_talk img{height:100px}.talk_wrapper{max-width:800px;margin:3rem 0 4rem 0}.balloon-left{position:relative;display:inline-block;margin:.5em 0 1.5em 15px;padding:7px 10px;min-width:120px;max-width:100%;color:#333;font-size:16px;background:#e0edff}.balloon-left:before{content:"";position:absolute;top:50%;left:-30px;margin-top:-15px;border:15px solid transparent;border-right:15px solid #e0edff}.balloon-left p{margin:0;padding:0}.about_h1{margin-top:2rem;position:relative;z-index:0;font-size:1.3rem;font-weight:400;color:#222}.about_h1:before{content:"";width:100%;border-bottom:6px solid pink;position:absolute;bottom:8px;z-index:-1}main{justify-content:center;box-sizing:border-box;width:100%;padding:0 1rem}#wrapper{display:flex;flex-direction:column;min-height:100vh;width:100%}.container{max-width:1000px}.mode{width:100%;align-items:center}.explain_mode{width:80%;padding:1rem}.agreement_wrap,.privacy_wrap{width:80%;background-color:#f0f0f0;padding:1rem;letter-spacing:.1rem;color:#444;font-family:'Noto Serif JP',serif}.agreement_wrap h1,.privacy_wrap h1{border-bottom:4px solid pink;margin-bottom:1rem}.agreement_wrap h2,.privacy_wrap h2{background-color:#fff;margin-top:4rem}#can{width:100%;position:relative}.height_center{display:flex;align-items:center}input[type=range]{margin-right:1rem}#save_chara_btn{font-size:1.4rem;margin:1rem;padding:0 1rem;border:2px solid #555;border-radius:5px;background:#fff}#save_chara_btn:hover{color:#fff;background:#000}.slider{-webkit-appearance:none;appearance:none;cursor:pointer;background:#8acaff;height:1rem;border-radius:10px;border:3px solid #dff1ff;outline:0}.header-line{width:100%;height:.5rem;background-color:#ff82b2;margin-bottom:.5rem}.header_imgs_wrapper img{width:100px;height:auto}.header_imgs_wrapper{flex-wrap:wrap}.sticky{position:sticky;top:0}ul{margin:0;padding:0}li{list-style:none;margin:.5rem}.fs14{font-size:14px}a{text-decoration:none;color:#333}.question_form{width:100%}h1{margin:0}h2{margin:.5rem}h3{margin:0}p{margin:0}.left img,.right img{width:100%;height:auto;margin-bottom:1rem}#toppage_canvas1,#toppage_canvas2{width:100%;height:auto;margin-bottom:1rem}.select_mode{margin-bottom:2rem;flex-wrap:wrap;width:100%;max-width:960px}.select_mode_btn{margin:0 4rem;border-radius:100vh;color:#555;border-style:none;border:3px solid #555;background-color:#fff}.select_mode_btn:hover{color:#fff;background-color:#555}.select_mode_btn>h2{margin:0 2rem}.row{display:flex;flex-direction:row}.column{display:flex;flex-direction:column}.between{align-items:space-between;justify-content:space-between}.center{align-items:center;display:flex;justify-content:center}#canvas_wrapper{position:relative;z-index:1;padding:0 5%;background-color:#fff}.params{margin:1rem;margin-left:0}.parts{border:1px solid #000;margin-bottom:1rem;padding:.5rem;background-color:orange}fieldset{margin-bottom:1rem}.question_wrapper{margin:1rem;width:100%;max-width:800px}.answers_wrapper{margin-bottom:.5rem;width:80%;flex-direction:column}.answer_btn_wrapper{padding:.5rem;box-sizing:border-box;width:100%}.answer_btn{width:100%;height:100%;font-size:1.4rem;font-weight:700}.question_title{width:100%}@media screen and (min-width:801px){.twitter_icon_wrapper{width:auto}.mode{width:auto;max-width:360px}.header_imgs_wrapper{flex-direction:row}.answers_wrapper{flex-wrap:wrap;flex-direction:row}.answer_btn_wrapper{width:50%}.about_h1{font-size:1.8rem}.create_free_contents_wrapper{flex-direction:row}#save_chara_btn{font-size:1.8rem;margin:1rem;border:2px solid #555;border-radius:5px;background:#fff}#canvas_wrapper{margin-top:1rem;padding:0}.tweet-character-wrapper{margin:1rem}.tweet-character{padding:.3rem;font-size:16px}.tweet-alert{display:inline}.introduction{padding:1rem;margin-top:2rem}.introduction h1{font-family:'M PLUS Rounded 1c',sans-serif;font-weight:400;color:#222;border-bottom:4px solid pink;font-size:2.4rem}.introduction ul{font-size:1.4rem;font-weight:700;color:#444;padding:0;margin:.5rem 0;font-family:'M PLUS Rounded 1c',sans-serif}}
+
+body {
+	margin: 0;
+}
+header {
+	font-family: 'Yusei Magic', sans-serif;
+}
+footer {
+	padding: 3rem 0;
+	background-color: #ff82b2; 
+	color: #fff;
+	margin-top: auto;
+	width: 100%;
+}
+header h1 {
+	font-size: 1.5rem;
+}
+header p {
+	font-size: 1rem;
+}
+footer p {
+	margin-top: 1rem;
+}
+.footer_contents {
+	width: 80%;
+	max-width: 400px;
+	flex-wrap: wrap;
+}
+.introduction {
+	padding: 1rem;
+	margin-top: 2rem;
+}
+.introduction h1 {
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-weight: 400;
+	font-size: 1.5rem;
+	color: #222;
+	border-bottom: 4px solid pink;
+}
+
+.introduction ul {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #444;
+	padding: 0;
+	margin: 0.5rem 0;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+.introduction p{
+	align-self: flex-end;
+}
+.header_logo_wrapper {
+	margin: 0 1rem;
+}
+.fa-twitter {
+	color: #fff;
+}
+
+.fs-10 {
+	font-size: 10px;
+}
+.fw-normal {
+	font-weight: normal;
+}
+
+.tweet-alert {
+	display: none;
+}
+
+.require {
+	background-color: red;
+	color: #fff;
+	font-size: 12px;
+	box-sizing: border-box;
+	padding: 0.1rem 0.5rem;
+	margin-right: 0.5rem;
+}
+.error-message {
+	color: red;
+}
+#contact_form {
+	width: 100%;
+	max-width: 800px;
+}
+#contact_form input {
+	width: 80%;
+}
+#contact_form label {
+	font-weight: bold;
+}
+.contact_form_item {
+	margin: 0.5rem 0;
+}
+.contact_form_button {
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+}
+.confirm_input_item {
+	background-color: #ddd;
+	box-sizing: border-box;
+	border: 1px solid #222;
+	padding:0.1rem 0.5rem;
+	display: inline-block;
+	width: 300px;
+	transform: translateX(-8px);
+}
+.confirm_input_items_wrapper label {
+	display: inline-block;
+	width: 240px;
+	background-color: #afa;
+	box-sizing: border-box;
+	border: 1px solid #222;
+	padding:0.1rem;
+}
+.contact_form_button button {
+	font-size: 1.4rem;
+}
+#contact_form button {
+	font-size: 1.4rem;
+}
+.contact_fix_button {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+.confirm_button {
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.tweet-character-wrapper .fa-twitter{
+	margin-right: 0.1rem;
+}
+.tweet-character-wrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	margin: 1rem;
+}
+.tweet-character {
+	padding: 0.3rem 1rem;
+	background-color: rgb(29, 161, 242);
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+	border-radius: 5px;
+	transition: all 300ms 0s ease;
+}
+.tweet_button_main {
+}
+.tweet-character:hover {
+	background-color: #1b95e0;
+	cursor: pointer;
+}
+.twitter_icon_wrapper {
+	width: 100%;
+}
+.twitter_link {
+	color: #00a1e9;
+	font-size: 1.2rem;
+}
+
+#save_btn_wrapper {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+
+.create_free_contents_wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.hide {
+	display: none;
+}
+.show {
+	display: flex;
+}
+
+.character_talk {
+	margin-bottom: 1.5rem;
+}
+.character_talk img {
+	height: 100px;
+}
+.talk_wrapper {
+	max-width: 800px;
+	margin: 3rem 0 4rem 0;
+}
+
+.balloon-left {
+	position: relative;
+	display: inline-block;
+	margin: 0.5em 0 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #333;
+	font-size: 16px;
+	background: #e0edff;
+}
+.balloon-left:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 15px solid #e0edff;
+}
+.balloon-left p {
+	margin: 0;
+	padding: 0;
+}
+
+.about_h1 {
+	margin-top: 2rem;
+	position: relative;
+	z-index: 0;
+	font-size: 1.3rem;
+	font-weight: 400;
+	color: #222;
+}
+.about_h1:before {
+	content: "";
+	width: 100%;
+	border-bottom: 6px solid pink;
+	position: absolute;
+	bottom: 8px;
+	z-index: -1;
+}
+
+
+main {
+	justify-content: center;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 1rem;
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100%;
+}
+
+.container {
+	max-width: 1000px;
+}
+
+.mode {
+	width: 100%;
+	align-items: center;
+}
+
+.explain_mode {
+	width: 80%;
+	padding: 1rem;
+}
+
+.agreement_wrap, .privacy_wrap {
+	width: 80%;
+	background-color: #f0f0f0;
+	padding: 1rem;
+	letter-spacing: 0.1rem;
+	color: #444;
+	font-family: 'Noto Serif JP', serif;
+}
+.agreement_wrap h1, .privacy_wrap h1 {
+	border-bottom: 4px solid pink;
+	margin-bottom: 1rem;
+}
+.agreement_wrap h2, .privacy_wrap h2{
+	background-color: #fff;
+	margin-top: 4rem;
+}
+
+aside {
+	/*
+	display: none;
+	*/
+}
+
+#can {
+	width: 100%;
+	/*
+	background-color: pink;
+	*/
+	position: relative;
+}
+
+.height_center {
+	display: flex;
+	align-items: center;
+}
+input[type=range] {
+	margin-right: 1rem;
+}
+
+#save_chara_btn {
+	font-size: 1.4rem;
+	margin: 1rem;
+	padding: 0 1rem;
+	border: 2px solid #555;
+	border-radius: 5px;
+	background: #fff;
+}
+#save_chara_btn:hover {
+	color: #fff;
+	background: #000;
+}
+
+
+.slider {
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	background: #8acaff;
+	height: 1rem;
+	/*
+	width: 100%;
+	*/
+	border-radius: 10px;
+	border: 3px solid #dff1ff;
+	outline: 0;
+}
+
+.header-line {
+	width: 100%;
+	height: 0.5rem;
+	background-color: #ff82b2; 
+	margin-bottom: 0.5rem;
+}
+
+.header_imgs_wrapper img {
+	width: 100px;
+	height: auto;
+}
+.header_imgs_wrapper {
+	flex-wrap: wrap;
+}
+
+.sticky {
+	position: sticky;
+	top: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+	margin: 0.5rem;
+}
+
+.fs14 {
+	font-size: 14px;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+.question_form {
+	width: 100%;
+}
+
+h1 {
+	margin: 0;
+}
+h2 {
+	margin: 0.5rem;
+}
+h3 {
+	margin: 0;
+}
+p {
+	margin: 0;
+}
+
+.left img , .right img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+}
+#toppage_canvas1, #toppage_canvas2 {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+}
+.select_mode {
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: 960px;
+}
+.select_mode_btn {
+	margin: 0 4rem;
+	border-radius: 100vh;
+	color: #555;
+	border-style: none;
+	border: 3px solid #555;
+	background-color: #fff;
+}
+.select_mode_btn:hover {
+	color: #fff;
+	background-color: #555;
+}
+.select_mode_btn > h2 {
+	margin: 0 2rem;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+.column {
+	display: flex;
+	flex-direction: column;
+}
+.between {
+	align-items: space-between;
+	justify-content: space-between;
+}
+.center {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+#canvas_wrapper {
+	position: relative;
+	z-index: 1;
+	padding: 0 5%;
+	background-color: #fff;
+}
+
+.params {
+	margin: 1rem;
+	margin-left: 0;
+}
+
+.parts {
+	border: 1px solid #000;
+	margin-bottom: 1rem;
+	padding: 0.5rem;
+	background-color: orange;
+}
+
+fieldset {
+	margin-bottom: 1rem;
+}
+
+.question_wrapper {
+	margin: 1rem;
+	width: 100%;
+	max-width: 800px;
+}
+.answers_wrapper {
+	margin-bottom: 0.5rem;
+	width: 80%;
+	flex-direction: column;
+}
+
+.answer_btn_wrapper {
+	padding: 0.5rem;
+	box-sizing: border-box;
+	width: 100%;
+}
+.answer_btn {
+	width: 100%;
+	height: 100%;
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+.question_title {
+	width: 100%;
+}
+
+/* ここからPCビュー */
+@media screen and (min-width: 801px)
+{
+	.twitter_icon_wrapper {
+		width: auto;
+	}
+	.mode {
+		width: auto;
+		max-width: 360px;
+	}
+	.header_imgs_wrapper {
+		flex-direction: row;
+	}
+	.answers_wrapper {
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+	.answer_btn_wrapper {
+		width: 50%;
+	}
+	.about_h1 {
+		font-size: 1.8rem;
+	}
+	.create_free_contents_wrapper {
+		flex-direction: row;
+	}
+	#save_chara_btn {
+		font-size: 1.8rem;
+		margin: 1rem;
+		border: 2px solid #555;
+		border-radius: 5px;
+		background: #fff;
+	}
+	#canvas_wrapper {
+		margin-top: 1rem;
+		padding: 0;
+	}
+
+	.tweet-character-wrapper {
+		margin: 1rem;
+	}
+	.tweet-character {
+		padding: 0.3rem;
+		font-size: 16px;
+	}
+	.tweet-alert {
+		display: inline;
+	}
+	.introduction {
+		padding: 1rem;
+		margin-top: 2rem;
+	}
+	.introduction h1 {
+		font-family: 'M PLUS Rounded 1c', sans-serif;
+		font-weight: 400;
+		color: #222;
+		border-bottom: 4px solid pink;
+		font-size: 2.4rem;
+	}
+
+	.introduction ul {
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: #444;
+		padding: 0;
+		margin: 0.5rem 0;
+		font-family: 'M PLUS Rounded 1c', sans-serif;
+	}
+}

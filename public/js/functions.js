@@ -1,1 +1,7 @@
-"use strict";function rand(r,t){return Math.floor(Math.random()*(t+1-r))+r}
+
+"use strict";
+
+function rand(min, max)
+{
+	return Math.floor( Math.random() * (max + 1 - min) ) + min ;
+}
