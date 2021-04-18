@@ -20,7 +20,7 @@
 
 			<div class="select_mode row between">
 				<div class="mode left column">
-					<canvas id="toppage_canvas1"></canvas>
+					<img src="{{ asset('/imgs/topPage_character1.gif') }}" alt="" class="topPage_character">
 					<a href="{{ asset('/question') }}" class="select_mode_btn">
 						<h2>簡単作成</h2>
 					</a>
@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="mode right column">
-					<canvas id="toppage_canvas2"></canvas>
+					<img src="{{ asset('/imgs/topPage_character2.gif') }}" alt="" class="topPage_character">
 					<a href="{{ asset('/create_free') }}" class="select_mode_btn">
 						<h2>自由に作る</h2>
 					</a>
@@ -52,10 +52,6 @@
 	</div>
 
 	<script src="{{ asset('js/functions.js') }}"></script>
-	<script src="{{ asset('js/chara1_coordinates.js') }}"></script>
-	<script src="{{ asset('js/chara2_coordinates.js') }}"></script>
-	<script src="{{ asset('js/DrawFace.js') }}"></script>
-	<script src="{{ asset('js/top_animation.js') }}"></script>
 
 </body>
 </html>
