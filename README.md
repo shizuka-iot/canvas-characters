@@ -41,3 +41,46 @@ CanvasAPIのベジェ曲線を引く関数であるbezierCurveTo()やquadraticCu
 ## お問い合わせページについて
 お問い合わせページからお問い合わせを行うと自動返信メールが届くようになっています。
 mailableクラスを作成し、自動返信のシステムを作成しました。
+
+## 2021/8/21 Wsl2での開発に移行
+1. wslの環境を整える
+
+    必要なもの
+    1. apache2
+    2. composer 
+    3. php 
+    4. php-mysql
+    5. php-curl
+    6. php-mbstring
+    7. php-dom
+
+2. フロー
+
+    1. apache2のインストール
+
+        sudo apt install apache2
+
+    2. composer
+        やりかたは公式かメモを確認
+
+    3. php 
+
+        sudo apt install php
+
+    4. php-mysql
+
+        sudo apt install php-mysql
+
+    5. php-curl
+
+        sudo apt install php-curl
+
+    6. php-mbstring
+
+        sudo apt install php-mbstring
+
+    7. php-dom
+
+        sudo apt install php-dom
+
+    
