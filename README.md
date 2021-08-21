@@ -83,4 +83,6 @@ mailableクラスを作成し、自動返信のシステムを作成しました
 
         sudo apt install php-dom
 
-    
+    8. laravelのstorageの権限を変更
+
+        chmod -R 777 storage
